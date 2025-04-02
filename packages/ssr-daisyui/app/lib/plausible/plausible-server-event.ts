@@ -1,10 +1,10 @@
+import { getClientIPAddress } from 'remix-utils/get-client-ip-address'
 import { isClient } from '~/lib/is-client.ts'
 import { isServer } from '~/lib/is-server.ts'
-import { PlausibleEventNames } from '~/lib/plausible/event-names.ts'
 import { logger } from '~/lib/logger.ts'
+import { type PlausibleEventNames } from '~/lib/plausible/event-names.ts'
 import { getHostname } from '~/lib/plausible/get-hostname.ts'
 import { getPathname } from '~/lib/plausible/get-pathname.ts'
-import { getClientIPAddress } from 'remix-utils/get-client-ip-address'
 
 type UserActionEvent = {
 	name: PlausibleEventNames

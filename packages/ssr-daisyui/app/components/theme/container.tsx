@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import React from 'react'
 import { cn } from '~/lib/utils.ts'
 
-const variants = cva('container mx-auto flex max-w-[1280px]', {
+const variants = cva('container mx-auto flex max-w-[1280px] px-3 md:px-0', {
 	variants: {
 		variant: {
 			default: 'flex-col gap-8',

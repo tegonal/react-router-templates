@@ -1,7 +1,7 @@
-import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { cn } from '~/lib/utils'
+import * as React from 'react'
 import { useTranslation } from 'react-i18next'
+import { cn } from '~/lib/utils'
 
 const variants = cva('input w-full', {
 	variants: {

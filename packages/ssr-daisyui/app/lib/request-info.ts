@@ -1,6 +1,6 @@
-import { useRouteLoaderData } from 'react-router'
-import { RootRouteLoaderData } from '~/root.tsx'
 import { invariant } from '@epic-web/invariant'
+import { useRouteLoaderData } from 'react-router'
+import { type RootRouteLoaderData } from '~/root.tsx'
 
 /**
  * @returns the request info from the root loader (throws an error if it does not exist)

@@ -1,3 +1,5 @@
+import React, { type PropsWithChildren, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
 	data,
 	Links,
@@ -9,22 +11,20 @@ import {
 	useLoaderData,
 	useLocation,
 } from 'react-router'
-import React, { PropsWithChildren, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useChangeLanguage } from 'remix-i18next/react'
-import { DevModeOverlay } from '~/components/devmode-overlay'
-import { logger } from '~/lib/logger.ts'
-import versionFile from './version.json'
+import  { type Route } from './+types/root.ts'
 import { plausibleClientEvent } from './lib/plausible/plausible-client-event.ts'
-import { getHostname } from '~/lib/plausible/get-hostname.ts'
-import { GenericAppEvents } from '~/lib/plausible/event-names.ts'
+import versionFile from './version.json'
+import { DevModeOverlay } from '~/components/devmode-overlay'
+import { ClientHintCheck, getHints } from '~/lib/client-hints.tsx'
 import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
-import type { Route } from './+types/root.ts'
+import { logger } from '~/lib/logger.ts'
+import { GenericAppEvents } from '~/lib/plausible/event-names.ts'
+import { getHostname } from '~/lib/plausible/get-hostname.ts'
 import './styles/fonts.css'
 import './styles/tailwind.css'
-import { ClientHintCheck, getHints } from '~/lib/client-hints.tsx'
-import { performanceMiddleware } from '~/middleware/performance.ts'
 import { getLocale, i18nextMiddleware } from '~/middleware/i18n.ts'
+import { performanceMiddleware } from '~/middleware/performance.ts'
 
 export const links: LinksFunction = () => [
 	{ rel: 'icon', href: '/favicon.png', type: 'image/png' },
@@ -98,7 +98,7 @@ export function Layout({ children }: PropsWithChildren) {
 				<Meta />
 				<Links />
 			</head>
-			<body className={'h-svh'}>
+			<body className="h-svh">
 				{children}
 				<ScrollRestoration />
 				<Scripts />

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { cn } from '~/lib/utils'
 
-const variants = cva('bg-base-300 mb-6 px-1 py-2', {
+const variants = cva('bg-base-300 mb-6 max-w-full overflow-x-scroll px-1 py-2', {
 	variants: {
 		variant: {
 			default: '',

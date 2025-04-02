@@ -1,9 +1,9 @@
-import { useFetcher, useNavigation, useRevalidator, useRouteLoaderData } from 'react-router'
-import { type RootRouteLoaderData } from '~/root.tsx'
-import { isClient } from '~/lib/is-client.ts'
 import { useEffect, useState } from 'react'
+import { useFetcher, useNavigation, useRevalidator, useRouteLoaderData } from 'react-router'
 import { Badge } from '~/components/ui/badge.tsx'
 import { Spinner } from '~/components/ui/spinner.tsx'
+import { isClient } from '~/lib/is-client.ts'
+import { type RootRouteLoaderData } from '~/root.tsx'
 
 const DevModeOverlay = () => {
 	const loaderData = useRouteLoaderData<RootRouteLoaderData>('root')
@@ -27,24 +27,22 @@ const DevModeOverlay = () => {
 	}, [])
 
 	return (
-		<div className={'hidden md:block'}>
+		<div className="hidden md:block">
 			{loaderData?.isDev ? (
 				<div
-					className={
-						'fixed top-2 right-2 flex flex-row gap-1 text-xs md:top-auto md:right-auto md:bottom-2 md:left-2'
-					}>
+					className="fixed top-2 right-2 flex flex-row gap-1 text-xs md:top-auto md:right-auto md:bottom-2 md:left-2">
 					{isFetching && (
-						<div className={'h-4 w-4 rounded-full text-blue-500'}>
+						<div className="h-4 w-4 rounded-full text-blue-500">
 							<Spinner />
 						</div>
 					)}
 					{isRevalidating && (
-						<div className={'h-4 w-4 rounded-full text-red-500'}>
+						<div className="h-4 w-4 rounded-full text-red-500">
 							<Spinner />
 						</div>
 					)}
 					{isNavigating && (
-						<div className={'h-4 w-4 rounded-full text-green-500'}>
+						<div className="h-4 w-4 rounded-full text-green-500">
 							<Spinner />
 						</div>
 					)}
@@ -56,7 +54,7 @@ const DevModeOverlay = () => {
 					<Badge className="hidden xl:inline">xl</Badge>
 				</div>
 			) : (
-				<div className={'fixed hidden'}>{process.env.APP_VERSION}</div>
+				<div className="fixed hidden">{process.env.APP_VERSION}</div>
 			)}
 		</div>
 	)

@@ -1,6 +1,6 @@
-import { logger } from '~/lib/logger.ts'
 import { isServer } from '~/lib/is-server.ts'
-import { PlausibleEventNames } from '~/lib/plausible/event-names.ts'
+import { logger } from '~/lib/logger.ts'
+import { type PlausibleEventNames } from '~/lib/plausible/event-names.ts'
 
 type UserActionEvent = {
 	name: PlausibleEventNames
@@ -31,7 +31,7 @@ export const plausibleClientEvent = (options: PlausibleEventOptions) => {
 		return
 	}
 
-	fetch('/api/event', {
+	void fetch('/api/event', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

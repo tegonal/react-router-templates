@@ -4,16 +4,16 @@
  * For more information, see https://remix.run/file-conventions/entry.client
  */
 
-import { HydratedRouter } from 'react-router/dom'
 import i18next from 'i18next'
 import I18nLanguageDetector from 'i18next-browser-languagedetector'
 import I18nBackend from 'i18next-http-backend'
 import { startTransition, StrictMode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
+import { HydratedRouter } from 'react-router/dom'
 import { getInitialNamespaces } from 'remix-i18next/client'
-import i18n from '~/i18n.ts'
 import versionFile from './version.json'
+import i18n from '~/i18n.ts'
 
 async function hydrate() {
 	await i18next

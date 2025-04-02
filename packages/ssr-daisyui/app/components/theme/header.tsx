@@ -1,9 +1,9 @@
-import { Container } from '~/components/theme/container.tsx'
-import { href, Link } from 'react-router'
-import { Logo } from '~/components/theme/logo.tsx'
 import { useTranslation } from 'react-i18next'
-import { MenuItem } from '~/types/menu-item.ts'
+import { href, Link } from 'react-router'
+import { Container } from '~/components/theme/container.tsx'
+import { Logo } from '~/components/theme/logo.tsx'
 import { useLang } from '~/hooks/use-lang.tsx'
+import { type MenuItem } from '~/types/menu-item.ts'
 
 export const Header: React.FC = () => {
 	const { t } = useTranslation()
@@ -21,11 +21,11 @@ export const Header: React.FC = () => {
 	]
 
 	return (
-		<Container as={'header'} className={'py-4'}>
+		<Container as="header" className="py-4">
 			<div className="navbar">
 				<div className="flex flex-1 flex-row items-center gap-2">
 					<Link to={href('/')} className="btn btn-ghost text-xl">
-						<Logo variant={'sm'} />
+						<Logo variant="sm" />
 						<span>{t('header.title', 'ACME Inc.')}</span>
 					</Link>
 				</div>

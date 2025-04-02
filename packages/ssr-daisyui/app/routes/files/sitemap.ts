@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs } from 'react-router'
+import { type LoaderFunctionArgs } from 'react-router'
 import i18n from '../../i18n.ts'
 
 const pagesToInclude = [

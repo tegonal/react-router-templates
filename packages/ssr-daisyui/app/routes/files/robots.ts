@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs } from 'react-router'
+import { type LoaderFunctionArgs } from 'react-router'
 
 export const loader = ({request}:LoaderFunctionArgs) => {
   const host = request.headers.get('X-Forwarded-Host') ?? request.headers.get('host')

@@ -1,8 +1,8 @@
-import { Route } from '../../.react-router/types/app/+types/root.ts'
+import React from 'react'
 import { isRouteErrorResponse } from 'react-router'
+import { type Route } from '../../.react-router/types/app/+types/root.ts'
 import { H1 } from '~/components/typography/h1.tsx'
 import { P } from '~/components/typography/p.tsx'
-import React from 'react'
 
 export function ErrorBoundaryShared({ error }: Route.ErrorBoundaryProps) {
 	if (isRouteErrorResponse(error)) {

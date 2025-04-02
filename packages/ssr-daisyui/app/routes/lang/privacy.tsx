@@ -1,9 +1,9 @@
-import { data, LoaderFunctionArgs, type MetaFunction } from 'react-router'
 import React from 'react'
-import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
-import { Route as RootRoute } from '../../../.react-router/types/app/+types/root.ts'
 import { useTranslation } from 'react-i18next'
+import { data, type LoaderFunctionArgs, type MetaFunction } from 'react-router'
+import { type Route as RootRoute } from '../../../.react-router/types/app/+types/root.ts'
 import { H1 } from '~/components/typography/h1.tsx'
+import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
 import { getFixedT } from '~/middleware/i18n.ts'
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {

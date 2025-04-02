@@ -7,23 +7,76 @@
 */
 @plugin "daisyui/theme" {
   name: "light";
-  color-scheme: light; /* color of browser-provided UI */
-  --color-primary: #469344;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ff0000;
-  --color-secondary-content: #ffffff;
-  --color-success: #469344;
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(98% 0.001 106.423);
+  --color-base-200: oklch(92% 0.003 48.717);
+  --color-base-300: oklch(86% 0.005 56.366);
+  --color-base-content: oklch(14% 0.004 49.25);
+  --color-primary: oklch(64% 0.2 131.684);
+  --color-primary-content: oklch(98% 0.031 120.757);
+  --color-secondary: oklch(49% 0.265 301.924);
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(65% 0.241 354.308);
+  --color-accent-content: oklch(28% 0.109 3.907);
+  --color-neutral: oklch(37% 0.01 67.558);
+  --color-neutral-content: oklch(97% 0.001 106.424);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.3125rem;
+  --size-field: 0.3125rem;
+  --border: 0.5px;
+  --depth: 1;
+  --noise: 0;
 }
+
 
 @plugin "daisyui/theme" {
   name: "dark";
-  color-scheme: dark; /* color of browser-provided UI */
-  --color-primary: #469344;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ff0000;
-  --color-secondary-content: #ffffff;
-  --color-success: #469344;
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: oklch(37% 0.01 67.558);
+  --color-base-200: oklch(26% 0.007 34.298);
+  --color-base-300: oklch(21% 0.006 56.043);
+  --color-base-content: oklch(92% 0.003 48.717);
+  --color-primary: oklch(64% 0.2 131.684);
+  --color-primary-content: oklch(98% 0.031 120.757);
+  --color-secondary: oklch(49% 0.265 301.924);
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(65% 0.241 354.308);
+  --color-accent-content: oklch(28% 0.109 3.907);
+  --color-neutral: oklch(37% 0.01 67.558);
+  --color-neutral-content: oklch(97% 0.001 106.424);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.3125rem;
+  --size-field: 0.3125rem;
+  --border: 0.5px;
+  --depth: 1;
+  --noise: 0;
+  --root-bg: var(--color-base-300);
 }
+
 
 @layer base {
   html, :host {

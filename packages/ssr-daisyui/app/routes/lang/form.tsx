@@ -1,18 +1,18 @@
-import { ActionFunctionArgs, data, Form, LoaderFunctionArgs, type MetaFunction } from 'react-router'
-import React from 'react'
-import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
-import { Route as RootRoute } from '../../../.react-router/types/app/+types/root.ts'
-import { useTranslation } from 'react-i18next'
-import { H1 } from '~/components/typography/h1.tsx'
-import { Container } from '~/components/theme/container.tsx'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { type ActionFunctionArgs, data, Form, type LoaderFunctionArgs, type MetaFunction } from 'react-router'
 import { getValidatedFormData, useRemixForm } from 'remix-hook-form'
+import { z } from 'zod'
+import { type Route as RootRoute } from '../../../.react-router/types/app/+types/root.ts'
+import { Container } from '~/components/theme/container.tsx'
+import { H1 } from '~/components/typography/h1.tsx'
 import { Button } from '~/components/ui/button.tsx'
-import { zIsEmail, zIsRequired } from '~/lib/zod-form-validations.ts'
 import { Input } from '~/components/ui/input.tsx'
-import { logger } from '~/lib/logger.ts'
 import { Select } from '~/components/ui/select.tsx'
+import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
+import { logger } from '~/lib/logger.ts'
+import { zIsEmail, zIsRequired } from '~/lib/zod-form-validations.ts'
 import { getFixedT } from '~/middleware/i18n.ts'
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {
@@ -76,24 +76,24 @@ export default function Home() {
 	return (
 		<Container>
 			<H1>{t('routes.form.title', 'Example Form with Validation')}</H1>
-			<Form onSubmit={handleSubmit} method="POST" className={'flex max-w-2xl flex-col gap-3'}>
+			<Form onSubmit={handleSubmit} method="POST" className="flex max-w-2xl flex-col gap-3">
 				<Input
 					{...register('name')}
-					type={'text'}
+					type="text"
 					label={t('form.label.name', 'Name')}
 					description={t(
 						'form.description.name',
 						'Your name, family name, nick name or anything in between',
 					)}
-					autoComplete={'name'}
+					autoComplete="name"
 					error={errors.name}
 				/>
 				<Input
 					{...register('email')}
-					type={'email'}
+					type="email"
 					label={t('form.label.email', 'Email')}
 					description={t('form.description.email', 'Your email address')}
-					autoComplete={'email'}
+					autoComplete="email"
 					error={errors.email}
 				/>
 				<Select
@@ -106,7 +106,7 @@ export default function Home() {
 					<option value="chocolate">{t('form.flavour.chocolate', 'Chocolate')}</option>
 					<option value="strawberry">{t('form.flavour.strawberry', 'Strawberry')}</option>
 				</Select>
-				<Button type="submit" variant={'primary'}>
+				<Button type="submit" variant="primary">
 					{t('userActions.button.submit', 'Submit Form')}
 				</Button>
 			</Form>

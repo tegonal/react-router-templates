@@ -1,5 +1,5 @@
-import { Route } from './+types/event'
 import { getClientIPAddress } from 'remix-utils/get-client-ip-address'
+import { type Route } from './+types/event'
 
 export const action = async ({ request }: Route.ActionArgs) => {
 	const { method } = request

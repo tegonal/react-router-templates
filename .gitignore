@@ -21,3 +21,4 @@ build
 .yarn/cache
 node_modules
 .yarn/install-state.gz
+.DS_Store

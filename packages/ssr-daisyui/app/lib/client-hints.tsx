@@ -4,8 +4,8 @@ import {
 	subscribeToSchemeChange,
 } from '@epic-web/client-hints/color-scheme'
 import { clientHint as timeZoneHint } from '@epic-web/client-hints/time-zone'
-import { useRevalidator } from 'react-router'
 import * as React from 'react'
+import { useRevalidator } from 'react-router'
 import { useRequestInfo } from '~/lib/request-info.ts'
 
 const hintsUtils = getHintUtils({

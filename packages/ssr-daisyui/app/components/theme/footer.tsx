@@ -1,9 +1,9 @@
-import { Container } from '~/components/theme/container.tsx'
-import { href, Link } from 'react-router'
-import { Logo } from '~/components/theme/logo.tsx'
-import { useTranslation } from 'react-i18next'
-import { useLang } from '~/hooks/use-lang.tsx'
 import { SiGithub, SiMastodon, SiSignal } from '@icons-pack/react-simple-icons'
+import { useTranslation } from 'react-i18next'
+import { href, Link } from 'react-router'
+import { Container } from '~/components/theme/container.tsx'
+import { Logo } from '~/components/theme/logo.tsx'
+import { useLang } from '~/hooks/use-lang.tsx'
 
 export const Footer: React.FC = () => {
 	const { t } = useTranslation()
@@ -52,8 +52,8 @@ export const Footer: React.FC = () => {
 		},
 	]
 	return (
-		<footer className="bg-base-200 text-base-content">
-			<Container className="py-10">
+		<footer className="bg-base-200">
+			<Container className="text-base-content py-10">
 				<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
 					{/* Logo and company info */}
 					<div className="col-span-1 lg:col-span-2">

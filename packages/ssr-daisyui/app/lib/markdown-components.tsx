@@ -1,13 +1,13 @@
+import { type Components } from 'react-markdown'
+import { CODE } from '~/components/typography/code.tsx'
 import { H1 } from '~/components/typography/h1'
 import { H2 } from '~/components/typography/h2'
 import { H3 } from '~/components/typography/h3'
 import { H4 } from '~/components/typography/h4'
-import { Components } from 'react-markdown'
-import { P } from '~/components/typography/p.tsx'
-import { UL } from '~/components/typography/ul.tsx'
-import { CODE } from '~/components/typography/code.tsx'
-import { PRE } from '~/components/typography/pre.tsx'
 import { OL } from '~/components/typography/ol.tsx'
+import { P } from '~/components/typography/p.tsx'
+import { PRE } from '~/components/typography/pre.tsx'
+import { UL } from '~/components/typography/ul.tsx'
 
 export const markdownComponents: Components = {
 	// Add any custom components you want to use in your markdown here

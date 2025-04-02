@@ -1,7 +1,7 @@
-import LogoFile from './logos/logo.svg?react'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { type SVGProps } from 'react'
+import LogoFile from './logos/logo.svg?react'
 import { cn } from '~/lib/utils'
-import { SVGProps } from 'react'
 
 const variants = cva([''], {
 	variants: {
@@ -25,7 +25,7 @@ interface Props extends VariantProps<typeof variants>, SVGProps<SVGSVGElement> {
 export const Logo: React.FC<Props> = ({ variant, className }) => {
 	return (
 		<div className={cn([variants({ variant }), className])}>
-			<LogoFile className={'object-contain'} />
+			<LogoFile className="object-contain" />
 		</div>
 	)
 }

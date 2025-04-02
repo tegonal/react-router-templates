@@ -1,4 +1,4 @@
-import type { Config } from '@react-router/dev/config'
+import  { type Config } from '@react-router/dev/config'
 
 // RR7 Middleware is currently unstable, but it is essential for SSR, so we are living on the edge.
 

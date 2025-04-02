@@ -12,7 +12,8 @@ All starters are designed to be easily extensible and customizable, allowing dev
 To get started with any of the starters, use `create-react-router` and reference the starter template using its location on GitHub like so:
 
 ```bash
-npx create-react-router@latest tegonal/react-router-starters/packages/ssr-daisyui
+# ssr-daisyui
+npx create-react-router@latest --template https://github.com/tegonal/react-router-templates/tree/main/packages/ssr-daisyui
 ```
 
 Then, follow the instructions of `create-react-router` to set up your project.
