@@ -1,0 +1,13 @@
+{
+	"name": "react-router-templates",
+	"author": "Tegonal Cooperative <info@tegonal.com>",
+	"license": "MIT",
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"up": "yarn upgrade-interactive",
+		"self-update": "yarn set version latest && yarn"
+	},
+	"packageManager": "yarn@4.8.1"
+}

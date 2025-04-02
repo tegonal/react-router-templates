@@ -1,0 +1,62 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/*
+* https://daisyui.com/docs/themes/
+* https://daisyui.com/theme-generator/
+*/
+@plugin "daisyui/theme" {
+  name: "light";
+  color-scheme: light; /* color of browser-provided UI */
+  --color-primary: #469344;
+  --color-primary-content: #ffffff;
+  --color-secondary: #ff0000;
+  --color-secondary-content: #ffffff;
+  --color-success: #469344;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  color-scheme: dark; /* color of browser-provided UI */
+  --color-primary: #469344;
+  --color-primary-content: #ffffff;
+  --color-secondary: #ff0000;
+  --color-secondary-content: #ffffff;
+  --color-success: #469344;
+}
+
+@layer base {
+  html, :host {
+    font-family: "Open Sans", ui-sans-serif, sans-serif;
+  }
+
+  body {
+    @apply antialiased scroll-smooth;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-content;
+  }
+
+  /* Change Autocomplete styles in Chrome*/
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--color-base-content) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-base-100) inset !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    background-color: var(--color-base-100) !important;
+  }
+
+  body input[data-com-onepassword-filled],
+  body input[data-com-onepassword-filled]:focus{
+    background-clip: text !important;
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "common": {
+    "404": {
+      "message": "The page you were looking for does not exist.",
+      "title": "Page not found"
+    }
+  },
+  "form": {
+    "description": {
+      "email": "Your email address",
+      "flavour": "Your favourite flavour",
+      "name": "Your name, family name, nick name or anything in between"
+    },
+    "errors": {
+      "invalid": {
+        "email": "Invalid email address"
+      },
+      "required": "This field is required"
+    },
+    "flavour": {
+      "chocolate": "Chocolate",
+      "strawberry": "Strawberry",
+      "vanilla": "Vanilla"
+    },
+    "label": {
+      "email": "Email",
+      "flavour": "Flavour",
+      "name": "Name"
+    }
+  },
+  "forms": {
+    "validationErrors": {
+      "shouldNotBeEmpty": "This field should not be empty."
+    }
+  },
+  "header": {
+    "title": "ACME Inc."
+  },
+  "menu": {
+    "footer": {
+      "section": {
+        "company": "Company",
+        "products": "Products",
+        "resources": "Resources"
+      }
+    },
+    "form": {
+      "name": "Example Form"
+    },
+    "home": {
+      "name": "Home"
+    }
+  },
+  "routes": {
+    "form": {
+      "description": "A route that serves as the example form page for the application.",
+      "title": "Example Form with Validation"
+    },
+    "home": {
+      "description": "A route that serves as the home page for the application.",
+      "title": "Home"
+    },
+    "legal": {
+      "title": "Legal"
+    }
+  },
+  "theme": {
+    "footer": {
+      "copyright": "© {{year}} ACME Inc. - All rights reserved",
+      "legalLink": "Legal information",
+      "privacyLink": "Privacy Policy"
+    }
+  },
+  "userActions": {
+    "button": {
+      "submit": "Submit Form"
+    }
+  }
+}
