@@ -1,0 +1,25 @@
+{
+  "extends": ["@epic-web/config/typescript"],
+  "include": [
+    ".react-router/types/**/*",
+    "@epic-web/config/reset.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "public",
+    "temp"
+  ],
+  "compilerOptions": {
+    "types": ["@react-router/node", "vite/client"],
+    "paths": {
+      "~/*": ["./app/*"]
+    },
+    "rootDirs": [".", "./.react-router/types"],
+  }
+}

@@ -1,0 +1,14 @@
+mydomain.com {
+	handle {
+		root * /srv
+
+		# Serve static files
+		file_server
+
+		# Attempt to serve file directly, fallback to index.html
+		@notStatic {
+			not file
+		}
+		rewrite @notStatic /index.html
+	}
+}

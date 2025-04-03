@@ -1,47 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-	type ActionFunctionArgs,
-	data,
-	Form,
-	type LoaderFunctionArgs,
-	type MetaFunction,
-} from 'react-router'
-import { getValidatedFormData, useRemixForm } from 'remix-hook-form'
+import { Form } from 'react-router'
+import { useRemixForm } from 'remix-hook-form'
 import { z } from 'zod'
-import { type Route as RootRoute } from '../../../.react-router/types/app/+types/root.ts'
 import { Container } from '~/components/theme/container.tsx'
 import { H1 } from '~/components/typography/h1.tsx'
 import { Button } from '~/components/ui/button.tsx'
 import { Input } from '~/components/ui/input.tsx'
 import { Select } from '~/components/ui/select.tsx'
-import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
-import { logger } from '~/lib/logger.ts'
 import { zIsEmail, zIsRequired } from '~/lib/zod-form-validations.ts'
-import { getFixedT } from '~/middleware/i18n.ts'
-
-export const loader = async ({ context }: LoaderFunctionArgs) => {
-	const t = await getFixedT(context)
-
-	return data({
-		title: t('routes.form.title', 'Example Form with Validation'),
-		description: t(
-			'routes.form.description',
-			'A route that serves as the example form page for the application.',
-		),
-	})
-}
-
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
-	return [
-		{ title: data?.title },
-		{
-			name: 'description',
-			content: data?.description,
-		},
-	]
-}
 
 const schema = z.object({
 	name: zIsRequired,
@@ -52,24 +20,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 const resolver = zodResolver(schema)
 
-export const action = async ({ request }: ActionFunctionArgs) => {
-	const {
-		errors,
-		data: formData,
-		receivedValues: defaultValues,
-	} = await getValidatedFormData<FormData>(request, resolver)
-	if (errors) {
-		// The keys "errors" and "defaultValues" are picked up automatically by useRemixForm
-		return data({ errors, defaultValues })
-	}
-
-	logger.debug(formData)
-
-	// Do something with the data
-	return data(formData)
-}
-
-export default function Form() {
+export const FormExample: React.FC = () => {
 	const { t } = useTranslation()
 	const {
 		handleSubmit,
@@ -118,8 +69,4 @@ export default function Form() {
 			</Form>
 		</Container>
 	)
-}
-
-export function ErrorBoundary(args: RootRoute.ErrorBoundaryProps) {
-	return ErrorBoundaryShared(args)
 }

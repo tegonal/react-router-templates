@@ -25,7 +25,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	]
 }
 
-export default function Home() {
+export default function Privacy() {
 	const { t } = useTranslation()
 	return <H1>{t('routes.privacy.title', 'Privacy')}</H1>
 }
