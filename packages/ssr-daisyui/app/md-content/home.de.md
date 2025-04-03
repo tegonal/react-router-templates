@@ -10,7 +10,7 @@ Diese Starter-Vorlage wurde mit folgenden Technologien erstellt:
 - **[Tailwind 4](https://tailwindcss.com/docs/installation/using-vite)**: Für Utility-First CSS-Styling
 - **[Vite](https://vite.dev/guide/)**: Für schnelle Entwicklung und Bauzeiten
 
-Bemerkenswerte Bibliotheken und Tools in diesem Projekt:
+Bibliotheken und Tools in diesem Projekt:
 
 - **[remix-i18next](https://sergiodxa.github.io/remix-i18next/)**: Internationalisierungs-Framework für mehrsprachige Unterstützung
 - **[daisyui](https://daisyui.com/)**: Tailwind CSS-Komponentenbibliothek für minimalistische UI-Komponenten, die so nah wie möglich am Standard-HTML sind, und ausgearbeitetes Theming (siehe `/app/styles/tailwind.css`)

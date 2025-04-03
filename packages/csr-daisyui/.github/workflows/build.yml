@@ -1,0 +1,47 @@
+name: Build application on commit
+on:
+  workflow_call:
+  pull_request:
+  push:
+    paths:
+      - '**'
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 22
+      - name: Trying to install dependencies and build the application
+        run: |
+          yarn --version
+          yarn install
+          yarn run build
+
+#  notify:
+#    needs: build
+#    if: always()
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Set Status Message
+#        id: set_status
+#        shell: bash
+#        run: |
+#          if [ "${{ needs.build.result }}" == "success" ]; then
+#            echo "STATUS_MESSAGE=Successfully built the app for the latest commit on main :white_check_mark:" >> $GITHUB_ENV
+#          else
+#            echo "STATUS_MESSAGE=:boom: :boom: :boom: Building the app based on the latest commit on main failed, more information is available in the GitHub action logs." >> $GITHUB_ENV
+#          fi
+#
+#      - name: Mattermost Notification
+#        uses: mattermost/action-mattermost-notify@master
+#        with:
+#          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+#          TEXT: |
+#            This is a message from ${{ github.repository }}.
+#            [Pipeline](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}): ${{ env.STATUS_MESSAGE }}
+#          MATTERMOST_USERNAME: ${{ github.triggering_actor }}
