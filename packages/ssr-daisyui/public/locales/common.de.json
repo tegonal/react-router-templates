@@ -7,34 +7,34 @@
   },
   "form": {
     "description": {
-      "email": "Your email address",
-      "flavour": "Your favourite flavour",
-      "name": "Your name, family name, nick name or anything in between"
+      "email": "Ihre E-Mail-Adresse",
+      "flavour": "Ihre Lieblingsgeschmacksrichtung",
+      "name": "Ihr Name, Familienname, Spitzname oder irgendetwas dazwischen"
     },
     "errors": {
       "invalid": {
-        "email": "Invalid email address"
+        "email": "Ungültige E-Mail-Adresse"
       },
-      "required": "This field is required"
+      "required": "Dieses Feld ist erforderlich"
     },
     "flavour": {
-      "chocolate": "Chocolate",
-      "strawberry": "Strawberry",
-      "vanilla": "Vanilla"
+      "chocolate": "Schokolade",
+      "strawberry": "Erdbeere",
+      "vanilla": "Vanille"
     },
     "label": {
-      "email": "Email",
-      "flavour": "Flavour",
+      "email": "E-Mail",
+      "flavour": "Geschmacksrichtung",
       "name": "Name"
-    }
-  },
-  "forms": {
-    "validationErrors": {
-      "shouldNotBeEmpty": "Dieses Feld darf nicht leer sein."
     }
   },
   "header": {
     "title": "ACME GmbH"
+  },
+  "language": {
+    "switcher": {
+      "title": "Change Language"
+    }
   },
   "menu": {
     "footer": {
@@ -53,19 +53,25 @@
   },
   "routes": {
     "form": {
-      "description": "A route that serves as the example form page for the application.",
-      "title": "Example Form with Validation"
+      "description": "Eine Route, die als Beispielformularseite für die Anwendung dient.",
+      "title": "Beispielformular mit Validierung"
     },
     "home": {
       "description": "Eine Route, die als Startseite der Anwendung dient.",
       "title": "Startseite"
     },
     "legal": {
-      "title": "Legal"
+      "description": "This is the legal information page.",
+      "title": "Rechtliches"
+    },
+    "privacy": {
+      "description": "This is the privacy policy page.",
+      "title": "Privacy"
     }
   },
   "theme": {
     "footer": {
+      "claim": "Wir revolutionieren die Branche mit unseren hochmodernen Lösungen.",
       "copyright": "© {{year}} ACME GmbH - Alle Rechte vorbehalten",
       "legalLink": "Rechtliche Hinweise",
       "privacyLink": "Datenschutzrichtlinie"
@@ -73,7 +79,7 @@
   },
   "userActions": {
     "button": {
-      "submit": "Submit Form"
+      "submit": "Formular absenden"
     }
   }
 }

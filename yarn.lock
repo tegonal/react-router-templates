@@ -723,12 +723,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@icons-pack/react-simple-icons@npm:^12.3.0":
-  version: 12.3.0
-  resolution: "@icons-pack/react-simple-icons@npm:12.3.0"
+"@icons-pack/react-simple-icons@npm:^12.4.0":
+  version: 12.4.0
+  resolution: "@icons-pack/react-simple-icons@npm:12.4.0"
   peerDependencies:
     react: ^16.13 || ^17 || ^18 || ^19
-  checksum: 10c0/fa5b2723611a0d47cd5afe106cc8d3c6361b6122d2b88fd52f8e87f72f99f793a1d45db053e29bd3ed71bd5bc467e421adabf4d7d2cc3c1a608b5d8da7c79cb5
+  checksum: 10c0/bfa4a68a214f8a6e9ad642df589e9c7eebb834c761d667ee3162778d0c2aa5f2096930ed71f7e841ec3b59d765b1f793a422dc23c1e54fcf4178326d6ea14f2a
   languageName: node
   linkType: hard
 
@@ -1528,110 +1528,110 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/node@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/node@npm:4.1.0"
+"@tailwindcss/node@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/node@npm:4.1.2"
   dependencies:
     enhanced-resolve: "npm:^5.18.1"
     jiti: "npm:^2.4.2"
     lightningcss: "npm:1.29.2"
-    tailwindcss: "npm:4.1.0"
-  checksum: 10c0/a3639dd769c1146931f560959d6aeca0617f0240cea80b8b2965cd9a08f2d58c3bd2b0d547fd5e4452f4edfe4e90b996468012a6fa351e7cd3b5edd6a0dda865
+    tailwindcss: "npm:4.1.2"
+  checksum: 10c0/5cd00b275a10f94862254181ce1b8a5e361139b736eb8116f2a514f4ddd69efdad36b946ec98b209e0984f49aef029195da0e9aeff734b9b6192df3ada72c9f7
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-android-arm64@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-android-arm64@npm:4.1.0"
+"@tailwindcss/oxide-android-arm64@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-android-arm64@npm:4.1.2"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-darwin-arm64@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-darwin-arm64@npm:4.1.0"
+"@tailwindcss/oxide-darwin-arm64@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-darwin-arm64@npm:4.1.2"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-darwin-x64@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-darwin-x64@npm:4.1.0"
+"@tailwindcss/oxide-darwin-x64@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-darwin-x64@npm:4.1.2"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-freebsd-x64@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-freebsd-x64@npm:4.1.0"
+"@tailwindcss/oxide-freebsd-x64@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-freebsd-x64@npm:4.1.2"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-linux-arm-gnueabihf@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-linux-arm-gnueabihf@npm:4.1.0"
+"@tailwindcss/oxide-linux-arm-gnueabihf@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-linux-arm-gnueabihf@npm:4.1.2"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-linux-arm64-gnu@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-linux-arm64-gnu@npm:4.1.0"
+"@tailwindcss/oxide-linux-arm64-gnu@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-linux-arm64-gnu@npm:4.1.2"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-linux-arm64-musl@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-linux-arm64-musl@npm:4.1.0"
+"@tailwindcss/oxide-linux-arm64-musl@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-linux-arm64-musl@npm:4.1.2"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-linux-x64-gnu@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-linux-x64-gnu@npm:4.1.0"
+"@tailwindcss/oxide-linux-x64-gnu@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-linux-x64-gnu@npm:4.1.2"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-linux-x64-musl@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-linux-x64-musl@npm:4.1.0"
+"@tailwindcss/oxide-linux-x64-musl@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-linux-x64-musl@npm:4.1.2"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-win32-arm64-msvc@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-win32-arm64-msvc@npm:4.1.0"
+"@tailwindcss/oxide-win32-arm64-msvc@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-win32-arm64-msvc@npm:4.1.2"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide-win32-x64-msvc@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide-win32-x64-msvc@npm:4.1.0"
+"@tailwindcss/oxide-win32-x64-msvc@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide-win32-x64-msvc@npm:4.1.2"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@tailwindcss/oxide@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/oxide@npm:4.1.0"
+"@tailwindcss/oxide@npm:4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/oxide@npm:4.1.2"
   dependencies:
-    "@tailwindcss/oxide-android-arm64": "npm:4.1.0"
-    "@tailwindcss/oxide-darwin-arm64": "npm:4.1.0"
-    "@tailwindcss/oxide-darwin-x64": "npm:4.1.0"
-    "@tailwindcss/oxide-freebsd-x64": "npm:4.1.0"
-    "@tailwindcss/oxide-linux-arm-gnueabihf": "npm:4.1.0"
-    "@tailwindcss/oxide-linux-arm64-gnu": "npm:4.1.0"
-    "@tailwindcss/oxide-linux-arm64-musl": "npm:4.1.0"
-    "@tailwindcss/oxide-linux-x64-gnu": "npm:4.1.0"
-    "@tailwindcss/oxide-linux-x64-musl": "npm:4.1.0"
-    "@tailwindcss/oxide-win32-arm64-msvc": "npm:4.1.0"
-    "@tailwindcss/oxide-win32-x64-msvc": "npm:4.1.0"
+    "@tailwindcss/oxide-android-arm64": "npm:4.1.2"
+    "@tailwindcss/oxide-darwin-arm64": "npm:4.1.2"
+    "@tailwindcss/oxide-darwin-x64": "npm:4.1.2"
+    "@tailwindcss/oxide-freebsd-x64": "npm:4.1.2"
+    "@tailwindcss/oxide-linux-arm-gnueabihf": "npm:4.1.2"
+    "@tailwindcss/oxide-linux-arm64-gnu": "npm:4.1.2"
+    "@tailwindcss/oxide-linux-arm64-musl": "npm:4.1.2"
+    "@tailwindcss/oxide-linux-x64-gnu": "npm:4.1.2"
+    "@tailwindcss/oxide-linux-x64-musl": "npm:4.1.2"
+    "@tailwindcss/oxide-win32-arm64-msvc": "npm:4.1.2"
+    "@tailwindcss/oxide-win32-x64-msvc": "npm:4.1.2"
   dependenciesMeta:
     "@tailwindcss/oxide-android-arm64":
       optional: true
@@ -1655,20 +1655,20 @@ __metadata:
       optional: true
     "@tailwindcss/oxide-win32-x64-msvc":
       optional: true
-  checksum: 10c0/d39e6aa4888c10fb96214a4c3898ddf01a91380327e3bc830b3d744e866b384b7c69252e8b99f6192c7a51ef187c31fcd20bbbb64cc4e6a1f6e4f11d2156f626
+  checksum: 10c0/14d12f126e8f8244195f1fd58e86423541f4fe5919c3c834bc2bd4337984f26796b6d752a4b540cb755f4f8d8bbb2539da15105fda897815f377a4bd10afa5e0
   languageName: node
   linkType: hard
 
-"@tailwindcss/vite@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@tailwindcss/vite@npm:4.1.0"
+"@tailwindcss/vite@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@tailwindcss/vite@npm:4.1.2"
   dependencies:
-    "@tailwindcss/node": "npm:4.1.0"
-    "@tailwindcss/oxide": "npm:4.1.0"
-    tailwindcss: "npm:4.1.0"
+    "@tailwindcss/node": "npm:4.1.2"
+    "@tailwindcss/oxide": "npm:4.1.2"
+    tailwindcss: "npm:4.1.2"
   peerDependencies:
     vite: ^5.2.0 || ^6
-  checksum: 10c0/84e0e39cf9370546a0785e36e15ad34bfba630dd43f80a542593f15d56f9bc8cfad487a384c6f69356637ee1db92a2786325d856c793a55c6d94fdd16f652187
+  checksum: 10c0/d5c3caf292ab258fcabb70cd21fda80124e64a2571ec431633dd3207b5763f50b09756da52893420b5ec8bd57e8f1583400eac10ed168b158b9171b7c84866bd
   languageName: node
   linkType: hard
 
@@ -1808,12 +1808,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^19.1.0":
-  version: 19.1.0
-  resolution: "@types/react-dom@npm:19.1.0"
+"@types/react-dom@npm:^19.1.1":
+  version: 19.1.1
+  resolution: "@types/react-dom@npm:19.1.1"
   peerDependencies:
     "@types/react": ^19.0.0
-  checksum: 10c0/430cba0b14d74408db8c6d566174594bf0a3bc582d74d4f1d5fb585a066b1155a0329a758f56b122285cbe42ec39b3cb67471a34f5b37cc230b04584da11f49f
+  checksum: 10c0/83833af502f501a372b370fdeb7cf933dfc8780903fe0e0d6e6a76b4ea3adbe5316159a62a0388d8afdd409afd76a40959e2ce82fbb788f57d32c786a63601ee
   languageName: node
   linkType: hard
 
@@ -3108,10 +3108,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"daisyui@npm:^5.0.11":
-  version: 5.0.11
-  resolution: "daisyui@npm:5.0.11"
-  checksum: 10c0/6c3d0007e88173a4c8f33a2438f2c7ef155db32b82a4a1bb41e975be854847f3ddecb7b5627297edb3fdabfad6a4130d55413d3ccb2377fbe3a85cf5a9591c4a
+"daisyui@npm:^5.0.12":
+  version: 5.0.12
+  resolution: "daisyui@npm:5.0.12"
+  checksum: 10c0/da3ca893b1ea7828ab3844253b7b70aeb02aeb346956200961141e3db4c7b5a4b2ddedcf8affc6f4cc9bc5fe0236c41522595f383e8db68d3e61a9226ab5e41b
   languageName: node
   linkType: hard
 
@@ -3799,7 +3799,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:^7.37.2, eslint-plugin-react@npm:^7.37.4":
+"eslint-plugin-react@npm:^7.37.2":
   version: 7.37.4
   resolution: "eslint-plugin-react@npm:7.37.4"
   dependencies:
@@ -3824,6 +3824,34 @@ __metadata:
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
   checksum: 10c0/4acbbdb19669dfa9a162ed8847c3ad1918f6aea1ceb675ee320b5d903b4e463fdef25e15233295b6d0a726fef2ea8b015c527da769c7690932ddc52d5b82ba12
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-react@npm:^7.37.5":
+  version: 7.37.5
+  resolution: "eslint-plugin-react@npm:7.37.5"
+  dependencies:
+    array-includes: "npm:^3.1.8"
+    array.prototype.findlast: "npm:^1.2.5"
+    array.prototype.flatmap: "npm:^1.3.3"
+    array.prototype.tosorted: "npm:^1.1.4"
+    doctrine: "npm:^2.1.0"
+    es-iterator-helpers: "npm:^1.2.1"
+    estraverse: "npm:^5.3.0"
+    hasown: "npm:^2.0.2"
+    jsx-ast-utils: "npm:^2.4.1 || ^3.0.0"
+    minimatch: "npm:^3.1.2"
+    object.entries: "npm:^1.1.9"
+    object.fromentries: "npm:^2.0.8"
+    object.values: "npm:^1.2.1"
+    prop-types: "npm:^15.8.1"
+    resolve: "npm:^2.0.0-next.5"
+    semver: "npm:^6.3.1"
+    string.prototype.matchall: "npm:^4.0.12"
+    string.prototype.repeat: "npm:^1.0.0"
+  peerDependencies:
+    eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
+  checksum: 10c0/c850bfd556291d4d9234f5ca38db1436924a1013627c8ab1853f77cac73ec19b020e861e6c7b783436a48b6ffcdfba4547598235a37ad4611b6739f65fd8ad57
   languageName: node
   linkType: hard
 
@@ -6465,7 +6493,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"object.entries@npm:^1.1.8":
+"object.entries@npm:^1.1.8, object.entries@npm:^1.1.9":
   version: 1.1.9
   resolution: "object.entries@npm:1.1.9"
   dependencies:
@@ -7963,24 +7991,24 @@ __metadata:
     "@epic-web/config": "npm:^1.18.2"
     "@epic-web/invariant": "npm:^1.0.0"
     "@hookform/resolvers": "npm:^4.1.3"
-    "@icons-pack/react-simple-icons": "npm:^12.3.0"
+    "@icons-pack/react-simple-icons": "npm:^12.4.0"
     "@mjackson/form-data-parser": "npm:^0.7.0"
     "@react-router/dev": "npm:^7.4.1"
     "@react-router/serve": "npm:^7.4.1"
     "@svgr/plugin-svgo": "npm:^8.1.0"
     "@tailwindcss/nesting": "npm:^0.0.0-insiders.565cd3e"
-    "@tailwindcss/vite": "npm:^4.1.0"
+    "@tailwindcss/vite": "npm:^4.1.2"
     "@types/jsonwebtoken": "npm:^9.0.9"
     "@types/lodash-es": "npm:^4.17.12"
     "@types/react": "npm:^19.1.0"
-    "@types/react-dom": "npm:^19.1.0"
+    "@types/react-dom": "npm:^19.1.1"
     "@uidotdev/usehooks": "npm:^2.4.1"
     class-variance-authority: "npm:^0.7.1"
     clsx: "npm:^2.1.1"
-    daisyui: "npm:^5.0.11"
+    daisyui: "npm:^5.0.12"
     date-fns: "npm:^4.1.0"
     eslint: "npm:^9.23.0"
-    eslint-plugin-react: "npm:^7.37.4"
+    eslint-plugin-react: "npm:^7.37.5"
     i18next: "npm:24.2.3"
     i18next-browser-languagedetector: "npm:8.0.4"
     i18next-fs-backend: "npm:2.6.0"
@@ -8005,11 +8033,11 @@ __metadata:
     sharp: "npm:^0.33.5"
     svgo: "npm:^3.3.2"
     tailwind-merge: "npm:^3.1.0"
-    tailwindcss: "npm:^4.1.0"
+    tailwindcss: "npm:^4.1.2"
     tslog: "npm:^4.9.3"
     typescript: "npm:^5.8.2"
     typescript-eslint: "npm:^8.29.0"
-    vite: "npm:^6.2.4"
+    vite: "npm:^6.2.5"
     vite-plugin-image-optimizer: "npm:^1.1.8"
     vite-plugin-svgr: "npm:^4.3.0"
     vite-tsconfig-paths: "npm:^5.1.4"
@@ -8297,10 +8325,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:4.1.0, tailwindcss@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "tailwindcss@npm:4.1.0"
-  checksum: 10c0/59c83ba4528021da14b9713041a393674447f3af2998aea9c89f210d9a3393826427215a912b1d62cf315651c22ee20ad42edcaefc68a9b816016d25a857cf14
+"tailwindcss@npm:4.1.2, tailwindcss@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "tailwindcss@npm:4.1.2"
+  checksum: 10c0/6765fe3907abaec43ec172e06e38f40a1e3bf8d39bb2852967fa304efa4a7cdf9b1625a778f645964cd47f427d63369675a2cfacbb6a679fe35333149c768987
   languageName: node
   linkType: hard
 
@@ -9045,9 +9073,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.2.4":
-  version: 6.2.4
-  resolution: "vite@npm:6.2.4"
+"vite@npm:^6.2.5":
+  version: 6.2.5
+  resolution: "vite@npm:6.2.5"
   dependencies:
     esbuild: "npm:^0.25.0"
     fsevents: "npm:~2.3.3"
@@ -9093,7 +9121,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/5a011ee5cce91de023a22564a314f04bf64d0d02b420d92c3d539d10257448d60e98e52b491404656426fba4a50dc25f107282540d7388fc5303dc441280155e
+  checksum: 10c0/226bb3c1875e1982559007007580e8d083b81f5289f18e28841d622ba030599e1bd9926adccc8264879e319e9f9e4f48a38a0dc52a5dfcdf2a9cb7313bfc1816
   languageName: node
   linkType: hard
 

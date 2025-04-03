@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
 		<Container as="header" className="py-4">
 			<div className="navbar">
 				<div className="flex flex-1 flex-row items-center gap-2">
-					<Link to={href('/')} className="btn btn-ghost text-xl">
+					<Link to={href('/')} className="btn btn-ghost btn-sm flex flex-row gap-3 text-xl">
 						<Logo variant="sm" />
 						<span>{t('header.title', 'ACME Inc.')}</span>
 					</Link>

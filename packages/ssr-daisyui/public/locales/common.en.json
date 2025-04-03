@@ -28,13 +28,13 @@
       "name": "Name"
     }
   },
-  "forms": {
-    "validationErrors": {
-      "shouldNotBeEmpty": "This field should not be empty."
-    }
-  },
   "header": {
     "title": "ACME Inc."
+  },
+  "language": {
+    "switcher": {
+      "title": "Change Language"
+    }
   },
   "menu": {
     "footer": {
@@ -61,11 +61,17 @@
       "title": "Home"
     },
     "legal": {
+      "description": "This is the legal information page.",
       "title": "Legal"
+    },
+    "privacy": {
+      "description": "This is the privacy policy page.",
+      "title": "Privacy"
     }
   },
   "theme": {
     "footer": {
+      "claim": "Revolutionizing the industry with our cutting-edge solutions.",
       "copyright": "© {{year}} ACME Inc. - All rights reserved",
       "legalLink": "Legal information",
       "privacyLink": "Privacy Policy"

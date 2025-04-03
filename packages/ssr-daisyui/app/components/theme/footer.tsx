@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { href, Link } from 'react-router'
 import { Container } from '~/components/theme/container.tsx'
 import { Logo } from '~/components/theme/logo.tsx'
+import { LanguageSwitcher } from '~/components/ui/language-switcher.tsx'
 import { useLang } from '~/hooks/use-lang.tsx'
 
 export const Footer: React.FC = () => {
@@ -62,7 +63,10 @@ export const Footer: React.FC = () => {
 							<span className="text-lg font-semibold">{t('header.title', 'ACME Inc.')}</span>
 						</Link>
 						<p className="mb-4 max-w-xs text-sm opacity-80">
-							Revolutionizing the industry with our cutting-edge solutions.
+							{t(
+								'theme.footer.claim',
+								'Revolutionizing the industry with our cutting-edge solutions.',
+							)}
 						</p>
 						<div className="mt-4 flex gap-4">
 							<a href="#" className="btn btn-circle btn-sm btn-ghost">
@@ -74,6 +78,9 @@ export const Footer: React.FC = () => {
 							<a href="#" className="btn btn-circle btn-sm btn-ghost">
 								<SiSignal />
 							</a>
+						</div>
+						<div className="mt-4">
+							<LanguageSwitcher />
 						</div>
 					</div>
 
