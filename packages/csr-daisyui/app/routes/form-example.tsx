@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 import { Container } from '~/components/theme/container.tsx'
 import { H1 } from '~/components/typography/h1.tsx'

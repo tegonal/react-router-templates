@@ -12,7 +12,6 @@ export const NavDrawer: React.FC = () => {
 	const { lang } = useLang()
 	const [isOpen, setIsOpen] = React.useState(false)
 
-	const open = () => setIsOpen(true)
 	const close = () => setIsOpen(false)
 	const toggle = () => setIsOpen((prev) => !prev)
 

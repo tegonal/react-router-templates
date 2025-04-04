@@ -1,8 +1,9 @@
 import { config as defaultConfig } from '@epic-web/config/eslint'
+import { globalIgnores } from 'eslint/config'
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
-	// globalIgnores(['.react-router/']),
+	globalIgnores(['./dist/**/*']),
 	...defaultConfig,
 	{
 		files: ['./app/**/*.tsx', './app/**/*.jsx'],

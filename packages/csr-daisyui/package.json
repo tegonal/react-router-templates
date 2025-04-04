@@ -27,12 +27,9 @@
   "dependencies": {
     "@epic-web/config": "^1.18.2",
     "@uidotdev/usehooks": "^2.4.1",
-    "axios": "^1.8.4",
     "date-fns": "^4.1.0",
     "i18next": "^24.2.3",
     "i18next-http-backend": "^3.0.2",
-    "isbot": "^5.1.25",
-    "leaflet": "^1.9.4",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.487.0",
     "react": "^19.1.0",
@@ -40,7 +37,6 @@
     "react-hook-form": "^7.55.0",
     "react-i18next": "^15.4.1",
     "react-router": "7.4.1",
-    "swr": "^2.3.3",
     "tslog": "^4.9.3"
   },
   "devDependencies": {

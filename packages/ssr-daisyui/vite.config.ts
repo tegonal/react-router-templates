@@ -10,9 +10,7 @@ export default defineConfig(() => ({
 		reactRouter(),
 		tailwindcss(),
 		tsconfigPaths(),
-		ViteImageOptimizer({
-			include: ['app/**/*.{svg, png, jpg, jpeg, gif}'],
-		}),
+		ViteImageOptimizer(),
 		vitePluginSvgr({
 			svgrOptions: {
 				plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],

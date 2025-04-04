@@ -7,8 +7,6 @@ import vitePluginSvgr from 'vite-plugin-svgr'
 
 export default defineConfig(() => {
 	return {
-		root: './app/',
-		publicDir: '../public', // Path relative to root
 		build: {
 			sourcemap: true,
 			rollupOptions: {
@@ -16,7 +14,15 @@ export default defineConfig(() => {
 					experimentalMinChunkSize: 20000,
 					manualChunks: {
 						react: ['react', 'react-dom', 'react-router'],
-						vendor: ['lodash-es', 'lucide-react', '@uidotdev/usehooks'],
+						vendor: [
+							'lodash-es',
+							'lucide-react',
+							'@uidotdev/usehooks',
+							'react-hook-form',
+							'react-i18next',
+							'date-fns',
+							'zod',
+						],
 					},
 				},
 			},
@@ -24,9 +30,7 @@ export default defineConfig(() => {
 		plugins: [
 			tailwindcss(),
 			react(),
-			ViteImageOptimizer({
-				include: ['app/**/*.{svg, png, jpg, jpeg, gif}'],
-			}),
+			ViteImageOptimizer(),
 			vitePluginSvgr({
 				svgrOptions: {
 					plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
