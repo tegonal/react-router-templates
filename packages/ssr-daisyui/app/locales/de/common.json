@@ -1,15 +1,15 @@
 {
   "common": {
     "404": {
-      "message": "Die gesuchte Seite existiert nicht.",
+      "message": "Die Seite, nach der du suchst, existiert nicht.",
       "title": "Seite nicht gefunden"
     }
   },
   "form": {
     "description": {
-      "email": "Ihre E-Mail-Adresse",
-      "flavour": "Ihre Lieblingsgeschmacksrichtung",
-      "name": "Ihr Name, Familienname, Spitzname oder irgendetwas dazwischen"
+      "email": "Deine E-Mail-Adresse",
+      "flavour": "Deine Lieblingsgeschmacksrichtung",
+      "name": "Dein Name, Familienname, Spitzname oder alles dazwischen"
     },
     "errors": {
       "invalid": {
@@ -24,16 +24,16 @@
     },
     "label": {
       "email": "E-Mail",
-      "flavour": "Geschmacksrichtung",
+      "flavour": "Geschmack",
       "name": "Name"
     }
   },
   "header": {
-    "title": "ACME GmbH"
+    "title": "ACME Inc."
   },
   "language": {
     "switcher": {
-      "title": "Change Language"
+      "title": "Sprache ändern"
     }
   },
   "menu": {
@@ -57,22 +57,22 @@
       "title": "Beispielformular mit Validierung"
     },
     "home": {
-      "description": "Eine Route, die als Startseite der Anwendung dient.",
+      "description": "Eine Route, die als Startseite für die Anwendung dient.",
       "title": "Startseite"
     },
     "legal": {
-      "description": "This is the legal information page.",
+      "description": "Dies ist die Seite mit rechtlichen Informationen.",
       "title": "Rechtliches"
     },
     "privacy": {
-      "description": "This is the privacy policy page.",
-      "title": "Privacy"
+      "description": "Dies ist die Datenschutzseite.",
+      "title": "Datenschutz"
     }
   },
   "theme": {
     "footer": {
       "claim": "Wir revolutionieren die Branche mit unseren hochmodernen Lösungen.",
-      "copyright": "© {{year}} ACME GmbH - Alle Rechte vorbehalten",
+      "copyright": "© {{year}} ACME Inc. - Alle Rechte vorbehalten",
       "legalLink": "Rechtliche Hinweise",
       "privacyLink": "Datenschutzrichtlinie"
     }

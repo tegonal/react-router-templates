@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router'
+import { Button } from '~/components/ui/button.tsx'
 import { useLang } from '~/hooks/use-lang.tsx'
-import i18n from '~/i18n.ts'
+import { i18nConfig } from '~/i18n-config.ts'
 
 export const LanguageSwitcher: React.FC = () => {
 	const { lang } = useLang()
@@ -10,11 +11,13 @@ export const LanguageSwitcher: React.FC = () => {
 
 	return (
 		<div title={t('language.switcher.title', 'Change Language')} className="flex gap-2">
-			{i18n.supportedLngs
+			{i18nConfig.supportedLngs
 				.filter((each) => each !== lang)
 				.map((each) => (
-					<Link to={location.pathname.replace(lang, each)} key={each}>
-						{each.toUpperCase()}
+					<Link to={location.pathname.replace(lang, each)} key={each} reloadDocument={true}>
+						<Button variant={'ghost'} size={'xs'}>
+							{each.toUpperCase()}
+						</Button>
 					</Link>
 				))}
 		</div>

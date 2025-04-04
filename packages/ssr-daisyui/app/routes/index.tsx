@@ -1,5 +1,5 @@
 import { href, type LoaderFunctionArgs, redirect } from 'react-router'
-import { getLocale } from '~/middleware/i18n.ts'
+import { getLocale } from '~/middleware/i18next.ts'
 /*
  * This route is the index route for the application to redirect to the home page while setting the locale.
  */

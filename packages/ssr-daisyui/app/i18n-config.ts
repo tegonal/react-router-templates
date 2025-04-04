@@ -1,4 +1,7 @@
-export default {
+import de from '~/locales/de.ts'
+import en from '~/locales/en.ts'
+
+export const i18nConfig = {
 	// This is the list of languages your application supports
 	supportedLngs: ['en', 'de'],
 	// This is the language you want to use in case
@@ -6,5 +9,9 @@ export default {
 	fallbackLng: 'en',
 	// The default namespace of i18next is "translation", but you can customize it here
 	defaultNS: 'common',
-	jsonFileSchema: '{{ns}}.{{lng}}.json',
+	jsonFileSchema: '{{lng}}/{{ns}}.json',
+	resources: {
+		en,
+		de,
+	},
 }

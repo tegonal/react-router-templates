@@ -11,19 +11,20 @@ import {
 	useLoaderData,
 	useLocation,
 } from 'react-router'
-import { useChangeLanguage } from 'remix-i18next/react'
-import  { type Route } from './+types/root.ts'
+import { type Route } from './+types/root.ts'
 import { plausibleClientEvent } from './lib/plausible/plausible-client-event.ts'
 import versionFile from './version.json'
 import { DevModeOverlay } from '~/components/devmode-overlay'
 import { ClientHintCheck, getHints } from '~/lib/client-hints.tsx'
+import { i18nCookie } from '~/lib/cookies/i18next-cookie.server.ts'
 import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
+import { isClient } from '~/lib/is-client.ts'
 import { logger } from '~/lib/logger.ts'
 import { GenericAppEvents } from '~/lib/plausible/event-names.ts'
 import { getHostname } from '~/lib/plausible/get-hostname.ts'
 import './styles/fonts.css'
 import './styles/tailwind.css'
-import { getLocale, i18nextMiddleware } from '~/middleware/i18n.ts'
+import { getLocale, i18nextMiddleware } from '~/middleware/i18next.ts'
 import { performanceMiddleware } from '~/middleware/performance.ts'
 
 export const links: LinksFunction = () => [
@@ -38,38 +39,41 @@ export const links: LinksFunction = () => [
 // 	}
 // }
 
-export const loader = async ({ request, params, context }: Route.LoaderArgs) => {
+export const loader = async ({ request, context }: Route.LoaderArgs) => {
 	const locale = getLocale(context)
 
-	return data({
-		locale,
-		domain: getHostname(process.env.ORIGIN),
-		version: versionFile.version,
-		isDev: process.env.NODE_ENV !== 'production',
-		ENV: {
-			INSTANCE_NAME: process.env.INSTANCE_NAME,
-			NODE_ENV: process.env.NODE_ENV,
-			VERSION: versionFile.version,
+	return data(
+		{
+			locale,
+			domain: getHostname(process.env.ORIGIN),
+			version: versionFile.version,
+			isDev: process.env.NODE_ENV !== 'production',
+			ENV: {
+				INSTANCE_NAME: process.env.INSTANCE_NAME,
+				NODE_ENV: process.env.NODE_ENV,
+				VERSION: versionFile.version,
+			},
+			requestInfo: {
+				nonce: crypto.randomUUID(),
+				hints: getHints(request),
+			},
 		},
-		requestInfo: {
-			nonce: crypto.randomUUID(),
-			hints: getHints(request),
-		},
-	})
+		{ headers: { 'Set-Cookie': await i18nCookie.serialize(locale) } },
+	)
 }
 
 export type RootRouteLoaderData = typeof loader
 
-export const handle = {
-	i18n: 'common',
-}
-
 export const unstable_middleware = [i18nextMiddleware, performanceMiddleware]
 
+export const handle = {
+	i18n: ['common'],
+}
+
 export function Layout({ children }: PropsWithChildren) {
+	const { i18n } = useTranslation()
 	const location = useLocation()
 	const {
-		locale,
 		version,
 		ENV,
 		requestInfo: {
@@ -77,21 +81,17 @@ export function Layout({ children }: PropsWithChildren) {
 			hints: { theme },
 		},
 	} = useLoaderData<typeof loader>()
-	const { i18n } = useTranslation()
-	useChangeLanguage(locale || i18n.language)
 
 	useEffect(() => {
 		plausibleClientEvent({ name: GenericAppEvents.PageView })
 	}, [location.pathname])
 
-	useEffect(() => {
-		if (window.ENV.VERSION !== version) {
-			logger.error('🔄 Should reload page or clear cache due to version mismatch')
-		}
-	}, [])
+	if (isClient() && window.ENV.VERSION !== version) {
+		logger.error('🔄 Should reload page or clear cache due to version mismatch')
+	}
 
 	return (
-		<html lang={locale} dir={i18n.dir()} data-theme={theme}>
+		<html lang={i18n.language} dir={i18n.dir(i18n.language)} data-theme={theme}>
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />

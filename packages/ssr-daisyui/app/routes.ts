@@ -13,6 +13,7 @@ export default [
 		route('*', './routes/catch-all-404.tsx'),
 	]),
 	...prefix('api', [
+		route('locales/:lang?/:ns?', './routes/api/locales.ts'),
 		route('health', './routes/api/healthcheck.ts'),
 		route('event', './routes/api/event.ts'),
 	]),

@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next'
 import { data, type LoaderFunctionArgs } from 'react-router'
 import { H1 } from '~/components/typography/h1.tsx'
 import { P } from '~/components/typography/p.tsx'
-import { getFixedT } from '~/middleware/i18n.ts'
+import { getInstance } from '~/middleware/i18next.ts'
 
 export async function loader({ context }: LoaderFunctionArgs) {
-	const t = await getFixedT(context)
+	const { t } = getInstance(context)
 	return data(null, {
 		status: 404,
 		statusText: t('common.404.title', 'Page not found'),

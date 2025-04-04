@@ -12,7 +12,7 @@ This starter template is built using the following technologies:
 
 Notable libraries and tools used in this project include:
 
-- **[remix-i18next](https://sergiodxa.github.io/remix-i18next/)**: Internationalization framework for multi-language support
+- **[remix-i18next](https://sergiodxa.github.io/remix-i18next/)**: Internationalization framework for multi-language support with typesafe translation keys
 - **[daisyui](https://daisyui.com/)**: Tailwind CSS component library for minimalistic UI components as close as possible to vanilla HTML and elaborate theming (see `/app/styles/tailwind.css`)
 - **[class-variance-authority](https://cva.style)**: For creating flexible component variants
 - **[remix-hook-form](https://github.com/forge-42/remix-hook-form)**: For form handling, using `zod` for validation
@@ -57,6 +57,7 @@ yarn run dev # start the development server
 yarn run build # build the project
 yarn run up # update dependencies
 yarn run i18n:extract # extract i18n keys and default values
+yarn run i18n:generate # generate typesafe i18n files
 ```
 
 ## Deployment

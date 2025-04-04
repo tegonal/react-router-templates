@@ -1,5 +1,5 @@
 import { type LoaderFunctionArgs } from 'react-router'
-import i18n from '../../i18n.ts'
+import { i18nConfig } from '~/i18n-config.ts'
 
 const pagesToInclude = [
 	{
@@ -55,8 +55,8 @@ const generateStaticPagesList = (pages: typeof pagesToInclude, request: Request)
 		request.headers.get('X-Forwarded-Host') ?? request.headers.get('host') ?? 'example.com'
 	const protocol = host.includes('localhost') ? 'http' : 'https'
 	const baseUrl = `${protocol}://${host}`
-	const availableLocales = i18n.supportedLngs
-	const fallbackLocale = i18n.fallbackLng
+	const availableLocales = i18nConfig.supportedLngs
+	const fallbackLocale = i18nConfig.fallbackLng
 
 	return pages.map((entry) => {
 		// Start with the base URL data

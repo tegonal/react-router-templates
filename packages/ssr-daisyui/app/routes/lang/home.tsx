@@ -5,13 +5,12 @@ import { data, type LoaderFunctionArgs, type MetaFunction, useLoaderData } from 
 import { type Route as RootRoute } from '../../../.react-router/types/app/+types/root.ts'
 import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
 import { markdownComponents } from '~/lib/markdown-components.tsx'
-import { getFixedT, getLocale } from '~/middleware/i18n.ts'
+import { getInstance } from '~/middleware/i18next.ts'
 
-export const loader = async ({ request, context }: LoaderFunctionArgs) => {
-	const t = await getFixedT(context)
-	const lang = getLocale(context)
+export const loader = async ({ context }: LoaderFunctionArgs) => {
+	const { t, language } = getInstance(context)
 
-	const markdown = fs.readFileSync(`./app/md-content/home.${lang}.md`, 'utf8')
+	const markdown = fs.readFileSync(`./app/md-content/home.${language}.md`, 'utf8')
 
 	return data({
 		markdown,

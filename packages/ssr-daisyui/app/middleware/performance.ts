@@ -5,10 +5,7 @@ import { logger } from '~/lib/logger.ts'
 // This is an example middleware that logs the time taken for a route transition.
 // https://reactrouter.com/start/changelog#middleware-unstable
 
-export const performanceMiddleware: Route.unstable_ClientMiddlewareFunction = async (
-	{ context },
-	next,
-) => {
+export const performanceMiddleware: Route.unstable_ClientMiddlewareFunction = async ({}, next) => {
 	const startTime = performance.now()
 	const result = await next()
 	const duration = performance.now() - startTime

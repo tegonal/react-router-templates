@@ -19,10 +19,10 @@ import { Select } from '~/components/ui/select.tsx'
 import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
 import { logger } from '~/lib/logger.ts'
 import { zIsEmail, zIsRequired } from '~/lib/zod-form-validations.ts'
-import { getFixedT } from '~/middleware/i18n.ts'
+import { getInstance } from '~/middleware/i18next.ts'
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {
-	const t = await getFixedT(context)
+	const { t } = getInstance(context)
 
 	return data({
 		title: t('routes.form.title', 'Example Form with Validation'),
@@ -69,7 +69,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 	return data(formData)
 }
 
-export default function Form() {
+export default function FormExample() {
 	const { t } = useTranslation()
 	const {
 		handleSubmit,
