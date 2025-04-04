@@ -3157,6 +3157,7 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.6.11"
     react: "npm:^19.1.0"
     react-dom: "npm:^19.1.0"
+    react-hook-form: "npm:^7.55.0"
     react-i18next: "npm:^15.4.1"
     react-router: "npm:7.4.1"
     sharp: "npm:^0.33.5"
@@ -7381,15 +7382,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remix-i18next@npm:^7.1.0":
-  version: 7.1.0
-  resolution: "remix-i18next@npm:7.1.0"
+"remix-i18next@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "remix-i18next@npm:7.2.0"
   peerDependencies:
     i18next: ^24.0.0
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
     react-i18next: ^13.0.0 || ^14.0.0 || ^15.0.0
     react-router: ^7.0.0
-  checksum: 10c0/95020601328691e778a1446614f82e50be9c2c5fe8a8ce5935fbef348f8d3de810f4b199483660ef392f242352fccea9ff09fa0a86da7646c158c4beb3626f5e
+  checksum: 10c0/d422db742a9a4d00f05bc3a65047e87ff2dce78d2f90f7d107e36eae4348f8164ad4e20fd9ad586b716bc04ae80fc3d5ac1499f704886cb9ec0fca9dd7e0864a
   languageName: node
   linkType: hard
 
@@ -8149,7 +8150,7 @@ __metadata:
     react-markdown: "npm:^10.1.0"
     react-router: "npm:^7.4.1"
     remix-hook-form: "npm:^6.1.3"
-    remix-i18next: "npm:^7.1.0"
+    remix-i18next: "npm:^7.2.0"
     remix-utils: "npm:^8.5.0"
     sharp: "npm:^0.33.5"
     svgo: "npm:^3.3.2"

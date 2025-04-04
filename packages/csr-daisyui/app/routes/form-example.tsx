@@ -1,8 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Form } from 'react-router'
-import { useRemixForm } from 'remix-hook-form'
+import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Container } from '~/components/theme/container.tsx'
 import { H1 } from '~/components/typography/h1.tsx'
@@ -18,7 +17,6 @@ const schema = z.object({
 })
 
 type FormData = z.infer<typeof schema>
-const resolver = zodResolver(schema)
 
 export const FormExample: React.FC = () => {
 	const { t } = useTranslation()
@@ -26,14 +24,20 @@ export const FormExample: React.FC = () => {
 		handleSubmit,
 		formState: { errors },
 		register,
-	} = useRemixForm<FormData>({
+	} = useForm<FormData>({
 		mode: 'onSubmit',
-		resolver,
+		resolver: zodResolver(schema),
 	})
+
+	const onSubmit = (data: FormData) => {
+		console.log(data)
+		// Handle form submission here
+	}
+
 	return (
 		<Container>
 			<H1>{t('routes.form.title', 'Example Form with Validation')}</H1>
-			<Form onSubmit={handleSubmit} method="POST" className="flex max-w-2xl flex-col gap-3">
+			<form onSubmit={handleSubmit(onSubmit)} className="flex max-w-2xl flex-col gap-3">
 				<Input
 					{...register('name')}
 					type="text"
@@ -66,7 +70,7 @@ export const FormExample: React.FC = () => {
 				<Button type="submit" variant="primary">
 					{t('userActions.button.submit', 'Submit Form')}
 				</Button>
-			</Form>
+			</form>
 		</Container>
 	)
 }

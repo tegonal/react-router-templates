@@ -16,11 +16,11 @@ export const Footer: React.FC = () => {
 			section: t('menu.footer.section.products', 'Products'),
 			items: [
 				{
-					path: (lang: string) => href('/:lang?/home', { lang }),
+					path: (lang: string) => href('/home', { lang }),
 					name: t('menu.home.name', 'Home'),
 				},
 				{
-					path: (lang: string) => href('/:lang?/form', { lang }),
+					path: (lang: string) => href('/form', { lang }),
 					name: t('menu.form.name', 'Example Form'),
 				},
 			],
@@ -29,11 +29,11 @@ export const Footer: React.FC = () => {
 			section: t('menu.footer.section.company', 'Company'),
 			items: [
 				{
-					path: (lang: string) => href('/:lang?/home', { lang }),
+					path: (lang: string) => href('/home', { lang }),
 					name: t('menu.home.name', 'Home'),
 				},
 				{
-					path: (lang: string) => href('/:lang?/form', { lang }),
+					path: (lang: string) => href('/form', { lang }),
 					name: t('menu.form.name', 'Example Form'),
 				},
 			],
@@ -42,11 +42,11 @@ export const Footer: React.FC = () => {
 			section: t('menu.footer.section.resources', 'Resources'),
 			items: [
 				{
-					path: (lang: string) => href('/:lang?/home', { lang }),
+					path: (lang: string) => href('/home', { lang }),
 					name: t('menu.home.name', 'Home'),
 				},
 				{
-					path: (lang: string) => href('/:lang?/form', { lang }),
+					path: (lang: string) => href('/form', { lang }),
 					name: t('menu.form.name', 'Example Form'),
 				},
 			],
@@ -111,10 +111,10 @@ export const Footer: React.FC = () => {
 						})}
 					</div>
 					<div className="flex flex-wrap gap-x-6 gap-y-2">
-						<Link to={href('/:lang?/legal')} className="hover:underline">
+						<Link to={href('/legal')} className="hover:underline">
 							{t('theme.footer.legalLink', 'Legal information')}
 						</Link>
-						<Link to={href('/:lang?/privacy')} className="hover:underline">
+						<Link to={href('/privacy')} className="hover:underline">
 							{t('theme.footer.privacyLink', 'Privacy Policy')}
 						</Link>
 					</div>
