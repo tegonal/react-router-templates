@@ -14,7 +14,7 @@
     "build": "yarn run typecheck && react-router build",
     "dev": "react-router dev",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
-    "lint-fix": "eslint --fix --cache --cache-location ./node_modules/.cache/eslint .",
+    "lint:fix": "eslint --fix --cache --cache-location ./node_modules/.cache/eslint .",
     "pretty": "prettier --write \"app/**/*.{js,json,ts,tsx}\"",
     "start": "react-router-serve build/server/index.js",
     "typecheck": "react-router typegen && tsc --build --noEmit",

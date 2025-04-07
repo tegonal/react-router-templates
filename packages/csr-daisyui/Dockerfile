@@ -1,6 +1,9 @@
-FROM node:22-slim AS build
+FROM node:22-alpine AS build
+RUN corepack enable
+
 COPY . .
-RUN yarn install
+RUN yarn --version
+RUN yarn install --immutable
 RUN yarn run build:prod
 
 FROM caddy:2
