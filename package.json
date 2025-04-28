@@ -7,7 +7,8 @@
 	],
 	"scripts": {
 		"up": "yarn upgrade-interactive",
-		"self-update": "yarn set version latest && yarn"
+		"self-update": "yarn set version latest && yarn",
+		"build": "yarn workspace csr-daisyui run build && yarn workspace ssr-daisyui run build"
 	},
-	"packageManager": "yarn@4.8.1"
+	"packageManager": "yarn@4.9.1"
 }

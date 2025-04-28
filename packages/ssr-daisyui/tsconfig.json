@@ -16,6 +16,7 @@
     "temp"
   ],
   "compilerOptions": {
+    "rewriteRelativeImportExtensions": false,
     "types": ["@react-router/node", "vite/client"],
     "paths": {
       "~/*": ["./app/*"]

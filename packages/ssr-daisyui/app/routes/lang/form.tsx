@@ -49,7 +49,6 @@ const schema = z.object({
 	flavour: z.enum(['vanilla', 'chocolate', 'strawberry']).pipe(zIsRequired),
 })
 
-type FormData = z.infer<typeof schema>
 const resolver = zodResolver(schema)
 
 export const action = async ({ request }: ActionFunctionArgs) => {
@@ -57,7 +56,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 		errors,
 		data: formData,
 		receivedValues: defaultValues,
-	} = await getValidatedFormData<FormData>(request, resolver)
+	} = await getValidatedFormData(request, resolver)
 	if (errors) {
 		// The keys "errors" and "defaultValues" are picked up automatically by useRemixForm
 		return data({ errors, defaultValues })
@@ -75,10 +74,11 @@ export default function FormExample() {
 		handleSubmit,
 		formState: { errors },
 		register,
-	} = useRemixForm<FormData>({
+	} = useRemixForm({
 		mode: 'onSubmit',
 		resolver,
 	})
+
 	return (
 		<Container>
 			<H1>{t('routes.form.title', 'Example Form with Validation')}</H1>

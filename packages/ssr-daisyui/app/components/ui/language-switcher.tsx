@@ -15,7 +15,7 @@ export const LanguageSwitcher: React.FC = () => {
 				.filter((each) => each !== lang)
 				.map((each) => (
 					<Link to={location.pathname.replace(lang, each)} key={each} reloadDocument={true}>
-						<Button variant={'ghost'} size={'xs'}>
+						<Button variant="ghost" size="xs">
 							{each.toUpperCase()}
 						</Button>
 					</Link>
