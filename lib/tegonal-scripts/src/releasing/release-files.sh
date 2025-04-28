@@ -6,7 +6,7 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under Apache License 2.0
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v4.5.1
+#                                         Version: v4.8.0
 #######  Description  #############
 #
 #  Releasing files based on conventions:
@@ -21,7 +21,7 @@
 #
 #    #!/usr/bin/env bash
 #    set -euo pipefail
-#    shopt -s inherit_errexit
+#    shopt -s inherit_errexit || { echo >&2 "please update to bash 5, see errors above" && exit 1; }
 #    # Assumes tegonal's scripts were fetched with gt - adjust location accordingly
 #    dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/../lib/tegonal-scripts/src"
 #    source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
@@ -74,9 +74,9 @@
 #
 ###################################
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s inherit_errexit || { echo >&2 "please update to bash 5, see errors above" && exit 1; }
 unset CDPATH
-export TEGONAL_SCRIPTS_VERSION='v4.5.1'
+export TEGONAL_SCRIPTS_VERSION='v4.8.0'
 
 if ! [[ -v dir_of_tegonal_scripts ]]; then
 	dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/.."
@@ -112,7 +112,7 @@ function releaseFiles() {
 		prepareNextDevCycleFn "$prepareNextDevCycleFnParamPattern" "$prepareNextDevCycleFnParamDocu"
 		afterVersionUpdateHook "$afterVersionUpdateHookParamPattern" "$afterVersionUpdateHookParamDocu"
 	)
-	parseArguments params "" "$TEGONAL_SCRIPTS_VERSION" "$@"
+	parseArguments params "" "$TEGONAL_SCRIPTS_VERSION" "$@" || return $?
 
 	# deduces nextVersion based on version if not already set (and if version set)
 	source "$dir_of_tegonal_scripts/releasing/deduce-next-version.source.sh"
@@ -139,7 +139,7 @@ function releaseFiles() {
 
 	function releaseFiles_afterVersionHook() {
 		local version projectsRootDir additionalPattern
-		parseArguments afterVersionHookParams "" "$TEGONAL_SCRIPTS_VERSION" "$@"
+		parseArguments afterVersionHookParams "" "$TEGONAL_SCRIPTS_VERSION" "$@" || return $?
 
 		updateVersionScripts \
 			"$versionParamPatternLong" "$version" \
@@ -162,8 +162,8 @@ function releaseFiles() {
 		mkdir "$gpgDir"
 		chmod 700 "$gpgDir"
 
-		gpg --homedir "$gpgDir" --batch --no-tty --import "$gtDir/signing-key.public.asc" || die "was not able to import %s" "$gtDir/signing-key.public.asc"
-		trustGpgKey "$gpgDir" "info@tegonal.com" || logInfo "could not trust key with id info@tegonal.com, you will see warnings due to this during signing the files"
+		# we don't specify confirmationQuestion (i.e. empty) which means we trust it without consent
+		importGpgKey "$gpgDir" "$gtDir/signing-key.public.asc" "" || die "was not able to import the signing-key, cannot release"
 
 		local script
 		"$release_files_findForSigning" -type f -not -name "*.sig" -print0 |
