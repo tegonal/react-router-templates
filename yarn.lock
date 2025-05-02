@@ -3119,9 +3119,9 @@ __metadata:
   linkType: hard
 
 "daisyui@npm:^5.0.28":
-  version: 5.0.28
-  resolution: "daisyui@npm:5.0.28"
-  checksum: 10c0/480fa9935cfd6d1f87c3c34a87f1f4799fa15ab0b000f8b8e679f9d7575625322dbf78c71d908636d37078a131de1ba5b8931909d8248ba77adbf438d7dd2e0a
+  version: 5.0.35
+  resolution: "daisyui@npm:5.0.35"
+  checksum: 10c0/dadaaa689ac1574f9c756c645e9d04d2de461747017665e31b7391ca2a63dcb13804e78ed4632f74417bdaf38c946766df330aab17f3e9f6ec5aeded6791f618
   languageName: node
   linkType: hard
 
