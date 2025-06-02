@@ -9,9 +9,9 @@ declare module 'react-router' {
 }
 
 export default {
-	ssr: true,
 	future: {
-		unstable_optimizeDeps: true,
 		unstable_middleware: true,
+		unstable_optimizeDeps: true,
 	},
+	ssr: true,
 } satisfies Config

@@ -1,4 +1,5 @@
 import { type Components } from 'react-markdown'
+
 import { CODE } from '~/components/typography/code.tsx'
 import { H1 } from '~/components/typography/h1'
 import { H2 } from '~/components/typography/h2'
@@ -14,13 +15,13 @@ export const markdownComponents: Components = {
 	// For example, if you want to use a custom p component:
 	// p: (props) => <MyParagraph {...props} />,
 
+	code: (props) => <CODE {...props} />,
 	h1: (props) => <H1 {...props} />,
 	h2: (props) => <H2 {...props} />,
 	h3: (props) => <H3 {...props} />,
 	h4: (props) => <H4 {...props} />,
-	p: (props) => <P {...props} />,
-	ul: (props) => <UL {...props} />,
 	ol: (props) => <OL {...props} />,
-	code: (props) => <CODE {...props} />,
+	p: (props) => <P {...props} />,
 	pre: (props) => <PRE {...props} />,
+	ul: (props) => <UL {...props} />,
 }

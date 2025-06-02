@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+
 import { H1 } from '~/components/typography/h1.tsx'
 import { P } from '~/components/typography/p.tsx'
 

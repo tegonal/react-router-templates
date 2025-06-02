@@ -6,6 +6,17 @@ import vitePluginSvgr from 'vite-plugin-svgr'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig(() => ({
+	build: {
+		commonjsOptions: {
+			transformMixedEsModules: true,
+		},
+		target: 'ES2022',
+	},
+	optimizeDeps: {
+		esbuildOptions: {
+			target: 'ES2022',
+		},
+	},
 	plugins: [
 		reactRouter(),
 		tailwindcss(),
@@ -22,16 +33,5 @@ export default defineConfig(() => ({
 	],
 	server: {
 		host: true,
-	},
-	optimizeDeps: {
-		esbuildOptions: {
-			target: 'ES2022',
-		},
-	},
-	build: {
-		target: 'ES2022',
-		commonjsOptions: {
-			transformMixedEsModules: true,
-		},
 	},
 }))

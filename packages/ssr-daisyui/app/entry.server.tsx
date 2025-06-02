@@ -1,10 +1,10 @@
-import { PassThrough } from 'node:stream'
-
 import { createReadableStreamFromReadable } from '@react-router/node'
 import { isbot } from 'isbot'
-import { type RenderToPipeableStreamOptions, renderToPipeableStream } from 'react-dom/server'
+import { PassThrough } from 'node:stream'
+import { renderToPipeableStream, type RenderToPipeableStreamOptions } from 'react-dom/server'
 import { I18nextProvider } from 'react-i18next'
-import { ServerRouter, type EntryContext, type unstable_RouterContextProvider } from 'react-router'
+import { type EntryContext, ServerRouter, type unstable_RouterContextProvider } from 'react-router'
+
 import { getInstance } from './middleware/i18next'
 
 export const streamTimeout = 5_000
@@ -23,11 +23,18 @@ export default function handleRequest(
 		let readyOption: keyof RenderToPipeableStreamOptions =
 			(userAgent && isbot(userAgent)) || entryContext.isSpaMode ? 'onAllReady' : 'onShellReady'
 
-		let { pipe, abort } = renderToPipeableStream(
+		let { abort, pipe } = renderToPipeableStream(
 			<I18nextProvider i18n={getInstance(routerContext)}>
 				<ServerRouter context={entryContext} url={request.url} />
 			</I18nextProvider>,
 			{
+				onError(error: unknown) {
+					responseStatusCode = 500
+					if (shellRendered) console.error(error)
+				},
+				onShellError(error: unknown) {
+					reject(error)
+				},
 				[readyOption]() {
 					shellRendered = true
 					let body = new PassThrough()
@@ -43,13 +50,6 @@ export default function handleRequest(
 					)
 
 					pipe(body)
-				},
-				onShellError(error: unknown) {
-					reject(error)
-				},
-				onError(error: unknown) {
-					responseStatusCode = 500
-					if (shellRendered) console.error(error)
 				},
 			},
 		)

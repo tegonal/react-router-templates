@@ -11,9 +11,8 @@ import {
 	useLoaderData,
 	useLocation,
 } from 'react-router'
-import { type Route } from './+types/root.ts'
-import { plausibleClientEvent } from './lib/plausible/plausible-client-event.ts'
-import versionFile from './version.json'
+import { useChangeLanguage } from 'remix-i18next/react'
+
 import { DevModeOverlay } from '~/components/devmode-overlay'
 import { ClientHintCheck, getHints } from '~/lib/client-hints.tsx'
 import { i18nCookie } from '~/lib/cookies/i18next-cookie.server.ts'
@@ -22,14 +21,18 @@ import { isClient } from '~/lib/is-client.ts'
 import { logger } from '~/lib/logger.ts'
 import { GenericAppEvents } from '~/lib/plausible/event-names.ts'
 import { getHostname } from '~/lib/plausible/get-hostname.ts'
-import './styles/fonts.css'
-import './styles/tailwind.css'
 import { getLocale, i18nextMiddleware } from '~/middleware/i18next.ts'
 import { performanceMiddleware } from '~/middleware/performance.ts'
 
+import { type Route } from './+types/root.ts'
+import './styles/fonts.css'
+import './styles/tailwind.css'
+import { plausibleClientEvent } from './lib/plausible/plausible-client-event.ts'
+import versionFile from './version.json'
+
 export const links: LinksFunction = () => [
-	{ rel: 'icon', href: '/favicon.png', type: 'image/png' },
-	{ rel: 'icon', href: '/favicon.ico', type: 'image/png' },
+	{ href: '/favicon.png', rel: 'icon', type: 'image/png' },
+	{ href: '/favicon.ico', rel: 'icon', type: 'image/png' },
 ]
 
 // HTTP headers can be set in the loader function or in the root route
@@ -39,24 +42,26 @@ export const links: LinksFunction = () => [
 // 	}
 // }
 
-export const loader = async ({ request, context }: Route.LoaderArgs) => {
+export const loader = async ({ context, request }: Route.LoaderArgs) => {
 	const locale = getLocale(context)
+
+	logger.debug(`User language is ${locale}`)
 
 	return data(
 		{
-			locale,
 			domain: getHostname(process.env.ORIGIN),
-			version: versionFile.version,
-			isDev: process.env.NODE_ENV !== 'production',
 			ENV: {
 				INSTANCE_NAME: process.env.INSTANCE_NAME,
 				NODE_ENV: process.env.NODE_ENV,
 				VERSION: versionFile.version,
 			},
+			isDev: process.env.NODE_ENV !== 'production',
+			locale,
 			requestInfo: {
-				nonce: crypto.randomUUID(),
 				hints: getHints(request),
+				nonce: crypto.randomUUID(),
 			},
+			version: versionFile.version,
 		},
 		{ headers: { 'Set-Cookie': await i18nCookie.serialize(locale) } },
 	)
@@ -70,16 +75,24 @@ export const handle = {
 	i18n: ['common'],
 }
 
+export default function App({ loaderData }: Route.ComponentProps) {
+	useChangeLanguage(loaderData.locale)
+	return <Outlet />
+}
+
+export function ErrorBoundary(args: Route.ErrorBoundaryProps) {
+	return ErrorBoundaryShared(args)
+}
 export function Layout({ children }: PropsWithChildren) {
 	const { i18n } = useTranslation()
 	const location = useLocation()
 	const {
-		version,
 		ENV,
 		requestInfo: {
-			nonce,
 			hints: { theme },
+			nonce,
 		},
+		version,
 	} = useLoaderData<typeof loader>()
 
 	useEffect(() => {
@@ -91,10 +104,10 @@ export function Layout({ children }: PropsWithChildren) {
 	}
 
 	return (
-		<html lang={i18n.language} dir={i18n.dir(i18n.language)} data-theme={theme}>
+		<html data-theme={theme} dir={i18n.dir(i18n.language)} lang={i18n.language}>
 			<head>
 				<meta charSet="utf-8" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta content="width=device-width, initial-scale=1" name="viewport" />
 				<Meta />
 				<Links />
 			</head>
@@ -112,12 +125,4 @@ export function Layout({ children }: PropsWithChildren) {
 			</body>
 		</html>
 	)
-}
-
-export default function App() {
-	return <Outlet />
-}
-
-export function ErrorBoundary(args: Route.ErrorBoundaryProps) {
-	return ErrorBoundaryShared(args)
 }

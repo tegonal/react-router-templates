@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 
 interface DeviceInfo {
-	isIOS: boolean
 	isAndroid: boolean
+	isIOS: boolean
 	isMobile: boolean
 }
 
 export function useDevice(): DeviceInfo {
 	const [deviceInfo, setDeviceInfo] = useState<DeviceInfo>({
-		isIOS: false,
 		isAndroid: false,
+		isIOS: false,
 		isMobile: false,
 	})
 
@@ -28,7 +28,7 @@ export function useDevice(): DeviceInfo {
 			// Combined mobile detection
 			const isMobile = isIOS || isAndroid
 
-			setDeviceInfo({ isIOS, isAndroid, isMobile })
+			setDeviceInfo({ isAndroid, isIOS, isMobile })
 		}
 	}, [])
 

@@ -1,6 +1,8 @@
 import { round } from 'lodash-es'
-import { type Route } from '../../.react-router/types/app/+types/root.ts'
+
 import { logger } from '~/lib/logger.ts'
+
+import { type Route } from '../../.react-router/types/app/+types/root.ts'
 
 // This is an example middleware that logs the time taken for a route transition.
 // https://reactrouter.com/start/changelog#middleware-unstable

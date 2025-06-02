@@ -10,7 +10,7 @@ import {
 } from 'react-router'
 import { getValidatedFormData, useRemixForm } from 'remix-hook-form'
 import { z } from 'zod'
-import { type Route as RootRoute } from '../../../.react-router/types/app/+types/root.ts'
+
 import { Container } from '~/components/theme/container.tsx'
 import { H1 } from '~/components/typography/h1.tsx'
 import { Button } from '~/components/ui/button.tsx'
@@ -21,15 +21,17 @@ import { logger } from '~/lib/logger.ts'
 import { zIsEmail, zIsRequired } from '~/lib/zod-form-validations.ts'
 import { getInstance } from '~/middleware/i18next.ts'
 
+import { type Route as RootRoute } from '../../../.react-router/types/app/+types/root.ts'
+
 export const loader = async ({ context }: LoaderFunctionArgs) => {
 	const { t } = getInstance(context)
 
 	return data({
-		title: t('routes.form.title', 'Example Form with Validation'),
 		description: t(
 			'routes.form.description',
 			'A route that serves as the example form page for the application.',
 		),
+		title: t('routes.form.title', 'Example Form with Validation'),
 	})
 }
 
@@ -37,29 +39,29 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	return [
 		{ title: data?.title },
 		{
-			name: 'description',
 			content: data?.description,
+			name: 'description',
 		},
 	]
 }
 
 const schema = z.object({
-	name: zIsRequired,
 	email: zIsRequired.pipe(zIsEmail),
 	flavour: z.enum(['vanilla', 'chocolate', 'strawberry']).pipe(zIsRequired),
+	name: zIsRequired,
 })
 
 const resolver = zodResolver(schema)
 
 export const action = async ({ request }: ActionFunctionArgs) => {
 	const {
-		errors,
 		data: formData,
+		errors,
 		receivedValues: defaultValues,
 	} = await getValidatedFormData(request, resolver)
 	if (errors) {
 		// The keys "errors" and "defaultValues" are picked up automatically by useRemixForm
-		return data({ errors, defaultValues })
+		return data({ defaultValues, errors })
 	}
 
 	logger.debug(formData)
@@ -68,11 +70,15 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 	return data(formData)
 }
 
+export function ErrorBoundary(args: RootRoute.ErrorBoundaryProps) {
+	return ErrorBoundaryShared(args)
+}
+
 export default function FormExample() {
 	const { t } = useTranslation()
 	const {
-		handleSubmit,
 		formState: { errors },
+		handleSubmit,
 		register,
 	} = useRemixForm({
 		mode: 'onSubmit',
@@ -82,32 +88,32 @@ export default function FormExample() {
 	return (
 		<Container>
 			<H1>{t('routes.form.title', 'Example Form with Validation')}</H1>
-			<Form onSubmit={handleSubmit} method="POST" className="flex max-w-2xl flex-col gap-3">
+			<Form className="flex max-w-2xl flex-col gap-3" method="POST" onSubmit={handleSubmit}>
 				<Input
 					{...register('name')}
-					type="text"
-					label={t('form.label.name', 'Name')}
+					autoComplete="name"
 					description={t(
 						'form.description.name',
 						'Your name, family name, nick name or anything in between',
 					)}
-					autoComplete="name"
 					error={errors.name}
+					label={t('form.label.name', 'Name')}
+					type="text"
 				/>
 				<Input
 					{...register('email')}
-					type="email"
-					label={t('form.label.email', 'Email')}
-					description={t('form.description.email', 'Your email address')}
 					autoComplete="email"
+					description={t('form.description.email', 'Your email address')}
 					error={errors.email}
+					label={t('form.label.email', 'Email')}
+					type="email"
 				/>
 				<Select
 					{...register('flavour')}
-					label={t('form.label.flavour', 'Flavour')}
+					defaultValue={undefined}
 					description={t('form.description.flavour', 'Your favourite flavour')}
 					error={errors.flavour}
-					defaultValue={undefined}>
+					label={t('form.label.flavour', 'Flavour')}>
 					<option value="vanilla">{t('form.flavour.vanilla', 'Vanilla')}</option>
 					<option value="chocolate">{t('form.flavour.chocolate', 'Chocolate')}</option>
 					<option value="strawberry">{t('form.flavour.strawberry', 'Strawberry')}</option>
@@ -118,8 +124,4 @@ export default function FormExample() {
 			</Form>
 		</Container>
 	)
-}
-
-export function ErrorBoundary(args: RootRoute.ErrorBoundaryProps) {
-	return ErrorBoundaryShared(args)
 }

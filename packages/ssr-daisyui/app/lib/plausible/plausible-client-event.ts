@@ -2,16 +2,16 @@ import { isServer } from '~/lib/is-server.ts'
 import { logger } from '~/lib/logger.ts'
 import { type PlausibleEventNames } from '~/lib/plausible/event-names.ts'
 
-type UserActionEvent = {
-	name: PlausibleEventNames
-}
-
 type ActionEvent = {
 	name: 'action'
 	props?: Record<string, string>
 }
 
-type PlausibleEventOptions = UserActionEvent | ActionEvent
+type PlausibleEventOptions = ActionEvent | UserActionEvent
+
+type UserActionEvent = {
+	name: PlausibleEventNames
+}
 
 export const plausibleClientEvent = (options: PlausibleEventOptions) => {
 	const { name } = options
@@ -19,11 +19,11 @@ export const plausibleClientEvent = (options: PlausibleEventOptions) => {
 		throw new Error('Client-side plausible events are not supported on the server')
 	}
 	const body = {
-		name: name || 'pageview',
-		url: window.location.href,
 		domain: window.location.hostname,
-		referrer: document.referrer || '',
+		name: name || 'pageview',
 		props: 'props' in options ? options.props : {},
+		referrer: document.referrer || '',
+		url: window.location.href,
 	}
 
 	if (window.location.hostname.startsWith('localhost')) {
@@ -32,10 +32,10 @@ export const plausibleClientEvent = (options: PlausibleEventOptions) => {
 	}
 
 	void fetch('/api/event', {
-		method: 'POST',
+		body: JSON.stringify(body),
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(body),
+		method: 'POST',
 	})
 }

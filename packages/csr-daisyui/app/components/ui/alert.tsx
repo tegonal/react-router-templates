@@ -4,25 +4,25 @@ import React from 'react'
 import { cn } from '~/lib/utils'
 
 const variants = cva('alert', {
+	defaultVariants: {
+		size: 'md',
+		variant: 'neutral',
+	},
 	variants: {
+		size: {
+			lg: 'alert-lg',
+			md: 'alert-md',
+			sm: 'alert-sm',
+		},
 		variant: {
+			error: 'alert-error',
+			info: 'alert-info',
+			neutral: 'alert-neutral',
 			primary: 'alert-primary',
 			secondary: 'alert-secondary',
-			warning: 'alert-warning',
 			success: 'alert-success text-primary-content',
-			neutral: 'alert-neutral',
-			info: 'alert-info',
-			error: 'alert-error',
+			warning: 'alert-warning',
 		},
-		size: {
-			sm: 'alert-sm',
-			md: 'alert-md',
-			lg: 'alert-lg',
-		},
-	},
-	defaultVariants: {
-		variant: 'neutral',
-		size: 'md',
 	},
 })
 
@@ -31,9 +31,9 @@ interface Props extends VariantProps<typeof variants> {
 	className?: string
 }
 
-export function Alert({ children, variant, size, className }: Props) {
+export function Alert({ children, className, size, variant }: Props) {
 	return (
-		<div role="alert" className={cn([variants({ variant, size }), className])}>
+		<div className={cn([variants({ size, variant }), className])} role="alert">
 			{children}
 		</div>
 	)

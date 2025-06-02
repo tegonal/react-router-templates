@@ -1,4 +1,5 @@
 import { getClientIPAddress } from 'remix-utils/get-client-ip-address'
+
 import { isClient } from '~/lib/is-client.ts'
 import { isServer } from '~/lib/is-server.ts'
 import { logger } from '~/lib/logger.ts'
@@ -6,19 +7,19 @@ import { type PlausibleEventNames } from '~/lib/plausible/event-names.ts'
 import { getHostname } from '~/lib/plausible/get-hostname.ts'
 import { getPathname } from '~/lib/plausible/get-pathname.ts'
 
-type UserActionEvent = {
-	name: PlausibleEventNames
-	props?: Record<string, string | number>
-	request: Request
-}
-
 type ActionEvent = {
 	name: 'action'
 	props?: Record<string, string>
 	request: Request
 }
 
-type PlausibleEventOptions = UserActionEvent | ActionEvent
+type PlausibleEventOptions = ActionEvent | UserActionEvent
+
+type UserActionEvent = {
+	name: PlausibleEventNames
+	props?: Record<string, number | string>
+	request: Request
+}
 
 export const plausibleServerEvent = async (options: PlausibleEventOptions) => {
 	const { name, request } = options
@@ -35,11 +36,11 @@ export const plausibleServerEvent = async (options: PlausibleEventOptions) => {
 	}
 
 	const body = {
-		name: name || 'pageview',
-		url: getPathname(request.url),
 		domain: getHostname(request.url),
-		referrer: getPathname(request.headers.get('referrer')),
+		name: name || 'pageview',
 		props: 'props' in options ? options.props : {},
+		referrer: getPathname(request.headers.get('referrer')),
+		url: getPathname(request.url),
 	}
 
 	logger.debug(`Plausible event (${name})`, { body })
@@ -50,12 +51,12 @@ export const plausibleServerEvent = async (options: PlausibleEventOptions) => {
 	}
 
 	return fetch(`${process.env.ORIGIN}/api/event`, {
-		method: 'POST',
+		body: JSON.stringify(body),
 		headers: {
 			'Content-Type': 'application/json',
 			'User-Agent': userAgent,
 			'X-Forwarded-For': clientIp,
 		},
-		body: JSON.stringify(body),
+		method: 'POST',
 	})
 }

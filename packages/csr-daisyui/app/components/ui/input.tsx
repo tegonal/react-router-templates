@@ -1,46 +1,47 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { cn } from '~/lib/utils'
 
 const variants = cva('input w-full', {
+	defaultVariants: {
+		size: 'md',
+		variant: 'default',
+	},
 	variants: {
+		size: {
+			lg: 'input-lg',
+			md: '',
+			sm: 'input-sm',
+			xs: 'input-xs',
+		},
 		variant: {
+			accent: 'input-accent',
 			default: 'input-bordered',
+			error: 'input-error',
 			ghost: 'input-ghost',
+			info: 'input-info',
 			primary: 'input-primary',
 			secondary: 'input-secondary',
-			accent: 'input-accent',
-			info: 'input-info',
 			success: 'input-success',
 			warning: 'input-warning',
-			error: 'input-error',
 		},
-		size: {
-			xs: 'input-xs',
-			sm: 'input-sm',
-			md: '',
-			lg: 'input-lg',
-		},
-	},
-	defaultVariants: {
-		variant: 'default',
-		size: 'md',
 	},
 })
 
 interface InputProps
 	extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
 		VariantProps<typeof variants> {
-	label?: string
+	description?: string
 	error?: {
 		message?: string
 	}
-	description?: string
+	label?: string
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-	({ className, variant, size, label, error, description, ...props }, ref) => {
+	({ className, description, error, label, size, variant, ...props }, ref) => {
 		const generatedId = React.useId()
 		const id = props.id || generatedId
 		const { t } = useTranslation()
@@ -53,8 +54,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 					</legend>
 				)}
 				<input
+					className={cn(variants({ className, size, variant: error?.message ? 'error' : variant }))}
 					id={id}
-					className={cn(variants({ variant: error?.message ? 'error' : variant, size, className }))}
 					ref={ref}
 					{...props}
 				/>

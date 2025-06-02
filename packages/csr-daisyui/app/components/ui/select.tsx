@@ -1,47 +1,48 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { cn } from '~/lib/utils'
 
 const variants = cva('select w-full', {
+	defaultVariants: {
+		size: 'md',
+		variant: 'default',
+	},
 	variants: {
+		size: {
+			lg: 'select-lg',
+			md: '',
+			sm: 'select-sm',
+			xs: 'select-xs',
+		},
 		variant: {
+			accent: 'select-accent',
 			default: 'select-bordered',
+			error: 'select-error',
 			ghost: 'select-ghost',
+			info: 'select-info',
 			primary: 'select-primary',
 			secondary: 'select-secondary',
-			accent: 'select-accent',
-			info: 'select-info',
 			success: 'select-success',
 			warning: 'select-warning',
-			error: 'select-error',
 		},
-		size: {
-			xs: 'select-xs',
-			sm: 'select-sm',
-			md: '',
-			lg: 'select-lg',
-		},
-	},
-	defaultVariants: {
-		variant: 'default',
-		size: 'md',
 	},
 })
 
 interface SelectProps
 	extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'>,
 		VariantProps<typeof variants> {
-	label?: string
+	children: React.ReactNode
+	description?: string
 	error?: {
 		message?: string
 	}
-	description?: string
-	children: React.ReactNode
+	label?: string
 }
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-	({ className, variant, size, label, error, description, children, ...props }, ref) => {
+	({ children, className, description, error, label, size, variant, ...props }, ref) => {
 		const generatedId = React.useId()
 		const id = props.id || generatedId
 		const { t } = useTranslation()
@@ -54,8 +55,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 					</legend>
 				)}
 				<select
+					className={cn(variants({ className, size, variant: error?.message ? 'error' : variant }))}
 					id={id}
-					className={cn(variants({ variant: error?.message ? 'error' : variant, size, className }))}
 					ref={ref}
 					{...props}>
 					{children}

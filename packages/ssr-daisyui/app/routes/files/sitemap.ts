@@ -1,32 +1,33 @@
 import { type LoaderFunctionArgs } from 'react-router'
+
 import { i18nConfig } from '~/i18n-config.ts'
 
 const pagesToInclude = [
 	{
+		lastmod: '2025-04-01',
 		path: '/',
-		lastmod: '2025-04-01',
 	},
 	{
+		lastmod: '2025-04-01',
 		path: '/home',
-		lastmod: '2025-04-01',
 	},
 	{
+		lastmod: '2025-04-01',
 		path: '/form',
-		lastmod: '2025-04-01',
 	},
 	{
-		path: '/legal',
 		lastmod: '2025-04-01',
+		path: '/legal',
 	},
 ]
 
 type StaticPagesList = {
-	loc: string
-	lastmod: string
 	alternates: {
-		hreflang: string
 		href: string
+		hreflang: string
 	}[]
+	lastmod: string
+	loc: string
 }[]
 
 const generateSitemapXml = (entries: StaticPagesList) => {
@@ -61,12 +62,12 @@ const generateStaticPagesList = (pages: typeof pagesToInclude, request: Request)
 	return pages.map((entry) => {
 		// Start with the base URL data
 		return {
-			loc: `${baseUrl}/${fallbackLocale}${entry.path === '/' ? '' : entry.path}`,
-			lastmod: entry.lastmod,
 			alternates: availableLocales.map((locale) => ({
-				hreflang: locale,
 				href: `${baseUrl}/${locale}${entry.path === '/' ? '' : entry.path}`,
+				hreflang: locale,
 			})),
+			lastmod: entry.lastmod,
+			loc: `${baseUrl}/${fallbackLocale}${entry.path === '/' ? '' : entry.path}`,
 		}
 	}) as StaticPagesList
 }
@@ -82,9 +83,9 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
     </urlset>`
 
 	return new Response(xmlContent, {
-		status: 200,
 		headers: {
 			'Content-Type': 'application/xml',
 		},
+		status: 200,
 	})
 }

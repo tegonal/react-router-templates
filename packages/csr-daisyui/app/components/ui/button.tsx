@@ -4,39 +4,39 @@ import React from 'react'
 import { cn } from '~/lib/utils'
 
 const variants = cva('btn', {
+	defaultVariants: {
+		size: 'md',
+		variant: 'neutral',
+	},
 	variants: {
+		size: {
+			lg: 'btn-lg',
+			md: 'btn-md',
+			sm: 'btn-sm',
+			xs: 'btn-xs',
+		},
 		variant: {
+			ghost: 'btn-ghost',
+			neutral: 'btn-neutral',
+			outline: 'btn-outline',
 			primary: 'btn-primary',
 			secondary: 'btn-secondary',
-			warning: 'btn-warning',
 			success: 'btn-success',
-			outline: 'btn-outline',
-			neutral: 'btn-neutral',
-			ghost: 'btn-ghost',
+			warning: 'btn-warning',
 		},
-		size: {
-			xs: 'btn-xs',
-			sm: 'btn-sm',
-			md: 'btn-md',
-			lg: 'btn-lg',
-		},
-	},
-	defaultVariants: {
-		variant: 'neutral',
-		size: 'md',
 	},
 })
 
 interface Props
-	extends VariantProps<typeof variants>,
-		React.ButtonHTMLAttributes<HTMLButtonElement> {
+	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+		VariantProps<typeof variants> {
 	children?: React.ReactNode
 	className?: string
 }
 
-export function Button({ children, variant, size, className, ...rest }: Props) {
+export function Button({ children, className, size, variant, ...rest }: Props) {
 	return (
-		<button className={cn([variants({ variant, size }), className])} {...rest}>
+		<button className={cn([variants({ size, variant }), className])} {...rest}>
 			{children}
 		</button>
 	)

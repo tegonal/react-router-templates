@@ -7,13 +7,13 @@ export const i18nConfig: InitOptions = {
 		loadPath: '/locales/{{ns}}.{{lng}}.json',
 	},
 	defaultNS: 'common',
-	supportedLngs: ['en', 'de'],
-	preload: ['en', 'de'],
 	fallbackLng: 'en',
-	lng: 'en',
 	interpolation: {
 		escapeValue: false,
 	},
+	lng: 'en',
+	preload: ['en', 'de'],
+	supportedLngs: ['en', 'de'],
 }
 
 void i18n.use(HttpBackend).use(initReactI18next).init(i18nConfig)

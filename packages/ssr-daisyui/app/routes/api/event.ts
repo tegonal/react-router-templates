@@ -1,4 +1,5 @@
 import { getClientIPAddress } from 'remix-utils/get-client-ip-address'
+
 import { type Route } from './+types/event'
 
 export const action = async ({ request }: Route.ActionArgs) => {
@@ -22,8 +23,8 @@ export const action = async ({ request }: Route.ActionArgs) => {
 	}
 
 	const headers = {
-		'User-Agent': userAgent,
 		'Content-Type': 'application/json',
+		'User-Agent': userAgent,
 		'X-Forwarded-For': clientIp,
 	}
 
@@ -31,8 +32,8 @@ export const action = async ({ request }: Route.ActionArgs) => {
 
 	const response = await fetch(`${process.env.PLAUSIBLE_HOST}/api/event`, {
 		body,
-		method,
 		headers,
+		method,
 	})
 
 	const responseBody = await response.text()

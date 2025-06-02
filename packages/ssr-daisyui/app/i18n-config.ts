@@ -2,16 +2,15 @@ import de from '~/locales/de.ts'
 import en from '~/locales/en.ts'
 
 export const i18nConfig = {
-	// This is the list of languages your application supports
-	supportedLngs: ['en', 'de'],
+	// The default namespace of i18next is "translation", but you can customize it here
+	defaultNS: 'common',
 	// This is the language you want to use in case
 	// if the user language is not in the supportedLngs
 	fallbackLng: 'en',
-	// The default namespace of i18next is "translation", but you can customize it here
-	defaultNS: 'common',
-	jsonFileSchema: '{{lng}}/{{ns}}.json',
 	resources: {
-		en,
 		de,
+		en,
 	},
+	// This is the list of languages your application supports
+	supportedLngs: ['en', 'de'],
 }

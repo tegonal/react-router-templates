@@ -1,9 +1,11 @@
 import { cacheHeader } from 'pretty-cache-header'
 import { data } from 'react-router'
 import { z } from 'zod'
-import { type Route } from '../../../.react-router/types/app/routes/api/+types/locales.ts'
+
 import { i18nConfig } from '~/i18n-config.ts'
 import { logger } from '~/lib/logger.ts'
+
+import { type Route } from '../../../.react-router/types/app/routes/api/+types/locales.ts'
 
 const resources = i18nConfig.resources
 
@@ -41,10 +43,10 @@ export async function loader({ params }: Route.LoaderArgs) {
 			cacheHeader({
 				maxAge: '5m', // Cache in the browser for 5 minutes
 				sMaxage: '1d', // Cache in the CDN for 1 day
-				// Serve stale content while revalidating for 7 days
-				staleWhileRevalidate: '7d',
 				// Serve stale content if there's an error for 7 days
 				staleIfError: '7d',
+				// Serve stale content while revalidating for 7 days
+				staleWhileRevalidate: '7d',
 			}),
 		)
 	}

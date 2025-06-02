@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useFetcher, useNavigation, useRevalidator, useRouteLoaderData } from 'react-router'
+
 import { Badge } from '~/components/ui/badge.tsx'
 import { Spinner } from '~/components/ui/spinner.tsx'
 import { isClient } from '~/lib/is-client.ts'
@@ -46,19 +47,19 @@ const DevModeOverlay = () => {
 						</div>
 					)}
 					<Badge>{instance}</Badge>
-					<Badge variant="secondary" className="sm:hidden md:hidden lg:hidden xl:hidden">
+					<Badge className="sm:hidden md:hidden lg:hidden xl:hidden" variant="secondary">
 						sm (&lt; 640px)
 					</Badge>
-					<Badge variant="secondary" className="hidden sm:inline-flex md:hidden">
+					<Badge className="hidden sm:inline-flex md:hidden" variant="secondary">
 						sm
 					</Badge>
-					<Badge variant="secondary" className="hidden md:inline-flex lg:hidden">
+					<Badge className="hidden md:inline-flex lg:hidden" variant="secondary">
 						md
 					</Badge>
-					<Badge variant="secondary" className="hidden lg:inline-flex xl:hidden">
+					<Badge className="hidden lg:inline-flex xl:hidden" variant="secondary">
 						lg
 					</Badge>
-					<Badge variant="secondary" className="hidden xl:inline-flex">
+					<Badge className="hidden xl:inline-flex" variant="secondary">
 						xl
 					</Badge>
 				</div>

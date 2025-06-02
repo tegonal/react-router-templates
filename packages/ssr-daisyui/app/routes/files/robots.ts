@@ -16,10 +16,10 @@ Allow: /
   const robotText = host?.includes('test') ? disallowIndexing : allowIndexing;
 
   return new Response(robotText,{
-    status: 200,
     headers: {
       "Content-Type": "text/plain",
-    }
+    },
+    status: 200
   });
 };
 

@@ -1,8 +1,9 @@
 import { format, formatRelative } from 'date-fns'
+
 import { DateLocales } from '~/config/date-locales'
 
 export const dateFormat = (
-	inputDate: string | Date,
+	inputDate: Date | string,
 	formatStr: any = 'PP',
 	locale: string,
 ): string => {
@@ -13,7 +14,7 @@ export const dateFormat = (
 	})
 }
 
-export const dateFormatRelative = (inputDate: string | Date, locale: string): string => {
+export const dateFormatRelative = (inputDate: Date | string, locale: string): string => {
 	if (!inputDate) return ''
 	const date = typeof inputDate === 'string' ? new Date(inputDate) : inputDate
 	return formatRelative(date, new Date(), {

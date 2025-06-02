@@ -4,13 +4,13 @@ import React from 'react'
 import { cn } from '~/lib/utils'
 
 const variants = cva('loading loading-spinner', {
+	defaultVariants: {
+		variant: 'default',
+	},
 	variants: {
 		variant: {
 			default: 'loading-spinner-md',
 		},
-	},
-	defaultVariants: {
-		variant: 'default',
 	},
 })
 
@@ -19,6 +19,6 @@ interface Props extends VariantProps<typeof variants> {
 	className?: string
 }
 
-export function Spinner({ children, variant, className }: Props) {
+export function Spinner({ children, className, variant }: Props) {
 	return <div className={cn([variants({ variant }), className])}>{children}</div>
 }

@@ -3,14 +3,14 @@ import { z } from 'zod'
 
 export const userPreferencesCookie = createCookie('store-selection', {
 	httpOnly: true,
-	secure: process.env.NODE_ENV === 'production',
-	sameSite: 'lax',
 	maxAge: 60 * 60 * 24 * 365,
+	sameSite: 'lax',
+	secure: process.env.NODE_ENV === 'production',
 })
 
 const userPreferencesCookieSchema = z.object({
-	storeRedirectUrl: z.string(),
 	storeId: z.string(),
+	storeRedirectUrl: z.string(),
 	storeVersionDate: z.string(),
 })
 

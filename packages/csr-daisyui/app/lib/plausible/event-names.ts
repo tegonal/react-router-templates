@@ -1,25 +1,25 @@
 export enum GenericAppEvents {
-	OnboardingCompleted = 'app.onboardingCompleted',
-	SessionTimedOut = 'app.sessionTimedOut',
 	Error = 'app.error',
+	OnboardingCompleted = 'app.onboardingCompleted',
 	PageView = 'pageview',
+	SessionTimedOut = 'app.sessionTimedOut',
 }
 
 export enum UserActionEvents {
-	SignUp = 'user.signUp',
+	PasswordChange = 'user.passwordChange',
+	PasswordChangeFailed = 'user.passwordChangeFailed',
+	PasswordResetComplete = 'user.passwordResetComplete',
+	PasswordResetFailed = 'user.passwordResetFailed',
+	PasswordResetInitiate = 'user.passwordResetInitiate',
 	SignIn = 'user.signIn',
 	SignInFailed = 'user.signInFailed',
 	SignInFailedLocked = 'user.signInFailedLocked',
 	SignOut = 'user.signOut',
+	SignUp = 'user.signUp',
 	SignUpFailed = 'user.signUpFailed',
-	PasswordResetInitiate = 'user.passwordResetInitiate',
-	PasswordResetFailed = 'user.passwordResetFailed',
-	PasswordResetComplete = 'user.passwordResetComplete',
-	PasswordChange = 'user.passwordChange',
-	PasswordChangeFailed = 'user.passwordChangeFailed',
 }
 
-type GenericAppEventNames = (typeof GenericAppEvents)[keyof typeof GenericAppEvents]
-type UserActionEventNames = (typeof UserActionEvents)[keyof typeof UserActionEvents]
-
 export type PlausibleEventNames = GenericAppEventNames | UserActionEventNames
+type GenericAppEventNames = (typeof GenericAppEvents)[keyof typeof GenericAppEvents]
+
+type UserActionEventNames = (typeof UserActionEvents)[keyof typeof UserActionEvents]
