@@ -6,5 +6,5 @@ import { getLocale } from '~/middleware/i18next.ts'
  */
 export const loader = async ({ context }: LoaderFunctionArgs) => {
 	const lang = getLocale(context)
-	return redirect(href('/:lang/home', { lang }))
+	return redirect(href('/:lang?/home', { lang }))
 }

@@ -19,11 +19,11 @@ export const NavDrawer: React.FC = () => {
 	const menu: MenuItem[] = [
 		{
 			name: t('menu.home.name', 'Home'),
-			path: (lang: string) => href('/:lang/home', { lang }),
+			path: (lang: string) => href('/:lang?/home', { lang }),
 		},
 		{
 			name: t('menu.form.name', 'Example Form'),
-			path: (lang: string) => href('/:lang/form', { lang }),
+			path: (lang: string) => href('/:lang?/form', { lang }),
 		},
 	]
 

@@ -6,5 +6,5 @@ import { getInstance } from '~/middleware/i18next.ts'
  */
 export const loader = async ({ context }: LoaderFunctionArgs) => {
 	const { language } = getInstance(context)
-	return redirect(href('/:lang/home', { lang: language }))
+	return redirect(href('/:lang?/home', { lang: language }))
 }
