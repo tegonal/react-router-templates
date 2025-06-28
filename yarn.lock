@@ -9725,14 +9725,14 @@ __metadata:
   linkType: hard
 
 "vite-plugin-image-optimizer@npm:^1.1.8":
-  version: 1.1.8
-  resolution: "vite-plugin-image-optimizer@npm:1.1.8"
+  version: 1.1.9
+  resolution: "vite-plugin-image-optimizer@npm:1.1.9"
   dependencies:
     ansi-colors: "npm:^4.1.3"
     pathe: "npm:^1.1.2"
   peerDependencies:
     vite: ">=3"
-  checksum: 10c0/1631e0a1604b42b12348b99ecf86565f06e3e3ccd2ce3be8c2b9ac85e3292c5ec6101130b4860424e06932c81c5b7fcc2540504d8b7bc73aa4e08e0eb5073247
+  checksum: 10c0/86914740fe61f7746387fd6a831be9f8264fc096e4eb362a1f8bb4b24b57529da457c0d8afcd077a18d3466ac82865f0f67727f5f4629711ca612589866ccabd
   languageName: node
   linkType: hard
 
