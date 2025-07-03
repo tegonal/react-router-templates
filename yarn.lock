@@ -575,9 +575,9 @@ __metadata:
   linkType: hard
 
 "@epic-web/client-hints@npm:^1.3.5":
-  version: 1.3.5
-  resolution: "@epic-web/client-hints@npm:1.3.5"
-  checksum: 10c0/55286e0feedb10545f019dbda5b1cc41729cbee6db85018f5333c8d680de3316f25c3671b4ac521e2e1e72e808c8a2f890978875938c9ed911b4c11fa4b59632
+  version: 1.3.7
+  resolution: "@epic-web/client-hints@npm:1.3.7"
+  checksum: 10c0/fa3ad9e4058f554aa874481a09edacb57a10e3a15cbc5f85bcb1ba066351e71993e3f8387883964b80861705c176d658b63bc2312afa6635cf4daaedf329a9dd
   languageName: node
   linkType: hard
 
