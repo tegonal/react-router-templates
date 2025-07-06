@@ -939,11 +939,11 @@ __metadata:
   linkType: hard
 
 "@icons-pack/react-simple-icons@npm:^13.3.0":
-  version: 13.3.0
-  resolution: "@icons-pack/react-simple-icons@npm:13.3.0"
+  version: 13.4.0
+  resolution: "@icons-pack/react-simple-icons@npm:13.4.0"
   peerDependencies:
     react: ^16.13 || ^17 || ^18 || ^19
-  checksum: 10c0/89cd0b3b99335a8f6415d64919a820ee0fa180eb35f6eb116699fdb25e9412d32cf400df95813b76f78ad7c818c755f03da36d70d6c60093dc6c3a94933dba08
+  checksum: 10c0/e55b11e4ae5a2f342774100ab8a90f8d385b2f9f46c59d4a205fd21b8f82631982a6b661fcfec98a67828209b29ab53fe863a56925c3bfca5190f199d5167962
   languageName: node
   linkType: hard
 
