@@ -1,19 +1,16 @@
-FROM node:22-alpine AS base
-RUN corepack enable
+FROM node:24-alpine AS base
 
 # Install dependencies
 FROM base AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
-
 WORKDIR /app
 
 COPY .yarnrc.yml ./
 COPY package.json yarn.lock ./
 
-RUN yarn --version
-RUN yarn install --immutable
-
+RUN corepack enable
+RUN yarn --immutable
 
 # Build the application
 FROM base AS builder
@@ -28,6 +25,7 @@ COPY --from=deps /app/package.json ./package.json
 COPY --from=deps /app/yarn.lock ./yarn.lock
 COPY . .
 
+RUN corepack enable
 RUN yarn build
 RUN yarn workspaces focus --production
 RUN yarn cache clean --all

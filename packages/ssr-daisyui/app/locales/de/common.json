@@ -49,6 +49,9 @@
 		},
 		"home": {
 			"name": "Startseite"
+		},
+		"images": {
+			"name": "Bildbeispiele"
 		}
 	},
 	"routes": {
@@ -59,6 +62,44 @@
 		"home": {
 			"description": "Eine Route, die als Startseite für die Anwendung dient.",
 			"title": "Startseite"
+		},
+		"images": {
+			"description": "Beispiele für optimierte Bildkomponenten mit verschiedenen Konfigurationen",
+			"title": "Bildbeispiele",
+			"intro": "Diese Seite demonstriert die Image Service Features für optimiertes Laden und Transformieren von Bildern.",
+			"features": {
+				"title": "Image Service Features"
+			},
+			"original": {
+				"title": "Originalbild",
+				"description": "Das Originalbild ohne Transformationen.",
+				"caption": "Volle Auflösung, Originalformat"
+			},
+			"resized": {
+				"title": "Größenanpassung",
+				"description": "Bild mit angepassten Dimensionen durch den Bildservice.",
+				"standard": "Standardauflösung",
+				"thumbnail": "Miniaturansicht"
+			},
+			"formats": {
+				"title": "Formatkonvertierung",
+				"description": "Dasselbe Bild in verschiedenen modernen Formaten für bessere Komprimierung.",
+				"webp": "Modernes Format mit exzellenter Komprimierung",
+				"avif": "Next-Gen Format mit überlegener Komprimierung",
+				"jpeg": "Klassisches Format mit einstellbarer Qualität"
+			},
+			"responsive": {
+				"title": "Responsives Bild",
+				"description": "Verwendung der ResponsiveImage-Komponente, die sich automatisch an die Containergröße anpasst.",
+				"caption": "Berechnet automatisch optimale Dimensionen basierend auf Containergröße und Pixeldichte (auf 2x begrenzt)"
+			},
+			"quality": {
+				"title": "Qualitätsvergleich",
+				"description": "Dasselbe Bild mit verschiedenen Qualitätseinstellungen zur Demonstration des Verhältnisses zwischen Dateigröße und visueller Qualität.",
+				"low": "Kleinste Dateigröße, sichtbare Komprimierung",
+				"medium": "Gute Balance zwischen Qualität und Größe",
+				"high": "Beste Qualität, größere Dateigröße"
+			}
 		},
 		"legal": {
 			"description": "Dies ist die Seite mit rechtlichen Informationen.",

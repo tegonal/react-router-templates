@@ -49,6 +49,9 @@
 		},
 		"home": {
 			"name": "Home"
+		},
+		"images": {
+			"name": "Image Examples"
 		}
 	},
 	"routes": {
@@ -59,6 +62,44 @@
 		"home": {
 			"description": "A route that serves as the home page for the application.",
 			"title": "Home"
+		},
+		"images": {
+			"description": "Examples of optimized image components with various configurations",
+			"title": "Image Examples",
+			"intro": "This page demonstrates the Image Service features for optimized image loading and transformation.",
+			"features": {
+				"title": "Image Service Features"
+			},
+			"original": {
+				"title": "Original Image",
+				"description": "The original image without any transformations.",
+				"caption": "Full resolution, original format"
+			},
+			"resized": {
+				"title": "Resized Image",
+				"description": "Image resized to specific dimensions using the image service.",
+				"standard": "Standard resolution",
+				"thumbnail": "Thumbnail size"
+			},
+			"formats": {
+				"title": "Format Conversion",
+				"description": "Same image converted to different modern formats for better compression.",
+				"webp": "Modern format with excellent compression",
+				"avif": "Next-gen format with superior compression",
+				"jpeg": "Classic format with adjustable quality"
+			},
+			"responsive": {
+				"title": "Responsive Image",
+				"description": "Using the ResponsiveImage component that automatically adapts to container size.",
+				"caption": "Automatically calculates optimal dimensions based on container size and pixel density (capped at 2x)"
+			},
+			"quality": {
+				"title": "Quality Comparison",
+				"description": "Same image with different quality settings to demonstrate file size vs visual quality trade-offs.",
+				"low": "Smallest file size, visible compression",
+				"medium": "Good balance of quality and size",
+				"high": "Best quality, larger file size"
+			}
 		},
 		"legal": {
 			"description": "This is the legal information page.",

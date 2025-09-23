@@ -26,20 +26,37 @@ Bibliotheken und Tools in diesem Projekt:
 - **react-markdown**: Zum Rendern von Markdown-Inhalten in React
 - **lucide-react**: Alle Icons, die Sie wahrscheinlich jemals benötigen werden
 - **@uidotdev/usehooks**: Eine Sammlung nützlicher React-Hooks
-- **lodash-es**: Für Hilfsfunktionen
+- **es-toolkit**: Moderne Hilfsfunktionen (lodash-Ersatz)
+
+## Integrierte Funktionen
+
+Diese Vorlage enthält zwei leistungsstarke Funktionen aus Produktionsanwendungen:
+
+### [Image Service Feature](/features/image-service)
+
+Erweiterter Service zur Bildoptimierung und -transformation mit:
+
+- Bildgrößenänderung und Formatkonvertierung in Echtzeit
+- Bild-Proxying für externe Quellen
+- Intelligentes Caching-System
+- **Hinweis**: Diese Funktion ist an die Payload CMS-Architektur gebunden. Siehe
+  [Dokumentation](/features/image-service) für Integrationsdetails.
+
+### [Plausible Analytics Feature](/features/plausible)
+
+Verbesserte Analytics-Integration mit:
+
+- Client- und serverseitiges Event-Tracking
+- Rate Limiting und Validierung
+- Automatische Wiederholung für kritische Events
+- Vollständige TypeScript-Unterstützung
 
 Weitere erwähnenswerte Aspekte:
 
 - **Selbst gehostete Schriftarten**: Open Sans vorinstalliert und einsatzbereit als Beispiel für
   selbst gehostete Schriftarten. Die Schriftartendateien befinden sich in
-  `/public/assets/open-sans/` und die CSS- Datei befindet sich in `/app/styles/fonts.css`. Sie
-  können Ihre eigenen Schriftarten hinzufügen, indem Sie dieselbe Struktur befolgen.
-- **[Plausible.io](https://plausible.io/) Integration**: Einsatzbereit mit
-  [Plausible](https://plausible.io/) für Analysen, Seitenaufrufe und Ereignisse; sowohl auf Server-
-  als auch auf Client-Seite. Die Integration befindet sich in `/app/lib/plausible/`. Sie können Ihre
-  eigene Plausible-Domain hinzufügen, indem Sie die .env-Datei bearbeiten, wenn Sie selbst hosten.
-  Ereignisse werden immer nur an eine enthaltene API-Route gesendet, damit Sie die Ereigniserfassung
-  auf derselben Domain wie Ihre App ausführen können.
+  `/public/assets/open-sans/` und die CSS-Datei befindet sich in `/app/styles/fonts.css`. Sie können
+  Ihre eigenen Schriftarten hinzufügen, indem Sie dieselbe Struktur befolgen.
 - **Eslint, Prettier**: Vorkonfiguriert mit sinnvollen Standardeinstellungen für TypeScript und
   React. Sie können die Konfigurationsdateien nach Belieben anpassen. Das Projekt verwendet die von
   `@epic-web/config` bereitgestellten Voreinstellungen.
@@ -51,6 +68,9 @@ Weitere erwähnenswerte Aspekte:
     - `/typography/`: Allgemeine Typografie-Komponenten wie Überschriften, Absätze usw.
     - `/theme/`: Layout- und Theming-Komponenten, Kopfzeile, Fußzeile usw.
     - `/ui/`: UI-Komponenten wie Schaltflächen, Eingabefelder usw.
+  - `/features/`: Eigenständige Feature-Module
+    - `/image-service/`: Bildoptimierung und -transformation
+    - `/plausible/`: Analytics-Integration
   - `/routes/`: Routenkomponenten und Seitendefinitionen
     - `/files/`: Allgemeine dateibasierte Routen
     - `/api/`: Routen, die nur API-Anfragen verarbeiten
@@ -59,6 +79,8 @@ Weitere erwähnenswerte Aspekte:
   - `/config/`: Verschiedene Konfigurationsdateien
   - `/styles/`: Globale Stile und CSS-Dateien für Tailwind
   - `/middleware/`: React Router Middleware
+  - `/md-content/`: Markdown-Dokumentationsdateien
+    - `/features/`: Feature-spezifische Dokumentation
 - `/public/`: Statische Assets
 
 ## Entwicklung
@@ -68,6 +90,7 @@ yarn run dev # Entwicklungsserver starten
 yarn run build # Projekt bauen
 yarn run up # Abhängigkeiten aktualisieren
 yarn run i18n:extract # i18n-Schlüssel und Standardwerte extrahieren
+yarn run i18n:generate # Typsichere i18n-Dateien generieren
 ```
 
 ## Bereitstellung

@@ -17,11 +17,15 @@ export const Footer: React.FC = () => {
 			items: [
 				{
 					name: t('menu.home.name', 'Home'),
-					path: (lang: string) => href('/:lang?/home', { lang }),
+					path: (lang: string) => href('/:lang/home', { lang }),
 				},
 				{
 					name: t('menu.form.name', 'Example Form'),
-					path: (lang: string) => href('/:lang?/form', { lang }),
+					path: (lang: string) => href('/:lang/form', { lang }),
+				},
+				{
+					name: t('menu.images.name', 'Image Examples'),
+					path: (lang: string) => href('/:lang/images', { lang }),
 				},
 			],
 			section: t('menu.footer.section.products', 'Products'),
@@ -30,11 +34,15 @@ export const Footer: React.FC = () => {
 			items: [
 				{
 					name: t('menu.home.name', 'Home'),
-					path: (lang: string) => href('/:lang?/home', { lang }),
+					path: (lang: string) => href('/:lang/home', { lang }),
 				},
 				{
 					name: t('menu.form.name', 'Example Form'),
-					path: (lang: string) => href('/:lang?/form', { lang }),
+					path: (lang: string) => href('/:lang/form', { lang }),
+				},
+				{
+					name: t('menu.images.name', 'Image Examples'),
+					path: (lang: string) => href('/:lang/images', { lang }),
 				},
 			],
 			section: t('menu.footer.section.company', 'Company'),
@@ -43,11 +51,15 @@ export const Footer: React.FC = () => {
 			items: [
 				{
 					name: t('menu.home.name', 'Home'),
-					path: (lang: string) => href('/:lang?/home', { lang }),
+					path: (lang: string) => href('/:lang/home', { lang }),
 				},
 				{
 					name: t('menu.form.name', 'Example Form'),
-					path: (lang: string) => href('/:lang?/form', { lang }),
+					path: (lang: string) => href('/:lang/form', { lang }),
+				},
+				{
+					name: t('menu.images.name', 'Image Examples'),
+					path: (lang: string) => href('/:lang/images', { lang }),
 				},
 			],
 			section: t('menu.footer.section.resources', 'Resources'),
@@ -112,10 +124,10 @@ export const Footer: React.FC = () => {
 						})}
 					</div>
 					<div className="flex flex-wrap gap-x-6 gap-y-2">
-						<Link className="hover:underline" to={href('/:lang?/legal', { lang })}>
+						<Link className="hover:underline" to={href('/:lang/legal', { lang })}>
 							{t('theme.footer.legalLink', 'Legal information')}
 						</Link>
-						<Link className="hover:underline" to={href('/:lang?/privacy', { lang })}>
+						<Link className="hover:underline" to={href('/:lang/privacy', { lang })}>
 							{t('theme.footer.privacyLink', 'Privacy Policy')}
 						</Link>
 					</div>

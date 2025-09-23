@@ -1,9 +1,10 @@
 import { type ActionFunctionArgs } from 'react-router'
 import { getClientIPAddress } from 'remix-utils/get-client-ip-address'
 
-import { plausibleRateLimiter } from '~/features/plausible/utils/rate-limiter.ts'
-import { sanitizeEventData, validateEventData } from '~/features/plausible/utils/validation.ts'
 import { logger } from '~/lib/logger.ts'
+
+import { plausibleRateLimiter } from '../utils/rate-limiter.ts'
+import { sanitizeEventData, validateEventData } from '../utils/validation.ts'
 
 export const action = async ({ request }: ActionFunctionArgs) => {
 	const { method } = request

@@ -14,20 +14,20 @@ import {
 import { useChangeLanguage } from 'remix-i18next/react'
 
 import { DevModeOverlay } from '~/components/devmode-overlay'
+import { plausibleClientEvent } from '~/features/plausible/events/plausible-client-event.ts'
+import { GenericAppEvents } from '~/features/plausible/types/event-names.ts'
+import { getHostname } from '~/features/plausible/utils/get-hostname.ts'
 import { ClientHintCheck, getHints } from '~/lib/client-hints.tsx'
 import { i18nCookie } from '~/lib/cookies/i18next-cookie.server.ts'
 import { ErrorBoundaryShared } from '~/lib/error-boundary-shared.tsx'
 import { isClient } from '~/lib/is-client.ts'
 import { logger } from '~/lib/logger.ts'
-import { GenericAppEvents } from '~/lib/plausible/event-names.ts'
-import { getHostname } from '~/lib/plausible/get-hostname.ts'
 import { getLocale, i18nextMiddleware } from '~/middleware/i18next.ts'
 import { performanceMiddleware } from '~/middleware/performance.ts'
 
-import { type Route } from './+types/root.ts'
 import './styles/fonts.css'
 import './styles/tailwind.css'
-import { plausibleClientEvent } from './lib/plausible/plausible-client-event.ts'
+import { type Route } from './+types/root.ts'
 import versionFile from './version.json'
 
 export const links: LinksFunction = () => [
@@ -96,7 +96,7 @@ export function Layout({ children }: PropsWithChildren) {
 	} = useLoaderData<typeof loader>()
 
 	useEffect(() => {
-		plausibleClientEvent({ name: GenericAppEvents.PageView })
+		void plausibleClientEvent({ name: GenericAppEvents.PageView })
 	}, [location.pathname])
 
 	if (isClient() && window.ENV.VERSION !== version) {

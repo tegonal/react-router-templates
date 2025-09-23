@@ -24,18 +24,36 @@ Notable libraries and tools used in this project include:
 - **react-markdown**: For rendering Markdown content in React
 - **lucide-react**: All the icons you will probably ever need
 - **@uidotdev/usehooks**: A collection of useful React hooks
-- **lodash-es**: For utility functions
+- **es-toolkit**: Modern utility functions (lodash replacement)
+
+## Integrated Features
+
+This template includes two powerful features ported from production applications:
+
+### [Image Service Feature](/features/image-service)
+
+Advanced image optimization and transformation service with:
+
+- On-the-fly image resizing and format conversion
+- Image proxying for external sources
+- Intelligent caching system
+- **Note**: This feature is tied to Payload CMS architecture. See
+  [documentation](/features/image-service) for integration details.
+
+### [Plausible Analytics Feature](/features/plausible)
+
+Enhanced analytics integration with:
+
+- Client and server-side event tracking
+- Rate limiting and validation
+- Automatic retry for critical events
+- Full TypeScript support
 
 Other notable mentions:
 
 - **Self-hosted fonts**: Open Sans preinstalled and ready to use as an example for self-hosting
   fonts. The font files are located in `/public/assets/open-sans/` and the CSS file is located in
   `/app/styles/fonts.css`. You can add your own fonts by following the same structure.
-- **[Plausible.io](https://plausible.io/) Integration**: Ready to use with
-  [Plausible](https://plausible.io/) for analytics, page views and events; on the server and client
-  side. The integration is located in `/app/lib/plausible/`. You can add your own Plausible domain
-  by editing the .env file if you're self-hosting. Events are only ever sent to an included api
-  route so you can run event collection on the same domain as your app.
 - **Eslint, Prettier**: Preconfigured with sensible defaults for TypeScript and React. You can
   customize the configuration files to your liking. The project uses the presets provided by
   `@epic-web/config`.
@@ -47,6 +65,9 @@ Other notable mentions:
     - `/typography/`: General typography components like headings, paragraphs, etc.
     - `/theme/`: Layout and theming components, header, footer, etc.
     - `/ui/`: UI components like buttons, inputs, etc.
+  - `/features/`: Self-contained feature modules
+    - `/image-service/`: Image optimization and transformation feature
+    - `/plausible/`: Analytics integration feature
   - `/routes/`: Route components and page definitions
     - `/files/`: Common file based routes
     - `/api/`: Routes that are only handling API requests
@@ -55,6 +76,8 @@ Other notable mentions:
   - `/config/`: Various configuration files
   - `/styles/`: Global styles and CSS files for tailwind
   - `/middleware/`: React Router middleware
+  - `/md-content/`: Markdown documentation files
+    - `/features/`: Feature-specific documentation
 - `/public/`: Static assets
 
 ## Development
