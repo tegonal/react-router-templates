@@ -19,7 +19,6 @@ Bibliotheken und Tools in diesem Projekt:
 - **react-markdown**: Für das Rendern von Markdown-Inhalten in React
 - **lucide-react**: Alle Icons, die Sie wahrscheinlich jemals benötigen werden
 - **@uidotdev/usehooks**: Eine Sammlung nützlicher React-Hooks
-- **lodash-es**: Für Hilfsfunktionen
 
 Weitere erwähnenswerte Funktionen:
 

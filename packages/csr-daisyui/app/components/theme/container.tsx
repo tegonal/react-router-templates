@@ -23,10 +23,11 @@ interface LayoutContainerProps extends VariantProps<typeof variants> {
 	className?: string
 }
 
-type PolymorphicComponentProp<C extends React.ElementType, Props = {}> = Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>> &
-	React.PropsWithChildren<
-	AsProp<C> & Props
->
+type PolymorphicComponentProp<C extends React.ElementType, Props = {}> = Omit<
+	React.ComponentPropsWithoutRef<C>,
+	PropsToOmit<C, Props>
+> &
+	React.PropsWithChildren<AsProp<C> & Props>
 
 type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P)
 

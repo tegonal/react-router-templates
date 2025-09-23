@@ -3,7 +3,7 @@ import { isbot } from 'isbot'
 import { PassThrough } from 'node:stream'
 import { renderToPipeableStream, type RenderToPipeableStreamOptions } from 'react-dom/server'
 import { I18nextProvider } from 'react-i18next'
-import { type EntryContext, ServerRouter, type unstable_RouterContextProvider } from 'react-router'
+import { type EntryContext, type RouterContextProvider, ServerRouter } from 'react-router'
 
 import { getInstance } from './middleware/i18next'
 
@@ -14,7 +14,7 @@ export default function handleRequest(
 	responseStatusCode: number,
 	responseHeaders: Headers,
 	entryContext: EntryContext,
-	routerContext: unstable_RouterContextProvider,
+	routerContext: RouterContextProvider,
 ) {
 	return new Promise((resolve, reject) => {
 		let shellRendered = false

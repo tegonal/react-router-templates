@@ -69,7 +69,7 @@ export const loader = async ({ context, request }: Route.LoaderArgs) => {
 
 export type RootRouteLoaderData = typeof loader
 
-export const unstable_middleware = [i18nextMiddleware, performanceMiddleware]
+export const middleware = [i18nextMiddleware, performanceMiddleware]
 
 export const handle = {
 	i18n: ['common'],

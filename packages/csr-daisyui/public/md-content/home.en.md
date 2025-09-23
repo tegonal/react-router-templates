@@ -19,7 +19,6 @@ Notable libraries and tools used in this project include:
 - **react-markdown**: For rendering Markdown content in React
 - **lucide-react**: All the icons you will probably ever need
 - **@uidotdev/usehooks**: A collection of useful React hooks
-- **lodash-es**: For utility functions
 
 Other notable mentions:
 

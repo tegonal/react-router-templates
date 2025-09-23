@@ -1,6 +1,5 @@
 import { cacheHeader } from 'pretty-cache-header'
 import { data } from 'react-router'
-import { z } from 'zod'
 
 import { i18nConfig } from '~/i18n-config.ts'
 import { logger } from '~/lib/logger.ts'
@@ -10,28 +9,21 @@ import { type Route } from '../../../.react-router/types/app/routes/api/+types/l
 const resources = i18nConfig.resources
 
 export async function loader({ params }: Route.LoaderArgs) {
-	const lng = z
-		.string()
-		.refine((lng): lng is keyof typeof resources => Object.keys(resources).includes(lng))
-		.safeParse(params.lang)
+	const lng = params.lang
+	const ns = params.ns
 
-	if (lng.error) {
-		logger.error(lng.error)
-		return data({ error: lng.error }, { status: 400 })
+	// Validate language
+	if (!lng || !(lng in resources)) {
+		logger.error(`Invalid language: ${lng}`)
+		return data({ error: 'Invalid language' }, { status: 400 })
 	}
 
-	const namespaces = resources[lng.data]
+	const namespaces = resources[lng as keyof typeof resources]
 
-	const ns = z
-		.string()
-		.refine((ns): ns is keyof typeof namespaces => {
-			return Object.keys(resources[lng.data]).includes(ns)
-		})
-		.safeParse(params.ns)
-
-	if (ns.error) {
-		logger.error(ns.error)
-		return data({ error: ns.error }, { status: 400 })
+	// Validate namespace
+	if (!ns || !(ns in namespaces)) {
+		logger.error(`Invalid namespace: ${ns}`)
+		return data({ error: 'Invalid namespace' }, { status: 400 })
 	}
 
 	const headers = new Headers()
@@ -51,5 +43,5 @@ export async function loader({ params }: Route.LoaderArgs) {
 		)
 	}
 
-	return data(namespaces[ns.data], { headers })
+	return data(namespaces[ns as keyof typeof namespaces], { headers })
 }

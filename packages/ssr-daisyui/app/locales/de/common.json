@@ -1,85 +1,85 @@
 {
-  "common": {
-    "404": {
-      "message": "Die Seite, nach der du suchst, existiert nicht.",
-      "title": "Seite nicht gefunden"
-    }
-  },
-  "form": {
-    "description": {
-      "email": "Deine E-Mail-Adresse",
-      "flavour": "Deine Lieblingsgeschmacksrichtung",
-      "name": "Dein Name, Familienname, Spitzname oder alles dazwischen"
-    },
-    "errors": {
-      "invalid": {
-        "email": "Ungültige E-Mail-Adresse"
-      },
-      "required": "Dieses Feld ist erforderlich"
-    },
-    "flavour": {
-      "chocolate": "Schokolade",
-      "strawberry": "Erdbeere",
-      "vanilla": "Vanille"
-    },
-    "label": {
-      "email": "E-Mail",
-      "flavour": "Geschmack",
-      "name": "Name"
-    }
-  },
-  "header": {
-    "title": "ACME Inc."
-  },
-  "language": {
-    "switcher": {
-      "title": "Sprache ändern"
-    }
-  },
-  "menu": {
-    "footer": {
-      "section": {
-        "company": "Unternehmen",
-        "products": "Produkte",
-        "resources": "Ressourcen"
-      }
-    },
-    "form": {
-      "name": "Beispielformular"
-    },
-    "home": {
-      "name": "Startseite"
-    }
-  },
-  "routes": {
-    "form": {
-      "description": "Eine Route, die als Beispielformularseite für die Anwendung dient.",
-      "title": "Beispielformular mit Validierung"
-    },
-    "home": {
-      "description": "Eine Route, die als Startseite für die Anwendung dient.",
-      "title": "Startseite"
-    },
-    "legal": {
-      "description": "Dies ist die Seite mit rechtlichen Informationen.",
-      "title": "Rechtliches"
-    },
-    "privacy": {
-      "description": "Dies ist die Datenschutzseite.",
-      "title": "Datenschutz"
-    }
-  },
-  "theme": {
-    "footer": {
-      "claim": "Wir revolutionieren die Branche mit unseren hochmodernen Lösungen.",
-      "copyright": "© {{year}} ACME Inc. - Alle Rechte vorbehalten",
-      "legalLink": "Rechtliche Hinweise",
-      "privacyLink": "Datenschutzrichtlinie"
-    }
-  },
-  "userActions": {
-    "button": {
-      "submit": "Formular absenden"
-    }
-  }
+	"common": {
+		"404": {
+			"message": "Die Seite, nach der du suchst, existiert nicht.",
+			"title": "Seite nicht gefunden"
+		}
+	},
+	"form": {
+		"description": {
+			"email": "Deine E-Mail-Adresse",
+			"flavour": "Deine Lieblingsgeschmacksrichtung",
+			"name": "Dein Name, Familienname, Spitzname oder alles dazwischen"
+		},
+		"errors": {
+			"invalid": {
+				"email": "Ungültige E-Mail-Adresse"
+			},
+			"required": "Dieses Feld ist erforderlich"
+		},
+		"flavour": {
+			"chocolate": "Schokolade",
+			"strawberry": "Erdbeere",
+			"vanilla": "Vanille"
+		},
+		"label": {
+			"email": "E-Mail",
+			"flavour": "Geschmack",
+			"name": "Name"
+		}
+	},
+	"header": {
+		"title": "ACME Inc."
+	},
+	"language": {
+		"switcher": {
+			"title": "Sprache ändern"
+		}
+	},
+	"menu": {
+		"footer": {
+			"section": {
+				"company": "Unternehmen",
+				"products": "Produkte",
+				"resources": "Ressourcen"
+			}
+		},
+		"form": {
+			"name": "Beispielformular"
+		},
+		"home": {
+			"name": "Startseite"
+		}
+	},
+	"routes": {
+		"form": {
+			"description": "Eine Route, die als Beispielformularseite für die Anwendung dient.",
+			"title": "Beispielformular mit Validierung"
+		},
+		"home": {
+			"description": "Eine Route, die als Startseite für die Anwendung dient.",
+			"title": "Startseite"
+		},
+		"legal": {
+			"description": "Dies ist die Seite mit rechtlichen Informationen.",
+			"title": "Rechtliches"
+		},
+		"privacy": {
+			"description": "Dies ist die Datenschutzseite.",
+			"title": "Datenschutz"
+		}
+	},
+	"theme": {
+		"footer": {
+			"claim": "Wir revolutionieren die Branche mit unseren hochmodernen Lösungen.",
+			"copyright": "© {{year}} ACME Inc. - Alle Rechte vorbehalten",
+			"legalLink": "Rechtliche Hinweise",
+			"privacyLink": "Datenschutzrichtlinie"
+		}
+	},
+	"userActions": {
+		"button": {
+			"submit": "Formular absenden"
+		}
+	}
 }

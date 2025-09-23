@@ -22,3 +22,7 @@ build
 node_modules
 .yarn/install-state.gz
 .DS_Store
+
+/.claude
+/.serena
+CLAUDE.md

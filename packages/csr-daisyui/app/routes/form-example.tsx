@@ -13,7 +13,7 @@ import { zIsEmail, zIsRequired } from '~/lib/zod-form-validations.ts'
 
 const schema = z.object({
 	email: zIsRequired.pipe(zIsEmail),
-	flavour: z.enum(['vanilla', 'chocolate', 'strawberry']).pipe(zIsRequired),
+	flavour: z.enum(['vanilla', 'chocolate', 'strawberry']),
 	name: zIsRequired,
 })
 

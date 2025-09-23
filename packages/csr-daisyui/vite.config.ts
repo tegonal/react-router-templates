@@ -15,7 +15,6 @@ export default defineConfig(() => {
 					manualChunks: {
 						react: ['react', 'react-dom', 'react-router'],
 						vendor: [
-							'lodash-es',
 							'lucide-react',
 							'@uidotdev/usehooks',
 							'react-hook-form',

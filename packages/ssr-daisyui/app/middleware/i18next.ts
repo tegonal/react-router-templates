@@ -1,9 +1,9 @@
-import { unstable_createI18nextMiddleware } from 'remix-i18next/middleware'
+import { createI18nextMiddleware } from 'remix-i18next/middleware'
 
 import { i18nConfig } from '~/i18n-config.ts'
 import { i18nCookie } from '~/lib/cookies/i18next-cookie.server.ts'
 
-export const [i18nextMiddleware, getLocale, getInstance] = unstable_createI18nextMiddleware({
+export const [i18nextMiddleware, getLocale, getInstance] = createI18nextMiddleware({
 	detection: {
 		cookie: i18nCookie,
 		fallbackLanguage: i18nConfig.fallbackLng,
