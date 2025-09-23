@@ -3,8 +3,12 @@ import fs from 'fs/promises'
 import path from 'path'
 
 import { CACHE_DIR } from '~/features/image-service/config.server.ts'
+import { logger } from '~/lib/logger.ts'
 
 import { type ImageTransformOptions } from './types'
+
+// Track if we've already purged the cache this session
+let cacheAlreadyPurged = false
 
 export async function deleteCachedImage(cacheKey: string): Promise<boolean> {
 	try {
@@ -106,6 +110,16 @@ export async function purgeCache(maxAge?: number): Promise<{ deleted: number; er
 	}
 
 	return { deleted, errors }
+}
+
+export function purgeCacheOnStartup(): void {
+	if (!cacheAlreadyPurged) {
+		cacheAlreadyPurged = true
+		logger.debug('Purging image cache on server startup (development mode)')
+		purgeCache().catch((error) => {
+			logger.error('Failed to purge image cache on startup:', error)
+		})
+	}
 }
 
 export async function setCachedImage(cacheKey: string, buffer: Buffer): Promise<void> {

@@ -1,26 +1,21 @@
 import { type LoaderFunctionArgs } from 'react-router'
 
 import { processImageUrl } from '~/features/image-service/services/process-image-url.ts'
-import { logger } from '~/lib/logger.ts'
 
 import {
 	getCachedImage,
 	getCacheKey,
-	purgeCache,
+	purgeCacheOnStartup,
 	setCachedImage,
 } from '../services/image/cache.server.ts'
 import { fetchImage } from '../services/image/fetch.server.ts'
 import { parseImageParams, transformImage } from '../services/image/transform.server.ts'
 
-// Purge cache once on server startup in development
-if (process.env.NODE_ENV === 'development') {
-	logger.debug('Purging image cache on server startup (development mode)')
-	purgeCache().catch((error) => {
-		logger.error('Failed to purge image cache on startup:', error)
-	})
-}
-
 export async function loader({ request }: LoaderFunctionArgs) {
+	// Purge cache once on server startup in development
+	if (process.env.NODE_ENV === 'development') {
+		purgeCacheOnStartup()
+	}
 	const url = new URL(request.url)
 	const src = processImageUrl(url.searchParams.get('src') || '')
 
