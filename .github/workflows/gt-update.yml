@@ -5,19 +5,29 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under European Union Public License v. 1.2
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v1.4.2
+#                                         Version: v1.6.3
 ###################################
 name: "gt update"
+
+#gt-placeholder-trigger-start
 on:
   schedule:
     - cron: '0 4 * * MON'
   workflow_dispatch:
+#gt-placeholder-trigger-end
+
+permissions:
+  contents: read
 
 jobs:
   determine_remotes:
     name: Determine Remotes
     runs-on: ubuntu-latest
+
+    # gt-placeholder-owner-start
     if: github.repository_owner == 'tegonal'
+    # gt-placeholder-owner-end
+
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -32,23 +42,32 @@ jobs:
         run: |
           set -e
           # see install.doc.sh in https://github.com/tegonal/gt, MODIFY THERE NOT HERE (please report bugs)
-          currentDir=$(pwd) && \
-          tmpDir=$(mktemp -d -t gt-download-install-XXXXXXXXXX) && cd "$tmpDir" && \
-          wget "https://raw.githubusercontent.com/tegonal/gt/main/.gt/signing-key.public.asc" && \
-          wget "https://raw.githubusercontent.com/tegonal/gt/main/.gt/signing-key.public.asc.sig" && \
-          gpg --verify ./signing-key.public.asc.sig ./signing-key.public.asc && \
-          echo "public key trusted" && \
-          mkdir ./gpg && \
-          gpg --homedir ./gpg --import ./signing-key.public.asc && \
-          wget "https://raw.githubusercontent.com/tegonal/gt/v1.4.2/install.sh" && \
-          wget "https://raw.githubusercontent.com/tegonal/gt/v1.4.2/install.sh.sig" && \
-          gpg --homedir ./gpg --verify ./install.sh.sig ./install.sh && \
-          chmod +x ./install.sh && \
-          echo "verification successful" || (printf >&2 "\033[0;31mERROR\033[0m: verification failed, don't continue !!\n"; exit 1) && \
-          ./install.sh && result=true || (echo >&2 "installation failed"; exit 1) && \
-          false || cd "$currentDir" && rm -r "$tmpDir" && "${result:-false}"
+          #!/usr/bin/env bash
+          currentDir=$(pwd) &&
+          	tmpDir=$(mktemp -d -t gt-download-install-XXXXXXXXXX) && cd "$tmpDir" &&
+          	wget "https://raw.githubusercontent.com/tegonal/gt/main/.gt/signing-key.public.asc" &&
+          	wget "https://raw.githubusercontent.com/tegonal/gt/main/.gt/signing-key.public.asc.sig" &&
+          	gpg --verify ./signing-key.public.asc.sig ./signing-key.public.asc &&
+          	echo "public key trusted" &&
+          	mkdir ./gpg &&
+          	gpg --homedir ./gpg --import ./signing-key.public.asc &&
+          	wget "https://raw.githubusercontent.com/tegonal/gt/v1.4.4/install.sh" &&
+          	wget "https://raw.githubusercontent.com/tegonal/gt/v1.4.4/install.sh.sig" &&
+          	gpg --homedir ./gpg --verify ./install.sh.sig ./install.sh &&
+          	chmod +x ./install.sh &&
+          	echo "verification successful" ||
+          	{
+          		printf >&2 "\033[0;31mERROR\033[0m: verification failed, don't continue !!\n"
+          		exit 1
+          	} && ./install.sh && result=true ||
+          	{
+          		echo >&2 "installation failed"
+          		exit 1
+          	} && false || cd "$currentDir" && rm -r "$tmpDir" && "${result:-false}"
           # end install.doc.sh
-      - uses: actions/checkout@v4
+      #gt-placeholder-gh-action-checkout-1-start
+      - uses: actions/checkout@v6
+      #gt-placeholder-gh-action-checkout-1-end
       - id: set-matrix
         run: |
           (readarray -t REMOTES; IFS=','; echo "matrix={ 'remote': [ ${REMOTES[*]} ] }" >> "$GITHUB_OUTPUT") < <( gt remote list | sed -E "s/(.*)/'\1'/")
@@ -71,23 +90,32 @@ jobs:
         run: |
           set -e
           # see install.doc.sh in https://github.com/tegonal/gt, MODIFY THERE NOT HERE (please report bugs)
-          currentDir=$(pwd) && \
-          tmpDir=$(mktemp -d -t gt-download-install-XXXXXXXXXX) && cd "$tmpDir" && \
-          wget "https://raw.githubusercontent.com/tegonal/gt/main/.gt/signing-key.public.asc" && \
-          wget "https://raw.githubusercontent.com/tegonal/gt/main/.gt/signing-key.public.asc.sig" && \
-          gpg --verify ./signing-key.public.asc.sig ./signing-key.public.asc && \
-          echo "public key trusted" && \
-          mkdir ./gpg && \
-          gpg --homedir ./gpg --import ./signing-key.public.asc && \
-          wget "https://raw.githubusercontent.com/tegonal/gt/v1.4.2/install.sh" && \
-          wget "https://raw.githubusercontent.com/tegonal/gt/v1.4.2/install.sh.sig" && \
-          gpg --homedir ./gpg --verify ./install.sh.sig ./install.sh && \
-          chmod +x ./install.sh && \
-          echo "verification successful" || (printf >&2 "\033[0;31mERROR\033[0m: verification failed, don't continue !!\n"; exit 1) && \
-          ./install.sh && result=true || (echo >&2 "installation failed"; exit 1) && \
-          false || cd "$currentDir" && rm -r "$tmpDir" && "${result:-false}"
+          #!/usr/bin/env bash
+          currentDir=$(pwd) &&
+          	tmpDir=$(mktemp -d -t gt-download-install-XXXXXXXXXX) && cd "$tmpDir" &&
+          	wget "https://raw.githubusercontent.com/tegonal/gt/main/.gt/signing-key.public.asc" &&
+          	wget "https://raw.githubusercontent.com/tegonal/gt/main/.gt/signing-key.public.asc.sig" &&
+          	gpg --verify ./signing-key.public.asc.sig ./signing-key.public.asc &&
+          	echo "public key trusted" &&
+          	mkdir ./gpg &&
+          	gpg --homedir ./gpg --import ./signing-key.public.asc &&
+          	wget "https://raw.githubusercontent.com/tegonal/gt/v1.4.4/install.sh" &&
+          	wget "https://raw.githubusercontent.com/tegonal/gt/v1.4.4/install.sh.sig" &&
+          	gpg --homedir ./gpg --verify ./install.sh.sig ./install.sh &&
+          	chmod +x ./install.sh &&
+          	echo "verification successful" ||
+          	{
+          		printf >&2 "\033[0;31mERROR\033[0m: verification failed, don't continue !!\n"
+          		exit 1
+          	} && ./install.sh && result=true ||
+          	{
+          		echo >&2 "installation failed"
+          		exit 1
+          	} && false || cd "$currentDir" && rm -r "$tmpDir" && "${result:-false}"
           # end install.doc.sh
-      - uses: actions/checkout@v4
+      #gt-placeholder-gh-action-checkout-2-start
+      - uses: actions/checkout@v6
+      #gt-placeholder-gh-action-checkout-2-end
       - name: reset gpg keys
         run: gt reset --gpg-only true -r "${{ matrix.remote }}"
       - name: gt update
@@ -120,10 +148,11 @@ jobs:
           ) || (printf '\033[0;34mINFO\033[0m: going to reset changes back to the status after `gt update` and continue without cleanup\n' && git reset --hard)
       - name: Create pull request if necessary
         if: ${{ steps.has_changes.outputs.has_changes == 1 }}
-        uses: peter-evans/create-pull-request@v7
+        #gt-placeholder-gh-action-create-pr-start
+        uses: peter-evans/create-pull-request@v8
+        #gt-placeholder-gh-action-create-pr-end
         with:
           branch: 'gt/update/${{ matrix.remote }}'
-          base: main
           title: 'update files of remote ${{ matrix.remote }} to version ${{steps.gt_update.outputs.remote_version}} via gt'
           commit-message: 'update files of remote ${{ matrix.remote }} to version ${{steps.gt_update.outputs.remote_version}} via gt'
           body: "following the changes after running `gt update -r \"${{ matrix.remote }}\"` and reset gpg keys"
@@ -135,7 +164,9 @@ jobs:
     name: "Check signing-key"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      #gt-placeholder-gh-action-checkout-3-start
+      - uses: actions/checkout@v6
+      #gt-placeholder-gh-action-checkout-3-end
       - name: check if signing key already are or will expire within the next 3 months
         run: |
           set -euo pipefail
