@@ -5913,8 +5913,8 @@ __metadata:
   linkType: hard
 
 "i18next-cli@npm:^1.64.0":
-  version: 1.64.0
-  resolution: "i18next-cli@npm:1.64.0"
+  version: 1.64.1
+  resolution: "i18next-cli@npm:1.64.1"
   dependencies:
     "@croct/json5-parser": "npm:^0.2.2"
     "@swc/core": "npm:^1.15.41"
@@ -5935,7 +5935,7 @@ __metadata:
     yaml: "npm:^2.9.0"
   bin:
     i18next-cli: dist/esm/cli.js
-  checksum: 10c0/3f5761acaa2b9a8deb352842ff314cf46fc3381c732ae374378d8e998cf84724fb9863fd0bcb3c293853ee45c5f18309af727ab06ca6dad12045b7948934e445
+  checksum: 10c0/1bd4dc37d49116ae120cfb54831fdac393c537f98843b049a2ef95b5116277e331d29ff93bf085245f611558665a895288ac101b7357685fa617232afc843dc1
   languageName: node
   linkType: hard
 
