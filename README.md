@@ -72,23 +72,5 @@ headless, accessible behavior. The convention:
   the look. Avoid DaisyUI's structural container classes (`modal`, `dropdown`, `collapse`) on Base
   UI components — use Tailwind utilities and theme tokens instead.
 
-## But I want Shadcn UI because DaisyUI is not my jam! :`(
-
-The starters already include Base UI (see above). If you'd rather use a different headless library,
-any of these work the same way — style their unstyled, accessible components using daisyUI theme
-definitions and classes.
-
-For example:
-
-- **[Radix UI](https://www.radix-ui.com/)** - you can easily modify most Shadcn UI components because they heavily rely on Radix UI components. Copy them over, install the radix components they require and style them using daisyUI classes.
-- **[Headless UI](https://headlessui.dev/)** - Another great library that provides unstyled, fully accessible UI components designed to integrate beautifully with Tailwind CSS.
-- **[React Aria](https://react-spectrum.adobe.com/react-aria/)** - React components that provide accessible UI primitives for your design system.
-
-For more specific and advanced components like date pickers, sliders, you can refer to the ones utilised by ShadCN UI and style them easily to fit your needs.
-
-Or you rip out the DaisyUI theme and replace it with Shadcn UI theming and components. This is a bit more work but still possible. We suggest starting with DaisyUI and implementing headless components gradually, as needed, styling them on the go.
-
-Another great option depending on your use case is [PrimeReact](https://primereact.org), which also comes with its own theme.
-
 ## Contributing
 We welcome contributions to this project! If you have suggestions, improvements, or bug fixes, please feel free to open an issue or submit a pull request.
