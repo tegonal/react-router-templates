@@ -1,20 +1,30 @@
 {
-	"extends": ["@epic-web/config/typescript"],
-	"include": [
-		".react-router/types/**/*",
-		"@epic-web/config/reset.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"**/*.js",
-		"**/*.jsx"
-	],
-	"exclude": ["node_modules", "dist", "build", "public", "temp"],
-	"compilerOptions": {
-		"rewriteRelativeImportExtensions": false,
-		"types": ["@react-router/node", "vite/client"],
-		"paths": {
-			"~/*": ["./app/*"]
-		},
-		"rootDirs": [".", "./.react-router/types"]
-	}
+  "include": [
+    ".react-router/types/**/*",
+    "reset.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ],
+  "exclude": ["node_modules", "dist", "build", "public", "temp"],
+  "compilerOptions": {
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "module": "preserve",
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "noUncheckedIndexedAccess": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "rewriteRelativeImportExtensions": false,
+    "types": ["@react-router/node", "vite/client"],
+    "paths": {
+      "~/*": ["./app/*"]
+    },
+    "rootDirs": [".", "./.react-router/types"]
+  }
 }

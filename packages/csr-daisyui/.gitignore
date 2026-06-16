@@ -9,3 +9,4 @@ node_modules
 .react-router/
 .yarn/install-state.gz
 tsconfig.tsbuildinfo
+.i18n-cache

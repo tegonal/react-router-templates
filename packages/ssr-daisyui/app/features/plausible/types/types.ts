@@ -1,23 +1,23 @@
 import { type PlausibleEventNames } from './event-names.ts'
 
 export type ActionEvent = {
-	name: 'action'
-	props?: Record<string, string>
+  name: 'action'
+  props?: Record<string, string>
 }
 
 export type PlausibleClientEventOptions =
-	| ActionEvent
-	| {
-			name: PlausibleEventNames
-	  }
+  | ActionEvent
+  | {
+      name: PlausibleEventNames
+    }
 
 export type PlausibleEventOptions = ActionEvent | UserActionEvent
 
 export type PlausibleServerEventOptions = PlausibleEventOptions & {
-	request: Request
+  request: Request
 }
 
 export type UserActionEvent = {
-	name: PlausibleEventNames
-	props?: Record<string, number | string>
+  name: PlausibleEventNames
+  props?: Record<string, number | string>
 }

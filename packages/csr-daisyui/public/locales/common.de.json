@@ -53,19 +53,12 @@
   },
   "routes": {
     "form": {
-      "description": "Eine Route, die als Beispielformularseite für die Anwendung dient.",
       "title": "Beispielformular mit Validierung"
     },
-    "home": {
-      "description": "Eine Route, die als Startseite der Anwendung dient.",
-      "title": "Startseite"
-    },
     "legal": {
-      "description": "This is the legal information page.",
       "title": "Rechtliches"
     },
     "privacy": {
-      "description": "This is the privacy policy page.",
       "title": "Privacy"
     }
   },

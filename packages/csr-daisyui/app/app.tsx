@@ -12,21 +12,21 @@ import { CatchAll404 } from './routes/catch-all-404.tsx'
 import { Home } from './routes/home.tsx'
 
 export const App = () => {
-	return (
-		<ConfigProvider>
-			<Router>
-				<Layout>
-					<Routes>
-						<Route element={<Home />} path="/" />
-						<Route element={<Home />} path="/home" />
-						<Route element={<FormExample />} path="/form" />
-						<Route element={<Legal />} path="/legal" />
-						<Route element={<Privacy />} path="/privacy" />
-						<Route element={<CatchAll404 />} path="*" />
-					</Routes>
-				</Layout>
-			</Router>
-			<DevModeOverlay />
-		</ConfigProvider>
-	)
+  return (
+    <ConfigProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route element={<Home />} path="/" />
+            <Route element={<Home />} path="/home" />
+            <Route element={<FormExample />} path="/form" />
+            <Route element={<Legal />} path="/legal" />
+            <Route element={<Privacy />} path="/privacy" />
+            <Route element={<CatchAll404 />} path="*" />
+          </Routes>
+        </Layout>
+      </Router>
+      <DevModeOverlay />
+    </ConfigProvider>
+  )
 }

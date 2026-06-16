@@ -10,27 +10,30 @@ import { getInitialNamespaces } from 'remix-i18next/client'
 import { i18nConfig } from '~/i18n-config.ts'
 
 async function main() {
-	await i18next
-		.use(initReactI18next)
-		.use(Fetch)
-		.use(I18nextBrowserLanguageDetector)
-		.init({
-			backend: { loadPath: '/api/locales/{{lng}}/{{ns}}' },
-			detection: { caches: [], order: ['htmlTag'] },
-			fallbackLng: i18nConfig.fallbackLng,
-			ns: getInitialNamespaces(),
-		})
+  await i18next
+    .use(initReactI18next)
+    .use(Fetch)
+    .use(I18nextBrowserLanguageDetector)
+    .init({
+      backend: { loadPath: '/api/locales/{{lng}}/{{ns}}' },
+      defaultNS: i18nConfig.defaultNS,
+      detection: { caches: [], order: ['htmlTag'] },
+      fallbackLng: i18nConfig.fallbackLng,
+      fallbackNS: i18nConfig.fallbackNS,
+      ns: getInitialNamespaces(),
+      returnEmptyString: i18nConfig.returnEmptyString,
+    })
 
-	startTransition(() => {
-		hydrateRoot(
-			document,
-			<I18nextProvider i18n={i18next}>
-				<StrictMode>
-					<HydratedRouter />
-				</StrictMode>
-			</I18nextProvider>,
-		)
-	})
+  startTransition(() => {
+    hydrateRoot(
+      document,
+      <I18nextProvider i18n={i18next}>
+        <StrictMode>
+          <HydratedRouter />
+        </StrictMode>
+      </I18nextProvider>,
+    )
+  })
 }
 
 main().catch((error) => console.error(error))

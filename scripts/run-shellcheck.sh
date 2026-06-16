@@ -13,25 +13,25 @@ shopt -s inherit_errexit
 unset CDPATH
 
 if ! [[ -v scriptsDir ]]; then
-	scriptsDir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)"
-	readonly scriptsDir
+  scriptsDir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)"
+  readonly scriptsDir
 fi
 
 if ! [[ -v dir_of_tegonal_scripts ]]; then
-	dir_of_tegonal_scripts="$scriptsDir/../lib/tegonal-scripts/src"
-	source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+  dir_of_tegonal_scripts="$scriptsDir/../lib/tegonal-scripts/src"
+  source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
 fi
 sourceOnce "$dir_of_tegonal_scripts/qa/run-shellcheck.sh"
 
 function customRunShellcheck() {
-	declare srcDir="$scriptsDir/../src"
+  declare srcDir="$scriptsDir/../src"
 
-	# shellcheck disable=SC2034   # is passed by name to runShellcheck
-	declare -a dirs=("$scriptsDir")
-	declare sourcePath="$srcDir:$scriptsDir:$dir_of_tegonal_scripts"
-	runShellcheck dirs "$sourcePath"
+  # shellcheck disable=SC2034   # is passed by name to runShellcheck
+  declare -a dirs=("$scriptsDir")
+  declare sourcePath="$srcDir:$scriptsDir:$dir_of_tegonal_scripts"
+  runShellcheck dirs "$sourcePath"
 
-	runShellcheckPullHooks "$scriptsDir/../.gt"
+  runShellcheckPullHooks "$scriptsDir/../.gt"
 }
 
 ${__SOURCED__:+return}

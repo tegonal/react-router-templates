@@ -1,126 +1,126 @@
 {
-	"common": {
-		"404": {
-			"message": "The page you were looking for does not exist.",
-			"title": "Page not found"
-		}
-	},
-	"form": {
-		"description": {
-			"email": "Your email address",
-			"flavour": "Your favourite flavour",
-			"name": "Your name, family name, nick name or anything in between"
-		},
-		"errors": {
-			"invalid": {
-				"email": "Invalid email address"
-			},
-			"required": "This field is required"
-		},
-		"flavour": {
-			"chocolate": "Chocolate",
-			"strawberry": "Strawberry",
-			"vanilla": "Vanilla"
-		},
-		"label": {
-			"email": "Email",
-			"flavour": "Flavour",
-			"name": "Name"
-		}
-	},
-	"header": {
-		"title": "ACME Inc."
-	},
-	"language": {
-		"switcher": {
-			"title": "Change Language"
-		}
-	},
-	"menu": {
-		"footer": {
-			"section": {
-				"company": "Company",
-				"products": "Products",
-				"resources": "Resources"
-			}
-		},
-		"form": {
-			"name": "Example Form"
-		},
-		"home": {
-			"name": "Home"
-		},
-		"images": {
-			"name": "Image Examples"
-		}
-	},
-	"routes": {
-		"form": {
-			"description": "A route that serves as the example form page for the application.",
-			"title": "Example Form with Validation"
-		},
-		"home": {
-			"description": "A route that serves as the home page for the application.",
-			"title": "Home"
-		},
-		"images": {
-			"description": "Examples of optimized image components with various configurations",
-			"title": "Image Examples",
-			"intro": "This page demonstrates the Image Service features for optimized image loading and transformation.",
-			"features": {
-				"title": "Image Service Features"
-			},
-			"original": {
-				"title": "Original Image",
-				"description": "The original image without any transformations.",
-				"caption": "Full resolution, original format"
-			},
-			"resized": {
-				"title": "Resized Image",
-				"description": "Image resized to specific dimensions using the image service.",
-				"standard": "Standard resolution",
-				"thumbnail": "Thumbnail size"
-			},
-			"formats": {
-				"title": "Format Conversion",
-				"description": "Same image converted to different modern formats for better compression.",
-				"webp": "Modern format with excellent compression",
-				"avif": "Next-gen format with superior compression",
-				"jpeg": "Classic format with adjustable quality"
-			},
-			"responsive": {
-				"title": "Responsive Image",
-				"description": "Using the ResponsiveImage component that automatically adapts to container size.",
-				"caption": "Automatically calculates optimal dimensions based on container size and pixel density (capped at 2x)"
-			},
-			"quality": {
-				"title": "Quality Comparison",
-				"description": "Same image with different quality settings to demonstrate file size vs visual quality trade-offs.",
-				"low": "Smallest file size, visible compression",
-				"medium": "Good balance of quality and size",
-				"high": "Best quality, larger file size"
-			}
-		},
-		"legal": {
-			"description": "This is the legal information page.",
-			"title": "Legal"
-		},
-		"privacy": {
-			"description": "This is the privacy policy page.",
-			"title": "Privacy"
-		}
-	},
-	"theme": {
-		"footer": {
-			"claim": "Revolutionizing the industry with our cutting-edge solutions.",
-			"copyright": "© {{year}} ACME Inc. - All rights reserved",
-			"legalLink": "Legal information",
-			"privacyLink": "Privacy Policy"
-		}
-	},
-	"userActions": {
-		"button": {
-			"submit": "Submit Form"
-		}
-	}
+  "common": {
+    "404": {
+      "message": "The page you were looking for does not exist.",
+      "title": "Page not found"
+    }
+  },
+  "form": {
+    "description": {
+      "email": "Your email address",
+      "flavour": "Your favourite flavour",
+      "name": "Your name, family name, nick name or anything in between"
+    },
+    "errors": {
+      "invalid": {
+        "email": "Invalid email address"
+      },
+      "required": "This field is required"
+    },
+    "flavour": {
+      "chocolate": "Chocolate",
+      "strawberry": "Strawberry",
+      "vanilla": "Vanilla"
+    },
+    "label": {
+      "email": "Email",
+      "flavour": "Flavour",
+      "name": "Name"
+    }
+  },
+  "header": {
+    "title": "ACME Inc."
+  },
+  "language": {
+    "switcher": {
+      "title": "Change Language"
+    }
+  },
+  "menu": {
+    "footer": {
+      "section": {
+        "company": "Company",
+        "products": "Products",
+        "resources": "Resources"
+      }
+    },
+    "form": {
+      "name": "Example Form"
+    },
+    "home": {
+      "name": "Home"
+    },
+    "images": {
+      "name": "Image Examples"
+    }
+  },
+  "routes": {
+    "form": {
+      "description": "A route that serves as the example form page for the application.",
+      "title": "Example Form with Validation"
+    },
+    "home": {
+      "description": "A route that serves as the home page for the application.",
+      "title": "Home"
+    },
+    "images": {
+      "description": "Examples of optimized image components with various configurations",
+      "features": {
+        "title": "Image Service Features"
+      },
+      "formats": {
+        "avif": "Next-gen format with superior compression",
+        "description": "Same image converted to different modern formats for better compression.",
+        "jpeg": "Classic format with adjustable quality",
+        "title": "Format Conversion",
+        "webp": "Modern format with excellent compression"
+      },
+      "intro": "This page demonstrates the Image Service features for optimized image loading and transformation.",
+      "original": {
+        "caption": "Full resolution, original format",
+        "description": "The original image without any transformations.",
+        "title": "Original Image"
+      },
+      "quality": {
+        "description": "Same image with different quality settings to demonstrate file size vs visual quality trade-offs.",
+        "high": "Best quality, larger file size",
+        "low": "Smallest file size, visible compression",
+        "medium": "Good balance of quality and size",
+        "title": "Quality Comparison"
+      },
+      "resized": {
+        "description": "Image resized to specific dimensions using the image service.",
+        "standard": "Standard resolution",
+        "thumbnail": "Thumbnail size",
+        "title": "Resized Image"
+      },
+      "responsive": {
+        "caption": "Automatically calculates optimal dimensions based on container size and pixel density (capped at 2x)",
+        "description": "Using the ResponsiveImage component that automatically adapts to container size.",
+        "title": "Responsive Image"
+      },
+      "title": "Image Examples"
+    },
+    "legal": {
+      "description": "This is the legal information page.",
+      "title": "Legal"
+    },
+    "privacy": {
+      "description": "This is the privacy policy page.",
+      "title": "Privacy"
+    }
+  },
+  "theme": {
+    "footer": {
+      "claim": "Revolutionizing the industry with our cutting-edge solutions.",
+      "copyright": "© {{year}} ACME Inc. - All rights reserved",
+      "legalLink": "Legal information",
+      "privacyLink": "Privacy Policy"
+    }
+  },
+  "userActions": {
+    "button": {
+      "submit": "Submit Form"
+    }
+  }
 }

@@ -42,10 +42,10 @@ import { Image } from '~/features/image-service'
 ```tsx
 import { ResponsiveImage } from '~/features/image-service'
 ;<ResponsiveImage
-	src="/path/to/image.jpg"
-	alt="Beschreibung"
-	sizes="(max-width: 768px) 100vw, 50vw"
-	className="h-auto w-full"
+  src="/path/to/image.jpg"
+  alt="Beschreibung"
+  sizes="(max-width: 768px) 100vw, 50vw"
+  className="h-auto w-full"
 />
 ```
 
@@ -104,9 +104,9 @@ Der Proxy-Endpunkt validiert Anfragen gegen konfigurierte Payload-Endpunkte. Än
 
 ```typescript
 export const PAYLOAD_ENDPOINTS = [
-	'media',
-	'uploads',
-	// Fügen Sie hier Ihre Payload-Collections hinzu
+  'media',
+  'uploads',
+  // Fügen Sie hier Ihre Payload-Collections hinzu
 ]
 ```
 
