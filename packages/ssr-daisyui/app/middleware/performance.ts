@@ -8,9 +8,9 @@ import { type Route } from '../../.react-router/types/app/+types/root.ts'
 // https://reactrouter.com/start/changelog#middleware-unstable
 
 export const performanceMiddleware: Route.ClientMiddlewareFunction = async ({}, next) => {
-	const startTime = performance.now()
-	const result = await next()
-	const duration = performance.now() - startTime
-	logger.debug(`Route transition duration: ${round(duration, 2)}ms`)
-	return result
+  const startTime = performance.now()
+  const result = await next()
+  const duration = performance.now() - startTime
+  logger.debug(`Route transition duration: ${round(duration, 2)}ms`)
+  return result
 }

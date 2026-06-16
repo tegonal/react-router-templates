@@ -1,24 +1,24 @@
 import { type LoaderFunctionArgs } from 'react-router'
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
-	const host = request.headers.get('X-Forwarded-Host') ?? request.headers.get('host')
+  const host = request.headers.get('X-Forwarded-Host') ?? request.headers.get('host')
 
-	const disallowIndexing = `
+  const disallowIndexing = `
 User-agent: *
 Disallow: /
 `
 
-	const allowIndexing = `
+  const allowIndexing = `
 User-agent: *
 Allow: /
 `
 
-	const robotText = host?.includes('test') ? disallowIndexing : allowIndexing
+  const robotText = host?.includes('test') ? disallowIndexing : allowIndexing
 
-	return new Response(robotText, {
-		headers: {
-			'Content-Type': 'text/plain',
-		},
-		status: 200,
-	})
+  return new Response(robotText, {
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    status: 200,
+  })
 }

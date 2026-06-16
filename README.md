@@ -22,6 +22,10 @@ npx create-react-router@latest --template https://github.com/tegonal/react-route
 
 Then, follow the instructions of `create-react-router` to set up your project.
 
+> **Prerequisites:** Node.js ≥ 24 and Yarn 4. Run `corepack enable` once (Corepack ships with
+> Node) — it then uses the Yarn version pinned by the project automatically, so you don't need to
+> install Yarn yourself.
+
 To get the project up and running, navigate to the project directory that was just created and run:
 
 ```bash
@@ -55,9 +59,24 @@ Arguments that can help you decide between SSR and CSR:
 
 In the end, both SSR and CSR have their pros and cons and both approaches can be used to create the same application and features. If you feel more comfortable with one approach over the other, this could be an additional argument to base a decision on. As always, it depends.
 
+## Components & styling
+
+Both starters use **DaisyUI** for styling and ship with **[Base UI](https://base-ui.com)** for
+headless, accessible behavior. The convention:
+
+- **Simple, presentational components** (buttons, cards, badges, inputs) — just use **DaisyUI
+  classes**.
+- **Complex, interactive components** (dropdowns, dialogs, menus, selects, popovers, tabs,
+  tooltips) — build on **Base UI** headless components and style them with **DaisyUI classes** and
+  theme tokens. Base UI provides focus management, keyboard navigation and ARIA; DaisyUI provides
+  the look. Avoid DaisyUI's structural container classes (`modal`, `dropdown`, `collapse`) on Base
+  UI components — use Tailwind utilities and theme tokens instead.
+
 ## But I want Shadcn UI because DaisyUI is not my jam! :`(
 
-If you need more complex components, have a look at any headless UI library that provides good accessibility and style the components using daisyUI theme definitions and classes.
+The starters already include Base UI (see above). If you'd rather use a different headless library,
+any of these work the same way — style their unstyled, accessible components using daisyUI theme
+definitions and classes.
 
 For example:
 

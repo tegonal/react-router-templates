@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 export const CACHE_DIR = path.join(process.cwd(), 'node_modules/.cache/image-service')
 export const ALLOWED_DOMAINS = ['yapuso.com', 'localhost']

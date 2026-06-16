@@ -12,8 +12,9 @@ Diese Starter-Vorlage wurde mit folgenden Technologien erstellt:
 
 Bibliotheken und Tools in diesem Projekt:
 
-- **[react-i18next](https://react.i18next.com)**: Internationalisierungs-Framework für mehrsprachige Unterstützung
+- **[react-i18next](https://react.i18next.com)**: Internationalisierungs-Framework für mehrsprachige Unterstützung, mit typsicheren Übersetzungsschlüsseln, die von **[i18next-cli](https://github.com/i18next/i18next-cli)** extrahiert und generiert werden (`yarn i18n:extract`)
 - **[daisyui](https://daisyui.com/)**: Tailwind CSS-Komponentenbibliothek für minimalistische UI-Komponenten, die so nah wie möglich an Vanilla-HTML sind, mit umfangreichen Theming-Möglichkeiten (siehe `/app/styles/tailwind.css`)
+- **[Base UI](https://base-ui.com)**: Headless-, barrierefreie Komponenten-Primitive. Verwenden Sie für einfache Komponenten nur DaisyUI-Klassen; für komplexe, interaktive (Dropdowns, Dialoge, Menüs, Selects, …) bauen Sie auf Base UI für das Verhalten auf und stylen es mit DaisyUI-Klassen
 - **[class-variance-authority](https://cva.style)**: Für die Erstellung flexibler Komponentenvarianten
 - **[react-hook-form](https://www.react-hook-form.com)**: Für Formularverarbeitung mit `zod` für die Validierung
 - **react-markdown**: Für das Rendern von Markdown-Inhalten in React
@@ -29,8 +30,9 @@ Weitere erwähnenswerte Funktionen:
 - **[Plausible.io](https://plausible.io/) Integration**: Bereit zur Nutzung mit
   [Plausible](https://plausible.io/) für Analytics, Seitenaufrufe und Events auf der Clientseite. Die Integration befindet sich in `/app/lib/plausible/`. Sie können Ihre eigene Plausible-Domain durch
   Bearbeitung der .env-Datei festlegen, wenn Sie selbst hosten.
-- **Eslint, Prettier**: Vorkonfiguriert mit sinnvollen Standardeinstellungen für TypeScript und React. Sie können
-  die Konfigurationsdateien nach Ihren Vorlieben anpassen. Das Projekt verwendet die von `@epic-web/config` bereitgestellten Voreinstellungen.
+- **Eslint, Prettier**: Vorkonfiguriert mit sinnvollen Standardeinstellungen für TypeScript und React in
+  `eslint.config.js` und `.prettierrc.mjs`. Die Konfiguration wird direkt im Projekt gepflegt (keine
+  gemeinsam genutzte Preset-Abhängigkeit), sodass Sie sie frei anpassen können.
 
 ## Projektstruktur
 
@@ -52,7 +54,9 @@ Weitere erwähnenswerte Funktionen:
 yarn run dev # Entwicklungsserver starten
 yarn run build # Projekt bauen
 yarn run up # Abhängigkeiten aktualisieren
-yarn run i18n:extract # i18n-Schlüssel und Standardwerte extrahieren
+yarn run i18n:extract # i18n-Schlüssel extrahieren und Typen neu generieren
+yarn run i18n:types # nur i18n-Typen neu generieren
+yarn run check # vor dem Commit linten, formatieren und Typen prüfen
 ```
 
 ## Bereitstellung

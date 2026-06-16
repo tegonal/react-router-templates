@@ -1,15 +1,15 @@
 {
-	"name": "react-router-templates",
-	"author": "Tegonal Cooperative <info@tegonal.com>",
-	"license": "MIT",
-	"workspaces": [
-		"packages/*"
-	],
-	"scripts": {
-		"up": "yarn upgrade-interactive",
-		"self-update": "yarn set version latest && yarn",
-		"build": "yarn workspace csr-daisyui run build && yarn workspace ssr-daisyui run build",
-		"check": "yarn workspace csr-daisyui run check && yarn workspace ssr-daisyui run check"
-	},
-	"packageManager": "yarn@4.10.3"
+  "name": "react-router-templates",
+  "author": "Tegonal Cooperative <info@tegonal.com>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "up": "yarn upgrade-interactive",
+    "self-update": "yarn set version latest && yarn",
+    "build": "yarn workspace csr-daisyui run build && yarn workspace ssr-daisyui run build",
+    "check": "yarn workspace csr-daisyui run check && yarn workspace ssr-daisyui run check"
+  },
+  "packageManager": "yarn@4.14.1"
 }

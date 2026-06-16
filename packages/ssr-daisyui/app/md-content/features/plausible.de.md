@@ -23,16 +23,16 @@ import { plausibleClientEvent, GenericAppEvents } from '~/features/plausible'
 
 // Seitenaufruf tracken
 plausibleClientEvent({
-	name: GenericAppEvents.PageView,
+  name: GenericAppEvents.PageView,
 })
 
 // Benutzerdefiniertes Event mit Eigenschaften tracken
 plausibleClientEvent({
-	name: GenericAppEvents.UserAction,
-	props: {
-		action: 'download',
-		resource: 'ebook-react-patterns',
-	},
+  name: GenericAppEvents.UserAction,
+  props: {
+    action: 'download',
+    resource: 'ebook-react-patterns',
+  },
 })
 ```
 
@@ -43,14 +43,14 @@ import { plausibleServerEvent } from '~/features/plausible'
 
 // Server-seitige Events tracken (in Loaders/Actions)
 export async function loader({ request }: LoaderFunctionArgs) {
-	await plausibleServerEvent({
-		name: 'api-request',
-		url: request.url,
-		domain: 'your-domain.com',
-		request,
-	})
+  await plausibleServerEvent({
+    name: 'api-request',
+    url: request.url,
+    domain: 'your-domain.com',
+    request,
+  })
 
-	// ... Rest des Loaders
+  // ... Rest des Loaders
 }
 ```
 
@@ -73,23 +73,23 @@ Die Feature-Konfiguration befindet sich in `features/plausible/config.ts`:
 
 ```typescript
 export const plausibleConfig = {
-	api: {
-		endpoint: '/api/event',
-		timeout: 5000,
-	},
-	rateLimit: {
-		maxRequests: 100, // pro IP
-		windowMs: 60000, // 1 Minute
-	},
-	retry: {
-		maxAttempts: 3,
-		delay: 1000,
-		backoffMultiplier: 2,
-	},
-	validation: {
-		maxEventNameLength: 100,
-		maxPropsSize: 1024, // 1KB
-	},
+  api: {
+    endpoint: '/api/event',
+    timeout: 5000,
+  },
+  rateLimit: {
+    maxRequests: 100, // pro IP
+    windowMs: 60000, // 1 Minute
+  },
+  retry: {
+    maxAttempts: 3,
+    delay: 1000,
+    backoffMultiplier: 2,
+  },
+  validation: {
+    maxEventNameLength: 100,
+    maxPropsSize: 1024, // 1KB
+  },
 }
 ```
 
@@ -99,11 +99,11 @@ export const plausibleConfig = {
 
 ```typescript
 enum GenericAppEvents {
-	PageView = 'page-view',
-	UserAction = 'user-action',
-	Search = 'search',
-	Download = 'download',
-	// ... weitere Events
+  PageView = 'page-view',
+  UserAction = 'user-action',
+  Search = 'search',
+  Download = 'download',
+  // ... weitere Events
 }
 ```
 
@@ -113,21 +113,21 @@ Sie können Ihre eigenen Event-Typen definieren:
 
 ```typescript
 type MyCustomEvent = {
-	name: 'checkout-completed'
-	props: {
-		value: string
-		currency: string
-		items: number
-	}
+  name: 'checkout-completed'
+  props: {
+    value: string
+    currency: string
+    items: number
+  }
 }
 
 plausibleClientEvent({
-	name: 'checkout-completed',
-	props: {
-		value: '99.99',
-		currency: 'USD',
-		items: 3,
-	},
+  name: 'checkout-completed',
+  props: {
+    value: '99.99',
+    currency: 'USD',
+    items: 3,
+  },
 })
 ```
 
@@ -195,8 +195,8 @@ import { shouldRetryEvent, withRetry } from '~/features/plausible/utils/retry'
 
 // Konfigurieren, welche Events wiederholt werden sollen
 export function shouldRetryEvent(eventName: string): boolean {
-	const criticalEvents = ['purchase', 'signup', 'error']
-	return criticalEvents.includes(eventName)
+  const criticalEvents = ['purchase', 'signup', 'error']
+  return criticalEvents.includes(eventName)
 }
 ```
 
@@ -209,14 +209,14 @@ import { getClientIPAddress } from 'remix-utils/get-client-ip-address'
 
 const clientIp = getClientIPAddress(request)
 await plausibleServerEvent({
-	name: 'form-submission',
-	url: request.url,
-	domain: 'your-domain.com',
-	request,
-	props: {
-		form: 'contact',
-		ip: clientIp,
-	},
+  name: 'form-submission',
+  url: request.url,
+  domain: 'your-domain.com',
+  request,
+  props: {
+    form: 'contact',
+    ip: clientIp,
+  },
 })
 ```
 

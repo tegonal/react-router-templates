@@ -7,53 +7,53 @@ import { type EntryContext, type RouterContextProvider, ServerRouter } from 'rea
 
 import { getInstance } from './middleware/i18next'
 
-export const streamTimeout = 5_000
+export const streamTimeout = 5000
 
 export default function handleRequest(
-	request: Request,
-	responseStatusCode: number,
-	responseHeaders: Headers,
-	entryContext: EntryContext,
-	routerContext: RouterContextProvider,
+  request: Request,
+  responseStatusCode: number,
+  responseHeaders: Headers,
+  entryContext: EntryContext,
+  routerContext: RouterContextProvider,
 ) {
-	return new Promise((resolve, reject) => {
-		let shellRendered = false
-		let userAgent = request.headers.get('user-agent')
+  return new Promise((resolve, reject) => {
+    let shellRendered = false
+    let userAgent = request.headers.get('user-agent')
 
-		let readyOption: keyof RenderToPipeableStreamOptions =
-			(userAgent && isbot(userAgent)) || entryContext.isSpaMode ? 'onAllReady' : 'onShellReady'
+    let readyOption: keyof RenderToPipeableStreamOptions =
+      (userAgent && isbot(userAgent)) || entryContext.isSpaMode ? 'onAllReady' : 'onShellReady'
 
-		let { abort, pipe } = renderToPipeableStream(
-			<I18nextProvider i18n={getInstance(routerContext)}>
-				<ServerRouter context={entryContext} url={request.url} />
-			</I18nextProvider>,
-			{
-				onError(error: unknown) {
-					responseStatusCode = 500
-					if (shellRendered) console.error(error)
-				},
-				onShellError(error: unknown) {
-					reject(error)
-				},
-				[readyOption]() {
-					shellRendered = true
-					let body = new PassThrough()
-					let stream = createReadableStreamFromReadable(body)
+    let { abort, pipe } = renderToPipeableStream(
+      <I18nextProvider i18n={getInstance(routerContext)}>
+        <ServerRouter context={entryContext} url={request.url} />
+      </I18nextProvider>,
+      {
+        onError(error: unknown) {
+          responseStatusCode = 500
+          if (shellRendered) console.error(error)
+        },
+        onShellError(error: unknown) {
+          reject(error)
+        },
+        [readyOption]() {
+          shellRendered = true
+          let body = new PassThrough()
+          let stream = createReadableStreamFromReadable(body)
 
-					responseHeaders.set('Content-Type', 'text/html')
+          responseHeaders.set('Content-Type', 'text/html')
 
-					resolve(
-						new Response(stream, {
-							headers: responseHeaders,
-							status: responseStatusCode,
-						}),
-					)
+          resolve(
+            new Response(stream, {
+              headers: responseHeaders,
+              status: responseStatusCode,
+            }),
+          )
 
-					pipe(body)
-				},
-			},
-		)
+          pipe(body)
+        },
+      },
+    )
 
-		setTimeout(abort, streamTimeout + 1000)
-	})
+    setTimeout(abort, streamTimeout + 1000)
+  })
 }
