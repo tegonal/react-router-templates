@@ -44,7 +44,9 @@ for tpl in "${templates[@]}"; do
     --template "$src" --no-install --no-git-init --yes || ok=0
 
   if [ "$ok" = 1 ]; then
-    ( cd "$workdir" && yarn install && yarn check && yarn build ) || ok=0
+    # A freshly scaffolded template has no yarn.lock yet, so the install must be
+    # allowed to create one (Yarn defaults to immutable installs under CI).
+    ( cd "$workdir" && yarn install --no-immutable && yarn check && yarn build ) || ok=0
   fi
 
   if [ "$ok" = 1 ]; then
