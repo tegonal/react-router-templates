@@ -2047,6 +2047,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-router/node@npm:^7.17.0":
+  version: 7.18.0
+  resolution: "@react-router/node@npm:7.18.0"
+  dependencies:
+    "@mjackson/node-fetch-server": "npm:^0.2.0"
+  peerDependencies:
+    react-router: 7.18.0
+    typescript: ^5.1.0 || ^6.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/32232827217e1eb8d5e9abed3b85c11826379d39abf2e1d698e388bbb69995f2bd2a52392b4b3b18620b2825c0f72f3c606f2491cd036b3ba8d1d2b64f5568f6
+  languageName: node
+  linkType: hard
+
 "@react-router/serve@npm:^7.17.0":
   version: 7.17.0
   resolution: "@react-router/serve@npm:7.17.0"
@@ -4140,6 +4155,8 @@ __metadata:
   resolution: "csr-daisyui@workspace:packages/csr-daisyui"
   dependencies:
     "@base-ui/react": "npm:^1.5.0"
+    "@hookform/resolvers": "npm:^5.4.0"
+    "@icons-pack/react-simple-icons": "npm:^13.13.0"
     "@react-router/dev": "npm:^7.17.0"
     "@svgr/plugin-svgo": "npm:^8.1.0"
     "@tailwindcss/vite": "npm:^4.3.1"
@@ -4150,6 +4167,8 @@ __metadata:
     "@uidotdev/usehooks": "npm:^2.4.1"
     "@vitejs/plugin-react": "npm:^6.0.2"
     "@vitest/eslint-plugin": "npm:^1.6.17"
+    class-variance-authority: "npm:^0.7.1"
+    clsx: "npm:^2.1.1"
     daisyui: "npm:^5.5.23"
     date-fns: "npm:^4.4.0"
     eslint: "npm:^9.39.4"
@@ -4170,9 +4189,11 @@ __metadata:
     react-dom: "npm:^19.2.7"
     react-hook-form: "npm:^7.79.0"
     react-i18next: "npm:^17.0.8"
+    react-markdown: "npm:^10.1.0"
     react-router: "npm:^7.17.0"
     sharp: "npm:^0.35.1"
     svgo: "npm:^4.0.1"
+    tailwind-merge: "npm:^3.6.0"
     tailwindcss: "npm:^4.3.1"
     tslog: "npm:^4.10.2"
     typescript: "npm:^6.0.3"
@@ -4180,6 +4201,7 @@ __metadata:
     vite: "npm:^8.0.16"
     vite-plugin-image-optimizer: "npm:^2.0.3"
     vite-plugin-svgr: "npm:^5.2.0"
+    zod: "npm:^4.4.3"
   languageName: unknown
   linkType: soft
 
@@ -9114,6 +9136,7 @@ __metadata:
     "@icons-pack/react-simple-icons": "npm:^13.13.0"
     "@mjackson/form-data-parser": "npm:^0.9.1"
     "@react-router/dev": "npm:^7.17.0"
+    "@react-router/node": "npm:^7.17.0"
     "@react-router/serve": "npm:^7.17.0"
     "@svgr/plugin-svgo": "npm:^8.1.0"
     "@tailwindcss/vite": "npm:^4.3.1"

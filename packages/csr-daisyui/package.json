@@ -35,7 +35,11 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
+    "@hookform/resolvers": "^5.4.0",
+    "@icons-pack/react-simple-icons": "^13.13.0",
     "@uidotdev/usehooks": "^2.4.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "date-fns": "^4.4.0",
     "i18next": "26.3.1",
     "i18next-http-backend": "^4.0.0",
@@ -44,8 +48,11 @@
     "react-dom": "^19.2.7",
     "react-hook-form": "^7.79.0",
     "react-i18next": "^17.0.8",
+    "react-markdown": "^10.1.0",
     "react-router": "^7.17.0",
-    "tslog": "^4.10.2"
+    "tailwind-merge": "^3.6.0",
+    "tslog": "^4.10.2",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@react-router/dev": "^7.17.0",

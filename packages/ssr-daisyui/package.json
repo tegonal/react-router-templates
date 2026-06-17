@@ -37,6 +37,7 @@
     "@hookform/resolvers": "^5.4.0",
     "@icons-pack/react-simple-icons": "^13.13.0",
     "@mjackson/form-data-parser": "^0.9.1",
+    "@react-router/node": "^7.17.0",
     "@react-router/serve": "^7.17.0",
     "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.18.0",
