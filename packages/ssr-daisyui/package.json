@@ -74,7 +74,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitest/eslint-plugin": "^1.6.17",
     "daisyui": "^5.5.23",
-    "eslint": "^9.39.4",
+    "eslint": "^10.0.0",
     "eslint-plugin-check-file": "^3.3.1",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-perfectionist": "^5.9.1",
