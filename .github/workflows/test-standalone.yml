@@ -1,0 +1,33 @@
+# Verifies each starter works when consumed via `create-react-router` — i.e.
+# standalone, with no monorepo dependency hoisting to mask missing dependencies.
+# Runs scripts/test-standalone.sh per template (scaffold + install + check + build).
+name: Standalone Template Test
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  standalone:
+    name: standalone (${{ matrix.template }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        template:
+          - csr-daisyui
+          - ssr-daisyui
+    env:
+      COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Scaffold, install, check and build standalone
+        run: ./scripts/test-standalone.sh ${{ matrix.template }}
