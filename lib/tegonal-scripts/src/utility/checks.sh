@@ -7,7 +7,7 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under Apache License 2.0
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v4.8.0
+#                                         Version: v4.12.0
 #######  Description  #############
 #
 #  Functions to check declarations
@@ -19,7 +19,7 @@
 #    shopt -s inherit_errexit || { echo >&2 "please update to bash 5, see errors above" && exit 1; }
 #    # Assumes tegonal's scripts were fetched with gt - adjust location accordingly
 #    dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/../lib/tegonal-scripts/src"
-#    source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+#    source "$dir_of_tegonal_scripts/setup_tegonal_scripts.sh" "$dir_of_tegonal_scripts"
 #
 #    sourceOnce "$dir_of_tegonal_scripts/utility/checks.sh"
 #
@@ -31,12 +31,12 @@
 #    	local -r version=$4
 #
 #    	# resolves arr recursively via recursiveDeclareP and check that is a non-associative array
-#    	checkArgIsArray arr 1        		# same as exitIfArgIsNotArray if set -e has an effect on this line
-#    	checkArgIsFunction "$fn" 2   		# same as exitIfArgIsNotFunction if set -e has an effect on this line
-#    	checkArgIsBoolean "$bool" 3   	# same as exitIfArgIsNotBoolean if set -e has an effect on this line
-#    	checkArgIsVersion "$version" 4  # same as exitIfArgIsNotVersion if set -e has an effect on this line
+#    	checkArgIsArray arr 1          # same as exitIfArgIsNotArray if set -e has an effect on this line
+#    	checkArgIsFunction "$fn" 2     # same as exitIfArgIsNotFunction if set -e has an effect on this line
+#    	checkArgIsBoolean "$bool" 3    # same as exitIfArgIsNotBoolean if set -e has an effect on this line
+#    	checkArgIsVersion "$version" 4 # same as exitIfArgIsNotVersion if set -e has an effect on this line
 #
-#    	# shellcheck disable=SC2317   # is passed by name to checkArgIsArrayWithTuples
+#    	# shellcheck disable=SC2329   # is passed by name to checkArgIsArrayWithTuples
 #    	function describeTriple() {
 #    		echo >&2 "array contains 3-tuples with names where the first value is the first-, the second the middle- and the third the lastname"
 #    	}
@@ -50,7 +50,7 @@
 #    	exitIfArgIsNotBoolean "$bool" 3
 #    	exitIfArgIsNotVersion "$version" 4
 #
-#    	# shellcheck disable=SC2317   # is passed by name to exitIfArgIsNotArrayWithTuples
+#    	# shellcheck disable=SC2329   # is passed by name to exitIfArgIsNotArrayWithTuples
 #    	function describePair() {
 #    		echo >&2 "array contains 2-tuples with names where the first value is the first-, and the second the last name"
 #    	}
@@ -90,7 +90,7 @@ unset CDPATH
 
 if ! [[ -v dir_of_tegonal_scripts ]]; then
 	dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/.."
-	source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+	source "$dir_of_tegonal_scripts/setup_tegonal_scripts.sh" "$dir_of_tegonal_scripts"
 fi
 sourceOnce "$dir_of_tegonal_scripts/utility/parse-fn-args.sh"
 sourceOnce "$dir_of_tegonal_scripts/utility/recursive-declare-p.sh"
@@ -126,14 +126,12 @@ function checkArgIsArray() {
 }
 
 function exitIfArgIsNotArray() {
-	# shellcheck disable=SC2310		# we are aware of that || will disable set -e for checkArgIsArray
 	checkArgIsArray "$@" || exit $?
 }
 
 function exitIfArgIsNotArrayOrIsEmpty() {
 	exitIfArgIsNotArray "$@"
 	local -rn exitIfArgIsNotArrayOrIsEmpty_arr=$1
-	# shellcheck disable=SC2310		# we are aware of that if and ! will disable set -e for checkIsInitialisedArray
 	if ! checkIsInitialisedArray exitIfArgIsNotArrayOrIsEmpty_arr; then
 		traceAndDie "the passed argument \033[0;36m%s\033[0m is an uninitialised array" "${!exitIfArgIsNotArrayOrIsEmpty_arr}"
 	elif [[ ${#exitIfArgIsNotArrayOrIsEmpty_arr[@]} -lt 1 ]]; then
@@ -144,7 +142,6 @@ function exitIfArgIsNotArrayOrIsEmpty() {
 function exitIfArgIsNotArrayOrIsNonEmpty() {
 	exitIfArgIsNotArray "$@"
 	local -rn exitIfArgIsNotArrayOrIsNonEmpty_arr=$1
-	# shellcheck disable=SC2310		# we are aware of that if and ! will disable set -e for checkIsInitialisedArray
 	if checkIsInitialisedArray exitIfArgIsNotArrayOrIsNonEmpty_arr && [[ ${#exitIfArgIsNotArrayOrIsNonEmpty_arr[@]} -gt 0 ]]; then
 		traceAndDie "the passed argument \033[0;36m%s\033[0m is a non empty array" "${!exitIfArgIsNotArrayOrIsNonEmpty_arr}"
 	fi
@@ -233,7 +230,6 @@ function checkArgIsArrayWithTuples() {
 }
 
 function exitIfArgIsNotArrayWithTuples() {
-	# shellcheck disable=SC2310			# we are aware of that || will disable set -e for checkArgIsArrayWithTuples
 	checkArgIsArrayWithTuples "$@" || exit $?
 }
 
@@ -256,7 +252,6 @@ function checkArgIsFunction() {
 }
 
 function exitIfArgIsNotFunction() {
-	# shellcheck disable=SC2310			# we are aware of that || will disable set -e for checkArgIsFunction
 	checkArgIsFunction "$@" || exit $?
 }
 
@@ -277,12 +272,10 @@ function checkArgIsBoolean() {
 }
 
 function exitIfArgIsNotBoolean() {
-	# shellcheck disable=SC2310			# we are aware of that || will disable set -e for checkArgIsBoolean
 	checkArgIsBoolean "$@" || exit $?
 }
 
 function exitIfArgIsNotVersion() {
-	# shellcheck disable=SC2310			# we are aware of that || will disable set -e for checkArgIsVersion
 	checkArgIsVersion "$@" || exit $?
 }
 
@@ -318,7 +311,6 @@ function checkCommandExists() {
 }
 
 function exitIfCommandDoesNotExist() {
-	# shellcheck disable=SC2310			# we are aware of that || will disable set -e for checkCommandExists
 	checkCommandExists "$@" || exit $?
 }
 
@@ -363,13 +355,11 @@ function checkPathNamedIsInsideOf() {
 	local -ra params=(path name rootDir)
 	parseFnArgs params "$@" || return $?
 
-	# shellcheck disable=SC2310			# we are aware of that ! will disable set -e for checkPathIsInsideOf
 	if ! checkPathIsInsideOf "$path" "$rootDir"; then
-		returnDying "the given \033[0;36m%s\033[0m %s not inside of %s" "$name" "$pathAbsolute" "$rootDir" || return $?
+		returnDying "the given \033[0;36m%s\033[0m %s is not inside of %s" "$name" "$path" "$rootDir" || return $?
 	fi
 }
 
 function exitIfPathNamedIsOutsideOf() {
-	# shellcheck disable=SC2310			# we are aware of that || will disable set -e for checkPathNamedIsInsideOf
 	checkPathNamedIsInsideOf "$@" || exit $?
 }

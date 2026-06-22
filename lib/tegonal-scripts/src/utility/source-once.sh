@@ -7,11 +7,11 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under Apache License 2.0
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v4.8.0
+#                                         Version: v4.12.0
 #######  Description  #############
 #
-#  Utility functions wrapping printf and prefixing the message with a coloured INFO, WARNING or ERROR.
-#  logError writes to stderr and logWarning and logInfo to stdout
+#  Utility functions to source files but only if a certain guard is not defined. Sourcing happens inside the functions
+#  which also means defining global variables are prevented via declare.
 #
 #######  Usage  ###################
 #
@@ -20,14 +20,14 @@
 #    shopt -s inherit_errexit || { echo >&2 "please update to bash 5, see errors above" && exit 1; }
 #    # Assumes tegonal's scripts were fetched with gt - adjust location accordingly
 #    dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/../lib/tegonal-scripts/src"
-#    source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+#    source "$dir_of_tegonal_scripts/setup_tegonal_scripts.sh" "$dir_of_tegonal_scripts"
 #
 #    source "$dir_of_tegonal_scripts/utility/source-once.sh"
 #
-#    sourceOnce "foo.sh"    # creates a variable named sourceOnceGuard_foo__sh which acts as guard and sources foo.sh
-#    sourceOnce "foo.sh"    # will source nothing as sourceOnceGuard_foo__sh is already defined
-#    unset sourceOnceGuard_foo__sh          # unsets the guard
-#    sourceOnce "foo.sh"    # is sourced again and the guard established
+#    sourceOnce "foo.sh"           # creates a variable named sourceOnceGuard_foo__sh which acts as guard and sources foo.sh
+#    sourceOnce "foo.sh"           # will source nothing as sourceOnceGuard_foo__sh is already defined
+#    unset sourceOnceGuard_foo__sh # unsets the guard
+#    sourceOnce "foo.sh"           # is sourced again and the guard established
 #    # you can also use sourceAlways instead of unsetting and using sourceOnce.
 #    sourceAlways "foo.sh"
 #
@@ -74,7 +74,6 @@ function sourceOnce() {
 	shift 1 || traceAndDie "could not shift by 1"
 
 	local sourceOnce_guard
-	# shellcheck disable=SC2310   # we know that set -e will not have an effect for determineSourceOnceGuard
 	sourceOnce_guard=$(determineSourceOnceGuard "$sourceOnce_file") || die "was not able to determine sourceOnce guard for %s" "$sourceOnce_file"
 	local -r sourceOnce_guard
 
