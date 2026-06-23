@@ -2001,22 +2001,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-router/node@npm:7.18.0":
-  version: 7.18.0
-  resolution: "@react-router/node@npm:7.18.0"
-  dependencies:
-    "@mjackson/node-fetch-server": "npm:^0.2.0"
-  peerDependencies:
-    react-router: 7.18.0
-    typescript: ^5.1.0 || ^6.0.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 10c0/32232827217e1eb8d5e9abed3b85c11826379d39abf2e1d698e388bbb69995f2bd2a52392b4b3b18620b2825c0f72f3c606f2491cd036b3ba8d1d2b64f5568f6
-  languageName: node
-  linkType: hard
-
-"@react-router/node@npm:^7.17.0":
+"@react-router/node@npm:7.18.0, @react-router/node@npm:^7.17.0":
   version: 7.18.0
   resolution: "@react-router/node@npm:7.18.0"
   dependencies:
@@ -4754,8 +4739,8 @@ __metadata:
   linkType: hard
 
 "es-toolkit@npm:^1.47.1":
-  version: 1.47.1
-  resolution: "es-toolkit@npm:1.47.1"
+  version: 1.48.1
+  resolution: "es-toolkit@npm:1.48.1"
   dependenciesMeta:
     "@trivago/prettier-plugin-sort-imports@4.3.0":
       unplugged: true
@@ -4763,7 +4748,7 @@ __metadata:
       unplugged: true
     vitepress-plugin-sandpack@1.1.4:
       unplugged: true
-  checksum: 10c0/d6dff140a71e15d22209f8482f1ce34bab433f449e569c28b9c535963b18b2c3b89b00d7cf7156b5c74cace4c5f96283f0a5fee3be8802dd2cf7481da90cfe0a
+  checksum: 10c0/29bfccb8aaf088f27ea91b5bf6448b8a46ef5d809139ad9335bea6919d0bc3aadc3206c957ab6c72d65864906fd75cf9ab41fbd936aaf69e58c6259d2821187d
   languageName: node
   linkType: hard
 
