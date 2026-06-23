@@ -6,7 +6,7 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under Apache License 2.0
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v4.8.0
+#                                         Version: v4.12.0
 #######  Description  #############
 #
 #  Intended to parse command line arguments of a script which uses commands and delegates accordingly.
@@ -24,7 +24,7 @@
 #
 #    # Assumes tegonal's scripts were fetched with gt - adjust location accordingly
 #    dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/../lib/tegonal-scripts/src"
-#    source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+#    source "$dir_of_tegonal_scripts/setup_tegonal_scripts.sh" "$dir_of_tegonal_scripts"
 #
 #    sourceOnce "$dir_of_tegonal_scripts/utility/parse-commands.sh"
 #
@@ -68,7 +68,7 @@ unset CDPATH
 
 if ! [[ -v dir_of_tegonal_scripts ]]; then
 	dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/.."
-	source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+	source "$dir_of_tegonal_scripts/setup_tegonal_scripts.sh" "$dir_of_tegonal_scripts"
 fi
 sourceOnce "$dir_of_tegonal_scripts/utility/array-utils.sh"
 sourceOnce "$dir_of_tegonal_scripts/utility/checks.sh"
@@ -101,11 +101,13 @@ function parse_commands_exitIfParameterDefinitionIsNotPair() {
 }
 
 function parseCommands {
+	# we only check that at least 4 arguments are passed here and not at least 5 because we want to print help if 4 are
+	# passed, i.e. if the command is missing (see check after shift 4 below)
 	if (($# < 4)); then
 		logError "At least five arguments need to be passed to parseCommands, given \033[0;36m%s\033[0m\nFollowing a description of the parameters:" "$#"
 		echo >&2 '1: commands   the name of an array which contains the command definitions'
 		echo >&2 '2: version    the version which shall be shown if one uses --version'
-		echo >&2 '3: sourceFn   the function which sources the necessary files for a particular command, the commandName will be passed to this function'
+		echo >&2 '3: sourceFn   the function which sources the necessary files for a particular command, the command will be passed to this function'
 		echo >&2 '4: fnPrefix   prefix for the function representing a command'
 		echo >&2 '5: command    the command name'
 		echo >&2 '6... args...  arguments for the command, typically "$@"'
@@ -119,7 +121,7 @@ function parseCommands {
 	local -r fnPrefix=$4
 	shift 4 || traceAndDie "could not shift by 4"
 
-	if (($# < 1 )); then
+	if (($# < 1)); then
 		logError "no command passed to %s, following the output of --help\n" "$(basename "${BASH_SOURCE[1]}")"
 		>&2 parse_commands_printHelp parseCommands_paramArr "$version"
 		exit 9
@@ -133,7 +135,7 @@ function parseCommands {
 	local -a commandNames=()
 	arrTakeEveryX parseCommands_paramArr commandNames 2 0 || return $?
 	local tmpRegex regex
-	tmpRegex=$(joinByChar "|" "${commandNames[@]}") || die "could not join commands by |, command names are %s" "${commandNames*}"
+	tmpRegex=$(joinByChar "|" "${commandNames[@]}") || die "could not join commands by |, command names are %s" "${commandNames[*]}"
 	regex="^($tmpRegex)\$"
 	local -r tmpRegex regex
 

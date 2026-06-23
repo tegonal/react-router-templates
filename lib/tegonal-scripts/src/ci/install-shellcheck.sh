@@ -6,10 +6,10 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under Apache License 2.0
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v4.8.0
+#                                         Version: v4.12.0
 #######  Description  #############
 #
-#  installs shellcheck v0.10.0 into $HOME/.local/lib
+#  installs shellcheck v0.11.0 into $HOME/.local/lib and sets up a symlink in $HOME/.local/bin
 #
 #######  Usage  ###################
 #
@@ -42,26 +42,27 @@ function die() {
 	exit 1
 }
 
-declare currentDir
 currentDir=$(pwd)
 tmpDir=$(mktemp -d -t download-shellcheck-XXXXXXXXXX) || die "could not create a temp directory"
 cd "$tmpDir"
-shellcheckVersion="v0.10.0"
+shellcheckVersion="v0.11.0"
 tarFile="shellcheck-$shellcheckVersion.linux.x86_64.tar.xz"
-expectedSha="6c881ab0698e4e6ea235245f22832860544f17ba386442fe7e9d629f8cbedf87 $tarFile"
+expectedSha="8c3be12b05d5c177a04c29e3c78ce89ac86f1595681cab149b65b97c4e227198 $tarFile"
 echo "$expectedSha" >"$tarFile.sha256"
 
+url="https://github.com/koalaman/shellcheck/releases/download/$shellcheckVersion/$tarFile"
+echo "going to download shellcheck $shellcheckVersion from: $url"
 if command -v curl >/dev/null; then
-	curl -L -O "https://github.com/koalaman/shellcheck/releases/download/$shellcheckVersion/$tarFile"
+	curl --fail -L -O "$url" || die "could not download shellcheck"
 else
 	# if curl does not exist, then we try it with wget
-	wget --no-verbose "https://github.com/koalaman/shellcheck/releases/download/$shellcheckVersion/$tarFile"
+	wget --no-verbose "$url"
 fi
 sha256sum -c "$tarFile.sha256" || {
 	actualSha="$(sha256sum "$tarFile")"
 	die "checksum did not match, aborting\nexpected:\n%s\ngiven   :\n%s" "$expectedSha" "$actualSha"
 }
-tar -xf "./shellcheck-$shellcheckVersion.linux.x86_64.tar.xz"
+tar -xf "./$tarFile"
 chmod +x "./shellcheck-$shellcheckVersion/shellcheck" || die "could not make shellcheck executable"
 
 shellcheckInTmp="$tmpDir/shellcheck-$shellcheckVersion"
@@ -85,4 +86,12 @@ fi
 ln -s "$shellcheckInHomeLocalLib/shellcheck" "$shellcheckBin"
 
 cd "$currentDir"
-shellcheck --version
+
+shellcheckPath=$(command -v shellcheck)
+if [[ $shellcheckPath != "$shellcheckBin" ]]; then
+	shellcheckCurrentVersion=$(shellcheck --version)
+	logError "was able to install shellcheck in %s but \`command -v shellcheck\` returns another path:\n%s\nFollowing the output of \`shellcheck --version\`:\n%s" "$shellcheckBin" "$shellcheckPath" "$shellcheckCurrentVersion"
+else
+	shellcheck --version
+	printf "\033[0;32mSUCCESS\033[0m: installed shellcheck %s in %s\n" "$shellcheckVersion" "$homeLocalLib"
+fi

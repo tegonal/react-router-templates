@@ -6,7 +6,7 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under Apache License 2.0
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v4.8.0
+#                                         Version: v4.12.0
 #######  Description  #############
 #
 # Checks that releasing a certain version (creating a corresponding git tag) makes sense: We check:
@@ -22,7 +22,7 @@
 #    shopt -s inherit_errexit || { echo >&2 "please update to bash 5, see errors above" && exit 1; }
 #    # Assumes tegonal's scripts were fetched with gt - adjust location accordingly
 #    dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/../lib/tegonal-scripts/src"
-#    source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+#    source "$dir_of_tegonal_scripts/setup_tegonal_scripts.sh" "$dir_of_tegonal_scripts"
 #
 #    # checks releasing v0.1.0 makes sense and the current branch is main
 #    "$dir_of_tegonal_scripts/releasing/pre-release-checks-git.sh" -v v0.1.0
@@ -34,18 +34,18 @@
 set -euo pipefail
 shopt -s inherit_errexit || { echo >&2 "please update to bash 5, see errors above" && exit 1; }
 unset CDPATH
-export TEGONAL_SCRIPTS_VERSION='v4.8.0'
+export TEGONAL_SCRIPTS_VERSION='v4.12.0'
 
 if ! [[ -v dir_of_tegonal_scripts ]]; then
 	dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/.."
-	source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+	source "$dir_of_tegonal_scripts/setup_tegonal_scripts.sh" "$dir_of_tegonal_scripts"
 fi
 sourceOnce "$dir_of_tegonal_scripts/utility/ask.sh"
 sourceOnce "$dir_of_tegonal_scripts/utility/git-utils.sh"
 sourceOnce "$dir_of_tegonal_scripts/utility/parse-args.sh"
 
 function preReleaseCheckGit() {
-	local versionRegex versionParamPatternLong
+	local versionParamPatternLong
 	source "$dir_of_tegonal_scripts/releasing/common-constants.source.sh" || traceAndDie "could not source common-constants.source.sh"
 
 	local version branch
@@ -64,7 +64,7 @@ function preReleaseCheckGit() {
 
 	local tags
 	tags=$(git tag) || die "The following command failed (see above): git tag"
-	if grep -q --fixed-strings "$version" <<< "$tags"; then
+	if grep -q --fixed-strings "$version" <<<"$tags"; then
 		logError "tag %s already exists locally, adjust version or delete it with git tag -d %s" "$version" "$version"
 		if hasRemoteTag "$version"; then
 			printf >&2 "Note, it also exists on the remote which means you also need to delete it there -- e.g. via git push origin :%s\n" "$version"

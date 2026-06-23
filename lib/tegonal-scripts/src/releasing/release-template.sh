@@ -6,7 +6,7 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under Apache License 2.0
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v4.8.0
+#                                         Version: v4.12.0
 #######  Description  #############
 #
 #  Defines a release process template where some conventions are defined:
@@ -33,7 +33,7 @@
 #    shopt -s inherit_errexit || { echo >&2 "please update to bash 5, see errors above" && exit 1; }
 #    # Assumes tegonal's scripts were fetched with gt - adjust location accordingly
 #    dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/../lib/tegonal-scripts/src"
-#    source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+#    source "$dir_of_tegonal_scripts/setup_tegonal_scripts.sh" "$dir_of_tegonal_scripts"
 #
 #    function releaseScalaLib() {
 #    	sbt publishSigned
@@ -60,7 +60,7 @@
 #    sourceOnce "$dir_of_tegonal_scripts/releasing/release-template.sh"
 #
 #    # and then call the function with your pre-configuration settings:
-#    # here we define the function which shall be used as release-hook after "$@" this way one cannot override it.
+#    # here we define the function which shall be used as release-hook after "$@", this way one cannot override it.
 #    # put --release-hook before "$@" if you want to define only a default
 #    releaseTemplates "$@" --release-hook releaseScalaLib
 #
@@ -80,11 +80,11 @@
 set -euo pipefail
 shopt -s inherit_errexit || { echo >&2 "please update to bash 5, see errors above" && exit 1; }
 unset CDPATH
-export TEGONAL_SCRIPTS_VERSION='v4.8.0'
+export TEGONAL_SCRIPTS_VERSION='v4.12.0'
 
 if ! [[ -v dir_of_tegonal_scripts ]]; then
 	dir_of_tegonal_scripts="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" >/dev/null && pwd 2>/dev/null)/.."
-	source "$dir_of_tegonal_scripts/setup.sh" "$dir_of_tegonal_scripts"
+	source "$dir_of_tegonal_scripts/setup_tegonal_scripts.sh" "$dir_of_tegonal_scripts"
 fi
 sourceOnce "$dir_of_tegonal_scripts/utility/execute-if-defined.sh"
 sourceOnce "$dir_of_tegonal_scripts/utility/parse-args.sh"
@@ -133,7 +133,7 @@ function releaseTemplate() {
 
 	preReleaseCheckGit \
 		"$versionParamPatternLong" "$version" \
-		"$branchParamPatternLong" "$branch"
+		"$branchParamPatternLong" "$branch" || return $?
 
 	# make sure everything is up-to-date and works as it should
 	"$beforePrFn" || return $?
@@ -158,11 +158,11 @@ function releaseTemplate() {
 		git add "$projectsRootDir" || return $?
 		git commit --edit -m "$version " || return $?
 		local signsTags
-		signsTags=$(git config --get tag.gpgSign)
+		signsTags=$(git config --get tag.gpgSign || echo "false")
 		if [[ $signsTags == true ]]; then
-			git tag -a "$version" -m "$version" || return $?
+			git tag -a "$version" -m "$version" || die "could not create tag $version"
 		else
-			git tag "$version" || return $?
+			git tag "$version" || die "could not create tag $version"
 		fi
 
 		"$prepareNextDevCycleFn" \
@@ -173,6 +173,8 @@ function releaseTemplate() {
 
 		git push origin "$version" || die "could not push tag %s to origin" "$version"
 		git push || die "could not push commits"
+
+		logSuccess "tag pushed and next dev cycle prepared and pushed"
 	else
 		printf "\033[1;33mskipping commit, creating tag and prepare-next-dev-cycle due to %s\033[0m\n" "$prepareOnlyParamPatternLong"
 	fi
