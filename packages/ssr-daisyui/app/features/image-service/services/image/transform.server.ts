@@ -1,4 +1,4 @@
-import sharp from 'sharp'
+import sharp, { type FitEnum, type ResizeOptions } from 'sharp'
 
 import { type ImageTransformOptions } from './types'
 
@@ -46,14 +46,14 @@ export async function transformImage(
 
   // Resize with fit mode
   if (options.width || options.height) {
-    const resizeOptions: sharp.ResizeOptions = {
+    const resizeOptions: ResizeOptions = {
       height: options.height,
       width: options.width,
     }
 
     // Map Astro fit modes to Sharp fit modes
     if (options.fit) {
-      const fitMap: Record<string, keyof sharp.FitEnum> = {
+      const fitMap: Record<string, keyof FitEnum> = {
         contain: 'inside',
         cover: 'cover',
         fill: 'fill',
