@@ -8331,11 +8331,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remix-utils@npm:^9.3.1":
-  version: 9.3.1
-  resolution: "remix-utils@npm:9.3.1"
-  dependencies:
-    type-fest: "npm:^5.4.4"
+"remix-utils@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "remix-utils@npm:10.0.0"
   peerDependencies:
     "@edgefirst-dev/batcher": ^1.0.0
     "@edgefirst-dev/jwt": ^1.2.0
@@ -8345,8 +8343,8 @@ __metadata:
     "@standard-schema/spec": ^1.0.0
     intl-parse-accept-language: ^1.0.0
     is-ip: ^5.0.1
-    react: ^18.0.0 || ^19.0.0
-    react-router: ^7.0.0
+    react: ">=19.2.7"
+    react-router: ^8.0.0
   peerDependenciesMeta:
     "@edgefirst-dev/batcher":
       optional: true
@@ -8368,7 +8366,7 @@ __metadata:
       optional: true
     react-router:
       optional: true
-  checksum: 10c0/861028da909ccb4d8a01f3168583f1d3a41aad9c1e15548d0ab523e956e905e52449999a13e4dc4cdec7610b09668bfadf663a216b0e0f103493a2d414a48e6e
+  checksum: 10c0/a304b0ddf52fe6d4a6a4ad6ef243e509f358757ab8de757a38eb7a828a4f30596bf6995619a3d380be6fb2ef2647b059b0bde3034d460bd4a792a3e170dd43d6
   languageName: node
   linkType: hard
 
@@ -9052,7 +9050,7 @@ __metadata:
     react-router: "npm:^7.17.0"
     remix-hook-form: "npm:^7.2.0"
     remix-i18next: "npm:^7.5.0"
-    remix-utils: "npm:^9.3.1"
+    remix-utils: "npm:^10.0.0"
     sharp: "npm:^0.35.2"
     svgo: "npm:^4.0.1"
     tailwind-merge: "npm:^3.6.0"
@@ -9326,13 +9324,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tagged-tag@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "tagged-tag@npm:1.0.0"
-  checksum: 10c0/91d25c9ffb86a91f20522cefb2cbec9b64caa1febe27ad0df52f08993ff60888022d771e868e6416cf2e72dab68449d2139e8709ba009b74c6c7ecd4000048d1
-  languageName: node
-  linkType: hard
-
 "tailwind-merge@npm:^3.6.0":
   version: 3.6.0
   resolution: "tailwind-merge@npm:3.6.0"
@@ -9483,15 +9474,6 @@ __metadata:
   dependencies:
     prelude-ls: "npm:^1.2.1"
   checksum: 10c0/7b3fd0ed43891e2080bf0c5c504b418fbb3e5c7b9708d3d015037ba2e6323a28152ec163bcb65212741fa5d2022e3075ac3c76440dbd344c9035f818e8ecee58
-  languageName: node
-  linkType: hard
-
-"type-fest@npm:^5.4.4":
-  version: 5.7.0
-  resolution: "type-fest@npm:5.7.0"
-  dependencies:
-    tagged-tag: "npm:^1.0.0"
-  checksum: 10c0/f71ed17b753649421e419db8cc2e140f930333a1467b1d9cca2e0e4052900fd442f2360bae73f3a6bf9340d949ac46d9a1598c709b4c8089272e7624df9c8716
   languageName: node
   linkType: hard
 
