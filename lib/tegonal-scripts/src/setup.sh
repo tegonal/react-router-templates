@@ -6,7 +6,7 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under Apache License 2.0
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v4.12.0
+#                                         Version: v4.12.2
 #######  Description  #############
 #
 #  Deprecated: script which sets up variables and functions for tegonal's scripts -> use setup_tegonal_scripts.sh instead
