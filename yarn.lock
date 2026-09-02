@@ -8116,11 +8116,11 @@ __metadata:
   linkType: hard
 
 "react-hook-form@npm:^7.79.0":
-  version: 7.79.0
-  resolution: "react-hook-form@npm:7.79.0"
+  version: 7.87.0
+  resolution: "react-hook-form@npm:7.87.0"
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18 || ^19
-  checksum: 10c0/d34edf52766b911dd8c7f583ab7345bca60a352ae96cd8cb82e808e7875c36de21b2d4ee0afc40f693e1d98f0b3d6b47929cb873ca39d3b7b54a56cef6a5cb6d
+  checksum: 10c0/da095c160c216f0db19c8568b35faa27835f0faa56bd487c32dfafd3d6c45f0c5fcabd627f4d7edc03b0bf05273e93bed6959112b384f01b1ae124450e68ba33
   languageName: node
   linkType: hard
 
