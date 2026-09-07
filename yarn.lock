@@ -4128,7 +4128,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^7.1.1"
     eslint-plugin-unicorn: "npm:^64.0.0"
     globals: "npm:^17.6.0"
-    i18next: "npm:26.3.1"
+    i18next: "npm:26.4.2"
     i18next-cli: "npm:^1.64.0"
     i18next-http-backend: "npm:^4.0.0"
     lucide-react: "npm:^1.18.0"
@@ -5897,7 +5897,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:26.3.1, i18next@npm:^26.3.1":
+"i18next@npm:26.4.2":
+  version: 26.4.2
+  resolution: "i18next@npm:26.4.2"
+  peerDependencies:
+    typescript: ^5 || ^6 || ^7
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/f2c9613e03e09e56a84aee939d8fbe3442a58622915e11f97e47f9ab358dfa65be783230b37a21483152711f786fccfe697d7f5ea9269c54f16179dc59960e4b
+  languageName: node
+  linkType: hard
+
+"i18next@npm:^26.3.1":
   version: 26.3.1
   resolution: "i18next@npm:26.3.1"
   peerDependencies:
@@ -9034,7 +9046,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^7.1.1"
     eslint-plugin-unicorn: "npm:^64.0.0"
     globals: "npm:^17.6.0"
-    i18next: "npm:26.3.1"
+    i18next: "npm:26.4.2"
     i18next-browser-languagedetector: "npm:^8.2.1"
     i18next-cli: "npm:^1.64.0"
     i18next-fetch-backend: "npm:^7.0.0"
