@@ -37,8 +37,8 @@
     "@hookform/resolvers": "^5.4.0",
     "@icons-pack/react-simple-icons": "^13.13.0",
     "@mjackson/form-data-parser": "^0.9.1",
-    "@react-router/node": "^7.17.0",
-    "@react-router/serve": "^7.17.0",
+    "@react-router/node": "^8.0.0",
+    "@react-router/serve": "^8.0.0",
     "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.18.0",
     "class-variance-authority": "^0.7.1",
@@ -66,7 +66,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@react-router/dev": "^7.17.0",
+    "@react-router/dev": "^8.0.0",
     "@svgr/plugin-svgo": "^8.1.0",
     "@tailwindcss/vite": "^4.3.1",
     "@total-typescript/ts-reset": "^0.6.1",
