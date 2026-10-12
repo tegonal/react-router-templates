@@ -6,7 +6,7 @@
 #  \__/\__/\_, /\___/_//_/\_,_/_/         It is licensed under Apache License 2.0
 #         /___/                           Please report bugs and contribute back your improvements
 #
-#                                         Version: v4.12.0
+#                                         Version: v4.13.0
 #######  Description  #############
 #
 #  Deprecated: script which sets up variables and functions for tegonal's scripts -> use setup_tegonal_scripts.sh instead
@@ -34,7 +34,7 @@ unset CDPATH
 # shellcheck disable=SC2034		# global var used in log.sh
 declare -A TEGONAL_SCRIPTS_SUPPRESSED_DEPRECATION=()
 
-#TODO 5.0.0 rename file to setup_tegonal_scripts.sh -- this way consumers will not run into shellcheck issues when they name a file setup_tegonal_scripts.sh as well
+#TODO 5.0.0 remove file, users should now use setup_tegonal_scripts.sh
 
 if (($# != 1)); then
 	printf >&2 "\033[0;31mERROR\033[0m: You need to pass the path to the tegonal scripts directory as first argument. Following an example\n"
