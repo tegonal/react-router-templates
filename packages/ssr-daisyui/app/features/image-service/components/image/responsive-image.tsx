@@ -22,27 +22,29 @@ export function ResponsiveImage({
 
   useEffect(() => {
     const updateSize = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect()
-        const newSize = {
-          height: Math.ceil(rect.height),
-          width: Math.ceil(rect.width),
-        }
-
-        // Only update if size actually changed significantly (more than 50px difference)
-        setContainerSize((prevSize) => {
-          if (
-            newSize.width > 0 &&
-            newSize.height > 0 &&
-            (Math.abs(prevSize.width - newSize.width) > 50 ||
-              Math.abs(prevSize.height - newSize.height) > 50 ||
-              prevSize.width === 0)
-          ) {
-            return newSize
-          }
-          return prevSize
-        })
+      if (!containerRef.current) {
+        return
       }
+
+      const rect = containerRef.current.getBoundingClientRect()
+      const newSize = {
+        height: Math.ceil(rect.height),
+        width: Math.ceil(rect.width),
+      }
+
+      // Only update if size actually changed significantly (more than 50px difference)
+      setContainerSize((prevSize) => {
+        if (
+          newSize.width > 0 &&
+          newSize.height > 0 &&
+          (Math.abs(prevSize.width - newSize.width) > 50 ||
+            Math.abs(prevSize.height - newSize.height) > 50 ||
+            prevSize.width === 0)
+        ) {
+          return newSize
+        }
+        return prevSize
+      })
     }
 
     // Debounced update for resize events

@@ -39,7 +39,7 @@ export function sanitizeEventData(data: unknown): unknown {
       const valueType = typeof value
       if (plausibleConfig.validation.allowedPropTypes.includes(valueType as PlausiblePropType)) {
         // Trim string values
-        sanitizedProps[key] = typeof value === 'string' ? String(value).trim() : value
+        sanitizedProps[key] = typeof value === 'string' ? value.trim() : value
       }
     }
     sanitized.props = sanitizedProps
@@ -54,7 +54,7 @@ export function validateEventData(data: unknown): ValidationError[] {
   // Check required fields
   const requiredFields = ['domain', 'name', 'url']
   for (const field of requiredFields) {
-    if (!data || typeof data !== 'object' || !(field in data)) {
+    if (!data || typeof data !== 'object' || !Object.hasOwn(data, field)) {
       errors.push({
         field,
         message: plausibleConfig.validation.messages.FIELD_REQUIRED(field),

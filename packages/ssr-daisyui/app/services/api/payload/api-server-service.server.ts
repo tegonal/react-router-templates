@@ -1,9 +1,9 @@
 import axios, { type AxiosInstance } from 'axios'
 
 /**
- * Mock Payload CMS API Service
- * This is a mock implementation for the image-service feature
- */
+Mock Payload CMS API Service
+This is a mock implementation for the image-service feature
+*/
 
 // Create a mock axios instance for the API client
 export const apiServerServiceClient: AxiosInstance = axios.create({

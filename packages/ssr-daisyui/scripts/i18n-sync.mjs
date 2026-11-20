@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * i18n Sync Script
- *
- * Regenerates EN translations from code defaults and outputs a JSON file
- * with all changed keys for use with automated translation services.
- *
- * Output: ./.i18n-cache/i18n-changes.json
- */
+i18n Sync Script
+
+Regenerates EN translations from code defaults and outputs a JSON file
+with all changed keys for use with automated translation services.
+
+Output: ./.i18n-cache/i18n-changes.json
+*/
 
 import { execSync } from 'node:child_process'
 import { mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
@@ -22,8 +22,8 @@ const changesFile = join(cacheDir, 'i18n-changes.json')
 mkdirSync(cacheDir, { recursive: true })
 
 /**
- * Find differences between two flattened objects
- */
+Find differences between two flattened objects
+*/
 function findChanges(oldFlat, newFlat) {
   const added = {}
   const modified = {}
@@ -31,7 +31,7 @@ function findChanges(oldFlat, newFlat) {
 
   // Find added and modified
   for (const [key, value] of Object.entries(newFlat)) {
-    if (!(key in oldFlat)) {
+    if (!Object.hasOwn(oldFlat, key)) {
       added[key] = value
     } else if (oldFlat[key] !== value) {
       modified[key] = { new: value, old: oldFlat[key] }
@@ -39,9 +39,9 @@ function findChanges(oldFlat, newFlat) {
   }
 
   // Find removed
-  for (const key of Object.keys(oldFlat)) {
-    if (!(key in newFlat)) {
-      removed[key] = oldFlat[key]
+  for (const [key, value] of Object.entries(oldFlat)) {
+    if (!Object.hasOwn(newFlat, key)) {
+      removed[key] = value
     }
   }
 
@@ -49,8 +49,8 @@ function findChanges(oldFlat, newFlat) {
 }
 
 /**
- * Flatten nested object to dot-notation keys
- */
+Flatten nested object to dot-notation keys
+*/
 function flattenObject(obj, prefix = '') {
   const result = {}
   for (const [key, value] of Object.entries(obj)) {
@@ -166,4 +166,8 @@ async function main() {
   }
 }
 
-main().catch(console.error)
+try {
+  await main()
+} catch (error) {
+  console.error(error)
+}

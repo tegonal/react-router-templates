@@ -17,9 +17,9 @@ const schema = z.object({
   name: zIsRequired,
 })
 
-type FormData = z.infer<typeof schema>
-
 export const FormExample: React.FC = () => {
+  type FormData = z.infer<typeof schema>
+
   const { t } = useTranslation()
   const {
     formState: { errors },

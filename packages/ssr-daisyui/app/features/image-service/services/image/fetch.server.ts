@@ -102,19 +102,16 @@ export function isValidImageSource(src: string, allowedDomains?: string[]): bool
   }
 
   // Validate URL
-  try {
-    const url = new URL(src)
-
-    // If no allowed domains specified, allow all
-    if (!allowedDomains || allowedDomains.length === 0) {
-      return true
-    }
-
-    // Check if hostname is in allowed domains
-    return allowedDomains.some((domain) => {
-      return url.hostname === domain || url.hostname.endsWith(`.${domain}`)
-    })
-  } catch {
+  if (!URL.canParse(src)) {
     return false
   }
+
+  // If no allowed domains specified, allow all
+  if (!allowedDomains || allowedDomains.length === 0) {
+    return true
+  }
+
+  // Check if hostname is in allowed domains
+  const { hostname } = new URL(src)
+  return allowedDomains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))
 }

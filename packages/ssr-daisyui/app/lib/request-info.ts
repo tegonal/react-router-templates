@@ -10,8 +10,8 @@ export function useOptionalRequestInfo() {
 }
 
 /**
- * @returns the request info from the root loader (throws an error if it does not exist)
- */
+@returns the request info from the root loader (throws an error if it does not exist)
+*/
 export function useRequestInfo() {
   const maybeRequestInfo = useOptionalRequestInfo()
   invariant(maybeRequestInfo, 'No requestInfo found in root loader')

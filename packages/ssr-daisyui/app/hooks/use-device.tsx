@@ -14,22 +14,24 @@ export function useDevice(): DeviceInfo {
   })
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const userAgent = window.navigator.userAgent.toLowerCase()
-
-      // iOS detection
-      const isIOS =
-        /iphone|ipad|ipod/.test(userAgent) ||
-        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
-
-      // Android detection
-      const isAndroid = /android/.test(userAgent)
-
-      // Combined mobile detection
-      const isMobile = isIOS || isAndroid
-
-      setDeviceInfo({ isAndroid, isIOS, isMobile })
+    if (typeof window === 'undefined') {
+      return
     }
+
+    const userAgent = window.navigator.userAgent.toLowerCase()
+
+    // iOS detection
+    const isIOS =
+      /iphone|ipad|ipod/.test(userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+
+    // Android detection
+    const isAndroid = /android/.test(userAgent)
+
+    // Combined mobile detection
+    const isMobile = isIOS || isAndroid
+
+    setDeviceInfo({ isAndroid, isIOS, isMobile })
   }, [])
 
   return deviceInfo

@@ -48,14 +48,15 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   // Apply rate limiting
   if (!plausibleRateLimiter.isAllowed(clientIp)) {
     logger.warn(`Rate limit exceeded for IP: ${clientIp}`)
+    const retryAfterSeconds = Math.ceil(
+      (plausibleRateLimiter.getResetTime(clientIp) - Date.now()) / 1000,
+    )
     return Response.json(
       { error: 'Too many requests' },
       {
         headers: {
           'Content-Type': 'application/json',
-          'Retry-After': String(
-            Math.ceil((plausibleRateLimiter.getResetTime(clientIp) - Date.now()) / 1000),
-          ),
+          'Retry-After': String(retryAfterSeconds),
         },
         status: 429,
       },

@@ -8,13 +8,13 @@ export function parseImageParams(searchParams: URLSearchParams): ImageTransformO
   // Width
   const width = searchParams.get('w') || searchParams.get('width')
   if (width) {
-    options.width = Number.parseInt(width, 10)
+    options.width = Math.trunc(Number(width))
   }
 
   // Height
   const height = searchParams.get('h') || searchParams.get('height')
   if (height) {
-    options.height = Number.parseInt(height, 10)
+    options.height = Math.trunc(Number(height))
   }
 
   // Format
@@ -26,7 +26,8 @@ export function parseImageParams(searchParams: URLSearchParams): ImageTransformO
   // Quality
   const quality = searchParams.get('q') || searchParams.get('quality')
   if (quality) {
-    options.quality = Math.min(100, Math.max(1, Number.parseInt(quality, 10)))
+    const parsedQuality = Math.trunc(Number(quality))
+    options.quality = Math.min(100, Math.max(1, parsedQuality))
   }
 
   // Fit mode

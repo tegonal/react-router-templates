@@ -10,18 +10,18 @@ const resources = i18nConfig.resources
 
 export async function loader({ params }: Route.LoaderArgs) {
   const lng = params.lang
-  const ns = params.ns
 
   // Validate language
-  if (!lng || !(lng in resources)) {
+  if (!lng || !Object.hasOwn(resources, lng)) {
     logger.error(`Invalid language: ${lng}`)
     return data({ error: 'Invalid language' }, { status: 400 })
   }
 
   const namespaces = resources[lng as keyof typeof resources]
+  const ns = params.ns
 
   // Validate namespace
-  if (!ns || !(ns in namespaces)) {
+  if (!ns || !Object.hasOwn(namespaces, ns)) {
     logger.error(`Invalid namespace: ${ns}`)
     return data({ error: 'Invalid namespace' }, { status: 400 })
   }

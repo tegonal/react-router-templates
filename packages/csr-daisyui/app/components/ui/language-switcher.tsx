@@ -13,9 +13,8 @@ export const LanguageSwitcher: React.FC = () => {
   const supportedLngs = i18nConfig.supportedLngs || []
 
   const changeLanguage = async (language: string) => {
-    await i18n.changeLanguage(language).then(async () => {
-      await navigate(window.location.pathname)
-    })
+    await i18n.changeLanguage(language)
+    await navigate(window.location.pathname)
   }
 
   return (

@@ -16,7 +16,8 @@ export function ErrorBoundaryShared({ error }: Route.ErrorBoundaryProps) {
         <P>{error.data}</P>
       </>
     )
-  } else if (error instanceof Error) {
+  }
+  if (error instanceof Error) {
     return (
       <div>
         <H1>Error</H1>
@@ -25,7 +26,6 @@ export function ErrorBoundaryShared({ error }: Route.ErrorBoundaryProps) {
         <pre>{error.stack}</pre>
       </div>
     )
-  } else {
-    return <H1>Unknown Error</H1>
   }
+  return <H1>Unknown Error</H1>
 }

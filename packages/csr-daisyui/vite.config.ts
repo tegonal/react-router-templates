@@ -1,6 +1,6 @@
-import * as path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import * as path from 'node:path'
 import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import vitePluginSvgr from 'vite-plugin-svgr'
@@ -45,7 +45,7 @@ export default defineConfig(() => {
     ],
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './app'),
+        '~': path.resolve(import.meta.dirname, './app'),
       },
     },
   }

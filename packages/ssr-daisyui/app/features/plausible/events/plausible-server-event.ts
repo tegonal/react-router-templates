@@ -15,7 +15,7 @@ export const plausibleServerEvent = async (options: PlausibleServerEventOptions)
     throw new Error('Server-side plausible events are not supported on the client')
   }
 
-  if (isServer() && !request) {
+  if (!request && isServer()) {
     throw new Error('Request object is required for server-side plausible events')
   }
 

@@ -1,3 +1,4 @@
+import { once } from 'es-toolkit'
 import crypto from 'node:crypto'
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -7,10 +8,7 @@ import { logger } from '~/lib/logger.ts'
 
 import { type ImageTransformOptions } from './types'
 
-// Track if we've already purged the cache this session
-let cacheAlreadyPurged = false
-
-export async function deleteCachedImage(cacheKey: string): Promise<boolean> {
+export async function didDeleteCachedImage(cacheKey: string): Promise<boolean> {
   try {
     const cachePath = path.join(CACHE_DIR, `${cacheKey}.bin`)
     await fs.unlink(cachePath)
@@ -30,7 +28,10 @@ export async function getCachedImage(cacheKey: string): Promise<Buffer | null> {
 }
 
 export function getCacheKey(src: string, options: ImageTransformOptions): string {
-  const optionsString = JSON.stringify(options, Object.keys(options).toSorted())
+  const optionsString = JSON.stringify(
+    options,
+    Object.keys(options).toSorted((a, b) => a.localeCompare(b)),
+  )
   return crypto.createHash('md5').update(`${src}:${optionsString}`).digest('hex')
 }
 
@@ -112,15 +113,15 @@ export async function purgeCache(maxAge?: number): Promise<{ deleted: number; er
   return { deleted, errors }
 }
 
-export function purgeCacheOnStartup(): void {
-  if (!cacheAlreadyPurged) {
-    cacheAlreadyPurged = true
-    logger.debug('Purging image cache on server startup (development mode)')
-    purgeCache().catch((error) => {
-      logger.error('Failed to purge image cache on startup:', error)
-    })
+// Purges the cache only once per server process; later calls return the same promise
+export const purgeCacheOnStartup = once(async (): Promise<void> => {
+  logger.debug('Purging image cache on server startup (development mode)')
+  try {
+    await purgeCache()
+  } catch (error) {
+    logger.error('Failed to purge image cache on startup:', error)
   }
-}
+})
 
 export async function setCachedImage(cacheKey: string, buffer: Buffer): Promise<void> {
   try {

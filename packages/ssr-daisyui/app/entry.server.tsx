@@ -17,7 +17,7 @@ export default function handleRequest(
   routerContext: RouterContextProvider,
 ) {
   return new Promise((resolve, reject) => {
-    let shellRendered = false
+    let isShellRendered = false
     let userAgent = request.headers.get('user-agent')
 
     let readyOption: keyof RenderToPipeableStreamOptions =
@@ -30,13 +30,13 @@ export default function handleRequest(
       {
         onError(error: unknown) {
           responseStatusCode = 500
-          if (shellRendered) console.error(error)
+          if (isShellRendered) console.error(error)
         },
         onShellError(error: unknown) {
           reject(error)
         },
         [readyOption]() {
-          shellRendered = true
+          isShellRendered = true
           let body = new PassThrough()
           let stream = createReadableStreamFromReadable(body)
 

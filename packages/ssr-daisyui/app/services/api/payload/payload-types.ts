@@ -1,7 +1,7 @@
 /**
- * Mock Payload CMS Types
- * This is a mock implementation for the image-service feature
- */
+Mock Payload CMS Types
+This is a mock implementation for the image-service feature
+*/
 
 export interface Media {
   alt?: string

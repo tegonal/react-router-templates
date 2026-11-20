@@ -33,33 +33,33 @@ export const plausibleConfig = {
   // Event validation
   validation: {
     /**
-     * Allowed data types for event properties
-     * Business reason: Plausible only supports these primitive types for reliable data processing
-     */
+    Allowed data types for event properties
+    Business reason: Plausible only supports these primitive types for reliable data processing
+    */
     allowedPropTypes: ['string', 'number', 'boolean'] as const,
 
     /**
-     * Domain name validation pattern
-     * Business reason: Ensures domain names follow RFC standards (alphanumeric, dots, hyphens)
-     * Prevents injection attacks and ensures compatibility with DNS systems
-     */
+    Domain name validation pattern
+    Business reason: Ensures domain names follow RFC standards (alphanumeric, dots, hyphens)
+    Prevents injection attacks and ensures compatibility with DNS systems
+    */
     domainPattern: /^[a-zA-Z0-9.-]+$/,
 
     /**
-     * Maximum length for event names in Plausible analytics
-     * Business reason: Plausible has limits on event name length to ensure efficient storage and processing
-     */
+    Maximum length for event names in Plausible analytics
+    Business reason: Plausible has limits on event name length to ensure efficient storage and processing
+    */
     maxEventNameLength: 100 as const,
 
     /**
-     * Maximum size for event properties object in bytes
-     * Business reason: Prevents excessive data payloads that could impact performance and storage costs
-     */
+    Maximum size for event properties object in bytes
+    Business reason: Prevents excessive data payloads that could impact performance and storage costs
+    */
     maxPropsSize: 1024 as const, // 1KB
 
     /**
-     * Common validation messages for consistency
-     */
+    Common validation messages for consistency
+    */
     messages: {
       DOMAIN_INVALID: 'Invalid domain format',
       EVENT_NAME_TOO_LONG: 'Event name must be less than 100 characters',
@@ -71,9 +71,9 @@ export const plausibleConfig = {
     } as const,
 
     /**
-     * URL validation pattern for basic URL structure
-     * Business reason: Ensures URLs have proper protocol and structure for routing and security
-     */
+    URL validation pattern for basic URL structure
+    Business reason: Ensures URLs have proper protocol and structure for routing and security
+    */
     urlPattern: /^https?:\/\/.+/,
   },
 } as const
@@ -81,6 +81,6 @@ export const plausibleConfig = {
 export type PlausibleConfig = typeof plausibleConfig
 
 /**
- * Type for Plausible allowed property types
- */
+Type for Plausible allowed property types
+*/
 export type PlausiblePropType = (typeof plausibleConfig.validation.allowedPropTypes)[number]

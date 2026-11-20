@@ -1,8 +1,9 @@
 import vitest from '@vitest/eslint-plugin'
+import eslintReact from '@eslint-react/eslint-plugin'
+import stylistic from '@stylistic/eslint-plugin'
 import checkFile from 'eslint-plugin-check-file'
 import importX from 'eslint-plugin-import-x'
 import perfectionist from 'eslint-plugin-perfectionist'
-import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import unicorn from 'eslint-plugin-unicorn'
 import { globalIgnores } from 'eslint/config'
@@ -12,7 +13,9 @@ import tseslint from 'typescript-eslint'
 const vitestFiles = ['**/__tests__/**/*', '**/*.test.*', '**/*.spec.*']
 const testFiles = ['**/tests/**', '**/#tests/**', ...vitestFiles]
 
-/** @type {import("eslint").Linter.Config[]} */
+/**
+@type {import("eslint").Linter.Config[]}
+*/
 export default [
   globalIgnores([
     '**/.cache/**',
@@ -57,10 +60,10 @@ export default [
       },
     },
     plugins: {
-      react,
+      '@eslint-react': eslintReact,
     },
     rules: {
-      'react/jsx-key': 'warn',
+      '@eslint-react/no-missing-key': 'warn',
     },
   },
 
@@ -183,8 +186,11 @@ export default [
   // JSX curly brace presence
   {
     files: ['./app/**/*.tsx', './app/**/*.jsx'],
+    plugins: {
+      '@stylistic': stylistic,
+    },
     rules: {
-      'react/jsx-curly-brace-presence': ['error', { children: 'never', props: 'never' }],
+      '@stylistic/jsx-curly-brace-presence': ['error', { children: 'never', props: 'never' }],
     },
   },
 
@@ -192,12 +198,16 @@ export default [
   unicorn.configs.recommended,
   {
     rules: {
+      // Class member ordering is owned by perfectionist/sort-classes
+      'unicorn/consistent-class-member-order': 'off',
       // React closures need inner functions — too many false positives
       'unicorn/consistent-function-scoping': 'off',
       // Too opinionated — disable
       'unicorn/filename-case': 'off',
       // Opinionated import style preferences
       'unicorn/import-style': 'off',
+      // Renamed from prevent-abbreviations in unicorn v80
+      'unicorn/name-replacements': 'off',
       // Named callbacks are clearer than inline arrows
       'unicorn/no-array-callback-reference': 'off',
       // Legitimate pattern in reducers and aggregations
@@ -225,7 +235,6 @@ export default [
       'unicorn/prefer-ternary': 'off',
       // Entry file uses IIFE pattern
       'unicorn/prefer-top-level-await': 'off',
-      'unicorn/prevent-abbreviations': 'off',
     },
   },
 

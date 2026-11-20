@@ -1,7 +1,7 @@
 export type { ImageRequest, ImageServiceConfig, ImageTransformOptions } from '../types'
 
 export {
-  deleteCachedImage,
+  didDeleteCachedImage,
   getCachedImage,
   getCacheKey,
   getCacheStats,

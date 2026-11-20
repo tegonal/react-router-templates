@@ -14,7 +14,7 @@ import { parseImageParams, transformImage } from '../services/image/transform.se
 export async function loader({ request }: LoaderFunctionArgs) {
   // Purge cache once on server startup in development
   if (process.env.NODE_ENV === 'development') {
-    purgeCacheOnStartup()
+    await purgeCacheOnStartup()
   }
   const url = new URL(request.url)
   const src = processImageUrl(url.searchParams.get('src') || '')

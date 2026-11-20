@@ -53,10 +53,9 @@ export const plausibleClientEvent = async (options: PlausibleClientEventOptions)
           console.warn(`Retrying Plausible event (${name}) - attempt ${attempt}:`, error.message)
         },
       })
-    } else {
-      // Single attempt for non-critical events
-      return await sendEvent()
     }
+    // Single attempt for non-critical events
+    return await sendEvent()
   } catch (error) {
     // Silently fail - analytics errors shouldn't affect user experience
     console.warn('Failed to send Plausible event:', error)

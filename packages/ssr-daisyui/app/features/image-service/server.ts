@@ -1,5 +1,5 @@
 export {
-  deleteCachedImage,
+  didDeleteCachedImage,
   fetchImage,
   getCachedImage,
   getCacheKey,
