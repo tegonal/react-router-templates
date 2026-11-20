@@ -1,6 +1,6 @@
-import vitest from '@vitest/eslint-plugin'
 import eslintReact from '@eslint-react/eslint-plugin'
 import stylistic from '@stylistic/eslint-plugin'
+import vitest from '@vitest/eslint-plugin'
 import checkFile from 'eslint-plugin-check-file'
 import importX from 'eslint-plugin-import-x'
 import perfectionist from 'eslint-plugin-perfectionist'
@@ -200,41 +200,18 @@ export default [
     rules: {
       // Class member ordering is owned by perfectionist/sort-classes
       'unicorn/consistent-class-member-order': 'off',
-      // React closures need inner functions — too many false positives
-      'unicorn/consistent-function-scoping': 'off',
       // Too opinionated — disable
       'unicorn/filename-case': 'off',
       // Opinionated import style preferences
       'unicorn/import-style': 'off',
       // Renamed from prevent-abbreviations in unicorn v80
       'unicorn/name-replacements': 'off',
-      // Named callbacks are clearer than inline arrows
-      'unicorn/no-array-callback-reference': 'off',
-      // Legitimate pattern in reducers and aggregations
-      'unicorn/no-array-reduce': 'off',
-      // Migrate gradually — warn only
-      'unicorn/no-array-sort': 'warn',
-      // Auto-fix breaks HTMLCollection/NodeList iteration
-      'unicorn/no-for-loop': 'off',
-      // Immediate mutation is fine for builder patterns
-      'unicorn/no-immediate-mutation': 'off',
-      // Conflicts with other tooling or project conventions
-      'unicorn/no-nested-ternary': 'off',
+      // React refs, component returns and JSON APIs use null by design
       'unicorn/no-null': 'off',
       // Auto-fix removes required undefined args in function calls
       'unicorn/no-useless-undefined': 'off',
-      // WebSocket API uses on* handlers by design
-      'unicorn/prefer-add-event-listener': 'off',
       // Auto-fix rewrites window.X to globalThis.X, breaking TS declarations
       'unicorn/prefer-global-this': 'off',
-      // Multiple push calls are often clearer than spread/concat
-      'unicorn/prefer-single-call': 'off',
-      // Auto-fix can break HTMLCollection usage
-      'unicorn/prefer-spread': 'off',
-      // Ternary is not always more readable than if/else
-      'unicorn/prefer-ternary': 'off',
-      // Entry file uses IIFE pattern
-      'unicorn/prefer-top-level-await': 'off',
     },
   },
 

@@ -34,16 +34,13 @@ export function ResponsiveImage({
 
       // Only update if size actually changed significantly (more than 50px difference)
       setContainerSize((prevSize) => {
-        if (
+        const hasSignificantChange =
           newSize.width > 0 &&
           newSize.height > 0 &&
           (Math.abs(prevSize.width - newSize.width) > 50 ||
             Math.abs(prevSize.height - newSize.height) > 50 ||
             prevSize.width === 0)
-        ) {
-          return newSize
-        }
-        return prevSize
+        return hasSignificantChange ? newSize : prevSize
       })
     }
 

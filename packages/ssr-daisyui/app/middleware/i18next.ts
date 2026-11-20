@@ -20,11 +20,7 @@ export const [i18nextMiddleware, getLocale, getInstance] = createI18nextMiddlewa
       }
 
       const firstPathSegment = pathname.split('/', 2).at(1) || ''
-      if (i18nConfig.supportedLngs.includes(firstPathSegment)) {
-        return firstPathSegment
-      }
-
-      return null
+      return i18nConfig.supportedLngs.includes(firstPathSegment) ? firstPathSegment : null
     },
     supportedLanguages: i18nConfig.supportedLngs,
   },

@@ -27,10 +27,9 @@ export class RateLimiter {
 
   getRemainingRequests(identifier: string): number {
     const record = this.requests.get(identifier)
-    if (!record || Date.now() > record.resetTime) {
-      return this.options.maxRequests
-    }
-    return Math.max(0, this.options.maxRequests - record.count)
+    return !record || Date.now() > record.resetTime
+      ? this.options.maxRequests
+      : Math.max(0, this.options.maxRequests - record.count)
   }
 
   getResetTime(identifier: string): number {

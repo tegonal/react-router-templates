@@ -6,8 +6,7 @@ export default defineConfig({
     defaultNS: 'common',
     defaultValue: (key, _namespace, language, value) => {
       // EN gets the default value from code; other locales keep empty
-      if (language === 'en' && value) return value
-      return ''
+      return language === 'en' && value ? value : ''
     },
     extractFromComments: false,
     input: ['app/**/*.{ts,tsx}'],
