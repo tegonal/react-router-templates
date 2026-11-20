@@ -47,7 +47,7 @@ yarn dev       # start the dev server (http://localhost:5173)
 ## Tech stack
 
 - **React Router 8** (library mode / `BrowserRouter`, client-side rendering) · **React 19** ·
-  **TypeScript 7** · **Vite 8**
+  **TypeScript 6** · **Vite 8**
 - **Tailwind CSS 4** + **DaisyUI 5** (theming is CSS-first in `app/styles/tailwind.css`) +
   **[Base UI](https://base-ui.com)** for headless, accessible primitives (dialog, menu, select, …)
 - **i18n**: `i18next` + `react-i18next` (translations loaded at runtime via `i18next-http-backend`),
@@ -55,10 +55,6 @@ yarn dev       # start the dev server (http://localhost:5173)
 - **Forms**: `react-hook-form` + `zod`
 - **Tooling**: ESLint 10 (flat config) + Prettier, maintained directly in the project (no shared
   config dependency)
-- **TypeScript 7 side-by-side with TS 6**: TypeScript 7 ships no compiler API yet, so `typescript` is
-  aliased to `@typescript/typescript6` for tools like typescript-eslint, while `@typescript/native`
-  provides the TS 7 `tsc` used by `yarn typecheck`. Remove the alias once typescript-eslint supports
-  TS 7 ([see the TS 7 announcement](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0)).
 
 ## Components & styling
 
