@@ -1,6 +1,6 @@
-# csr-daisyui — React Router 7 CSR Starter
+# csr-daisyui — React Router 8 CSR Starter
 
-A client-side-rendering (CSR / SPA) starter built with **React Router 7** (library mode) and styled
+A client-side-rendering (CSR / SPA) starter built with **React Router 8** (library mode) and styled
 with **Tailwind CSS 4 + DaisyUI 5**, plus **Base UI** for headless, accessible components. It builds
 to static assets you can host anywhere.
 
@@ -46,8 +46,8 @@ yarn dev       # start the dev server (http://localhost:5173)
 
 ## Tech stack
 
-- **React Router 7** (library mode / `BrowserRouter`, client-side rendering) · **React 19** ·
-  **TypeScript 6** · **Vite 8**
+- **React Router 8** (library mode / `BrowserRouter`, client-side rendering) · **React 19** ·
+  **TypeScript 7** · **Vite 8**
 - **Tailwind CSS 4** + **DaisyUI 5** (theming is CSS-first in `app/styles/tailwind.css`) +
   **[Base UI](https://base-ui.com)** for headless, accessible primitives (dialog, menu, select, …)
 - **i18n**: `i18next` + `react-i18next` (translations loaded at runtime via `i18next-http-backend`),

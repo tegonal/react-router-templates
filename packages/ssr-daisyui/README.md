@@ -1,6 +1,6 @@
-# ssr-daisyui — React Router 7 SSR Starter
+# ssr-daisyui — React Router 8 SSR Starter
 
-A server-side-rendering (SSR) starter built with **React Router 7** (framework mode) and styled with
+A server-side-rendering (SSR) starter built with **React Router 8** (framework mode) and styled with
 **Tailwind CSS 4 + DaisyUI 5**, plus **Base UI** for headless, accessible components. It comes with
 typesafe internationalization, forms, an image-optimization service, and analytics wired up.
 
@@ -48,7 +48,7 @@ yarn dev       # start the dev server (http://localhost:5173)
 
 ## Tech stack
 
-- **React Router 7** (framework mode, SSR with stable middleware) · **React 19** · **TypeScript 6** ·
+- **React Router 8** (framework mode, SSR with middleware) · **React 19** · **TypeScript 7** ·
   **Vite 8**
 - **Tailwind CSS 4** + **DaisyUI 5** (theming is CSS-first in `app/styles/tailwind.css`) +
   **[Base UI](https://base-ui.com)** for headless, accessible primitives (dialog, menu, select, …)

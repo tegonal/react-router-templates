@@ -5,7 +5,7 @@
 Diese Starter-Vorlage wurde mit folgenden Technologien erstellt:
 
 - **TypeScript**: Für typsichere JavaScript-Entwicklung
-- **[React Router 7](https://reactrouter.com)**: Im Library-Modus, konfiguriert für Client-Side Rendering (CSR)
+- **[React Router 8](https://reactrouter.com)**: Im Library-Modus, konfiguriert für Client-Side Rendering (CSR)
 - **[React 19](https://react.dev/reference/react)**: Die neueste Version von React
 - **[Tailwind 4](https://tailwindcss.com/docs/installation/using-vite)**: Für Utility-First CSS-Styling
 - **[Vite](https://vite.dev/guide/)**: Für schnelle Entwicklung und Build-Zeiten

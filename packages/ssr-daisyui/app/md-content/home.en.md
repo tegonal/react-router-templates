@@ -5,7 +5,7 @@
 This starter template is built using the following technologies:
 
 - **TypeScript**: For type-safe JavaScript development
-- **[React Router 7](https://reactrouter.com)**: Framework mode, configured for server-side
+- **[React Router 8](https://reactrouter.com)**: Framework mode, configured for server-side
   rendering (SSR)
 - **[React 19](https://react.dev/reference/react)**: The latest version of React
 - **[Tailwind 4](https://tailwindcss.com/docs/installation/using-vite)**: For utility-first CSS
