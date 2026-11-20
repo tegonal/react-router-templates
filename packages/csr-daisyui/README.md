@@ -53,8 +53,12 @@ yarn dev       # start the dev server (http://localhost:5173)
 - **i18n**: `i18next` + `react-i18next` (translations loaded at runtime via `i18next-http-backend`),
   with keys extracted and typed by **`i18next-cli`**
 - **Forms**: `react-hook-form` + `zod`
-- **Tooling**: ESLint 9 (flat config) + Prettier, maintained directly in the project (no shared
+- **Tooling**: ESLint 10 (flat config) + Prettier, maintained directly in the project (no shared
   config dependency)
+- **TypeScript 7 side-by-side with TS 6**: TypeScript 7 ships no compiler API yet, so `typescript` is
+  aliased to `@typescript/typescript6` for tools like typescript-eslint, while `@typescript/native`
+  provides the TS 7 `tsc` used by `yarn typecheck`. Remove the alias once typescript-eslint supports
+  TS 7 ([see the TS 7 announcement](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0)).
 
 ## Components & styling
 
