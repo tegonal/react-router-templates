@@ -1,4 +1,4 @@
-import { createI18nextMiddleware } from 'remix-i18next/middleware'
+import { createI18nextMiddleware } from 'remix-i18next'
 
 import { i18nConfig } from '~/i18n-config.ts'
 import { i18nCookie } from '~/lib/cookies/i18next-cookie.server.ts'
@@ -13,13 +13,13 @@ export const [i18nextMiddleware, getLocale, getInstance] = createI18nextMiddlewa
     // fall through its built-in chain (searchParams → cookie → session → header),
     // which parses Accept-Language natively via its own parser — no external
     // dependency needed.
-    async findLocale(request) {
+    async findLocale({ request }) {
       const pathname = new URL(request.url).pathname
       if (ignorePaths.some((path) => pathname.match(path))) {
         return null
       }
 
-      const firstPathSegment = pathname.split('/').at(1) || ''
+      const firstPathSegment = pathname.split('/', 2).at(1) || ''
       if (i18nConfig.supportedLngs.includes(firstPathSegment)) {
         return firstPathSegment
       }

@@ -11,7 +11,6 @@ import {
   useLoaderData,
   useLocation,
 } from 'react-router'
-import { useChangeLanguage } from 'remix-i18next/react'
 
 import { DevModeOverlay } from '~/components/devmode-overlay'
 import { plausibleClientEvent } from '~/features/plausible/events/plausible-client-event.ts'
@@ -71,12 +70,15 @@ export type RootRouteLoaderData = typeof loader
 
 export const middleware = [i18nextMiddleware, performanceMiddleware]
 
-export const handle = {
-  i18n: ['common'],
-}
+export default function App({ loaderData: { locale } }: Route.ComponentProps) {
+  const { i18n } = useTranslation()
 
-export default function App({ loaderData }: Route.ComponentProps) {
-  useChangeLanguage(loaderData.locale)
+  useEffect(() => {
+    if (i18n.language !== locale) {
+      void i18n.changeLanguage(locale)
+    }
+  }, [locale, i18n])
+
   return <Outlet />
 }
 
@@ -86,14 +88,11 @@ export function ErrorBoundary(args: Route.ErrorBoundaryProps) {
 export function Layout({ children }: PropsWithChildren) {
   const { i18n } = useTranslation()
   const location = useLocation()
+  const { ENV, requestInfo, version } = useLoaderData<typeof loader>()
   const {
-    ENV,
-    requestInfo: {
-      hints: { theme },
-      nonce,
-    },
-    version,
-  } = useLoaderData<typeof loader>()
+    hints: { theme },
+    nonce,
+  } = requestInfo
 
   useEffect(() => {
     void plausibleClientEvent({ name: GenericAppEvents.PageView })

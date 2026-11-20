@@ -5,7 +5,6 @@ import { startTransition, StrictMode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
 import { HydratedRouter } from 'react-router/dom'
-import { getInitialNamespaces } from 'remix-i18next/client'
 
 import { i18nConfig } from '~/i18n-config.ts'
 
@@ -20,7 +19,7 @@ async function main() {
       detection: { caches: [], order: ['htmlTag'] },
       fallbackLng: i18nConfig.fallbackLng,
       fallbackNS: i18nConfig.fallbackNS,
-      ns: getInitialNamespaces(),
+      ns: i18nConfig.ns,
       returnEmptyString: i18nConfig.returnEmptyString,
     })
 
@@ -36,4 +35,8 @@ async function main() {
   })
 }
 
-main().catch((error) => console.error(error))
+try {
+  await main()
+} catch (error) {
+  console.error(error)
+}
