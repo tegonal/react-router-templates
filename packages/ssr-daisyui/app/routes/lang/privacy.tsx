@@ -17,11 +17,11 @@ export const loader = async ({ context }: LoaderFunctionArgs) => {
   })
 }
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => {
   return [
-    { title: data?.title },
+    { title: loaderData?.title },
     {
-      content: data?.description,
+      content: loaderData?.description,
       name: 'description',
     },
   ]
