@@ -613,8 +613,8 @@ __metadata:
   linkType: hard
 
 "@hookform/resolvers@npm:^7.0.7":
-  version: 7.0.7
-  resolution: "@hookform/resolvers@npm:7.0.7"
+  version: 7.0.9
+  resolution: "@hookform/resolvers@npm:7.0.9"
   dependencies:
     "@standard-schema/utils": "npm:^0.3.0"
   peerDependencies:
@@ -623,13 +623,13 @@ __metadata:
     ajv: ^8.12.0
     ajv-errors: ^3.0.0
     ajv-formats: ^2.1.1 || ^3.0.0
-    arktype: ^2.0.0
+    arktype: ^2.0.0 || ^3.0.0
     ata-validator: ^1.23.0
     class-transformer: ">=0.4.0"
     class-validator: ">=0.12.0"
     computed-types: ^1.0.0
     effect: ^4.0.0
-    fluentvalidation-ts: ^3.0.0
+    fluentvalidation-ts: ^3.0.0 || ^4.0.0 || ^5.0.0
     fp-ts: ^2.7.0
     io-ts: ^2.0.0
     joi: ^17.0.0 || ^18.0.0
@@ -689,7 +689,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10c0/f69235bb799022452d114117378fc8cffece294e5c03511bb370cf10601b23a3d07f01ff783e01b45c1b0679b7867d3916dc0fcbb4c16e97203ccb1c33ce3a17
+  checksum: 10c0/d6ed1b2432259fd35436cd3d5d9f92be4c628e23c347319ed11762ed1b2940133bbefc9f0fa028f6956c2fc0d9d1b7efe7b75c1e8a6099ac8ae0c49226bb0e8e
   languageName: node
   linkType: hard
 
